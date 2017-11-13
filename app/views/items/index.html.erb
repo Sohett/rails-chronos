@@ -1,9 +1,11 @@
-
 <div class="container">
   <p>this is a test !</p>
   <ul>
     <% @items.each do |item|%>
     <li><%= item.name %></li>
+    <li><%= item.description %></li>
+    <li><%= item.price  %>€</li>
+    <li><%= item.category %></li>
     <% end %>
   </ul>
 </div>

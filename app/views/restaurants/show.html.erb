@@ -1,0 +1,8 @@
+<div class="container">
+
+  <h3><%= @restaurant.name %></h3>
+  <p><%= @restaurant.address %></p>
+
+  <%= link_to "see the menu of this restaurant", restaurant_items_path(@restaurant), class: 'btn btn-info' %> 
+
+</div>
