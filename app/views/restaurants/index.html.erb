@@ -1,0 +1,9 @@
+<h2>We suppose we only work with one restaurant</h2>
+
+<div class="container" style="margin:20px">
+  <ul>
+    <% @restaurants.each do |restaurant| %>
+    <li><%= link_to restaurant.name, restaurant_path(restaurant) %></li>
+    <% end  %>
+  </ul>
+</div>
