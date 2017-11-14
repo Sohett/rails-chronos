@@ -1,0 +1,16 @@
+<div class="container">
+  <%= render 'form' %>
+</div>
+
+<hr>
+
+<div class="container">
+  <h3>Your basket</h3>
+  <ul>
+    <% @order.orderlines.each do |orderline| %>
+    <li><%= orderline.quantity %> : <%= orderline.item.name %></li>
+    <% end %>
+  </ul>
+
+  <%= link_to "pass order", table_order_path(@table, @order), method: :patch, class: 'btn btn-info' %>
+</div>

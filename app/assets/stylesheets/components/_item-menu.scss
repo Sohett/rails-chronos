@@ -1,4 +1,8 @@
-
+.item-box {
+  background-color: white;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
 
 .item {
   opacity: 0.9;
@@ -6,7 +10,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 8px 11px 11px;
-  border-top: 1px solid grey;
+  border-bottom: 1px solid grey;
 }
 
 .item h3 {
@@ -32,9 +36,11 @@
   border-bottom: 1px solid grey;
 }
 
+.item:first-child {
+  border-top: 1px solid grey;
+}
 .item:hover {
-  background: $generic-black;
-  color: $yellow;
+  background: $light-gray;
 }
 
 .item-description {
@@ -52,7 +58,6 @@
 .item-image{
   max-width: 12%;
   height: auto;
-
 }
 
 .item-upvote {
@@ -63,11 +68,7 @@
 
 .item-list {
   margin: 0px;
-  border-top: 1px solid grey;
-  border-left: 1px solid grey;
-  border-right: 1px solid grey;
-  border-bottom: 1px solid grey;
-
+  border: 1px solid grey;
 }
 
 .item-cancel {
