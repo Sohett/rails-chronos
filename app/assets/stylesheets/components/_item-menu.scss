@@ -1,0 +1,95 @@
+
+
+.item {
+  opacity: 0.9;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 11px 11px;
+  border-top: 1px solid grey;
+}
+
+.item h3 {
+  font-size: 24px;
+}
+
+.item p {
+  font-size: 16px;
+  opacity: 0.8;
+  font-weight: lighter;
+}
+
+#price {
+  opacity: 0.9;
+  font-weight: bolder;
+}
+
+.item li {
+  display: inline-block;
+}
+
+.item:last-child {
+  border-bottom: 1px solid grey;
+}
+
+.item:hover {
+  background: $generic-black;
+  color: $yellow;
+}
+
+.item-description {
+  flex: 1 0 auto;
+  padding: 0 10px;
+}
+
+.item-description h3 {
+  margin-top: 0;
+}
+.item-description p {
+  margin-bottom: 0;
+}
+
+.item-image{
+  max-width: 12%;
+  height: auto;
+
+}
+
+.item-upvote {
+  padding: 10px;
+  flex: 0 0 3%;
+  text-align: center;
+}
+
+.item-list {
+  margin: 0px;
+  border-top: 1px solid grey;
+  border-left: 1px solid grey;
+  border-right: 1px solid grey;
+  border-bottom: 1px solid grey;
+
+}
+
+.item-cancel {
+  border-right: 1px solid grey;
+}
+
+.item-reduce {
+  border-right: 1px solid grey;
+}
+
+.item-links {
+  display: flex;
+  align-items: center;
+}
+.item-links a {
+  color: $yellow;
+  opacity: 0.8;
+  text-decoration: none;
+  font-size: 18px;
+  padding: 0px 10px;
+}
+.item-links a:hover {
+  color: $yellow;
+  opacity: 1;
+}
