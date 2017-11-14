@@ -5,13 +5,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# create_table :tables do |t|
-#   t.references :restaurant, foreign_key: true
-#   t.string :table_number
-#   t.integer :capacity
-
-
-
 puts "deleting all the previous seeds"
 Item.destroy_all
 Restaurant.destroy_all
