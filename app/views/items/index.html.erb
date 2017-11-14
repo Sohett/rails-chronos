@@ -23,6 +23,64 @@
 <!-- My work below this line, Alex's work above -->
 <div class="container">
   <h2>Digital menu</h2>
+    <h3>Starters</h3>
+      <div class="item-box">
+        <% @items.each do |item|%>
+        <div class="item">
+          <div class="item-descritption">
+            <li>
+              <h3><%= item.name %></h3>
+              <p><%= item.description %></p>
+              <p id="price"><%= item.price%> €</p>
+            </li>
+          </div>
+          <ul class="list-inline item-list item-links">
+            <!-- <li class="item-cancel"><a href="#"><i class="fa fa-times"></i></a></li> -->
+            <li class="item-reduce"><a href="#"><i class="fa fa-minus"></i></a></li>
+            <li><a href="#"><i class="fa fa-plus"></i></a></li>
+          </ul>
+        </div>
+        <% end %>
+      </div>
+      <h3>Burgers</h3>
+      <div class="item-box">
+        <% @items.each do |item|%>
+        <div class="item">
+          <div class="item-descritption">
+            <li>
+              <h3><%= item.name %></h3>
+              <p><%= item.description %></p>
+              <p id="price"><%= item.price%> €</p>
+            </li>
+          </div>
+          <ul class="list-inline item-list item-links">
+            <!-- <li class="item-cancel"><a href="#"><i class="fa fa-times"></i></a></li> -->
+            <li class="item-reduce"><a href="#"><i class="fa fa-minus"></i></a></li>
+            <li><a href="#"><i class="fa fa-plus"></i></a></li>
+          </ul>
+        </div>
+        <% end %>
+      </div>
+      <h3>Sides</h3>
+      <div class="item-box">
+        <% @items.each do |item|%>
+        <div class="item">
+          <div class="item-descritption">
+            <li>
+              <h3><%= item.name %></h3>
+              <p><%= item.description %></p>
+              <p id="price"><%= item.price%> €</p>
+            </li>
+          </div>
+          <ul class="list-inline item-list item-links">
+            <!-- <li class="item-cancel"><a href="#"><i class="fa fa-times"></i></a></li> -->
+            <li class="item-reduce"><a href="#"><i class="fa fa-minus"></i></a></li>
+            <li><a href="#"><i class="fa fa-plus"></i></a></li>
+          </ul>
+        </div>
+        <% end %>
+      </div>
+      <h3>Drinks</h3>
       <div class="item-box">
         <% @items.each do |item|%>
         <div class="item">
