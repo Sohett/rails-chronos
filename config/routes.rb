@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  root to: 'items#index'
+  root to: 'tables#index'
 
-  resources :items, only: [:index]
-  resources :tables, only: [:show] do
+  resources :tables, only: [:index, :show] do
+    resources :items, only: [:index]
     resources :orderlines, only: [:new, :create]
     resources :orders, only: [:index, :update]
   end

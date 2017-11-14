@@ -1,0 +1,5 @@
+<div class="container" style="margin: 20px">
+  <% @tables.each do |table| %>
+  <%= link_to table.table_number, table_items_path(table), class: 'btn btn-info' %>
+  <% end %>
+</div>
