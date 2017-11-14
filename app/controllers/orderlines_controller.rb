@@ -9,16 +9,36 @@ class OrderlinesController < ApplicationController
 
   def create
     @order = current_order
-    @orderline = Orderline.new(orderline_params)
-    @orderline.order = @order
-    @orderline.save
-    redirect_to new_table_orderline_path(@table)
+    item = Item.find(params[:orderline][:item])
+    list = item_in_list
+
+    if list.include?(item.id)
+      @orderline = @order.orderlines.where(item_id: "#{item.id}").first
+      @orderline.quantity += 1
+    else
+      @orderline = Orderline.new
+      @orderline.item = item
+      @orderline.order = @order
+      @orderline.quantity = 1
+    end
+
+    @orderline.save!
+    redirect_to "#{table_items_path(@table)}#accordion"
   end
 
   private
 
+  def item_in_list
+    list = []
+    @order = current_order
+    @order.orderlines.each do |orderline|
+      list << orderline.item.id
+    end
+    return list
+  end
+
   def orderline_params
-    params.require(:orderline).permit(:quantity, :item_id)
+    params.require(:orderline).permit(:quantity, :item)
   end
 
   def current_order
