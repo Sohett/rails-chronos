@@ -5,15 +5,28 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+# create_table :tables do |t|
+#   t.references :restaurant, foreign_key: true
+#   t.string :table_number
+#   t.integer :capacity
 
-puts "suppressing all the previous seeds"
+
+
+puts "deleting all the previous seeds"
 Item.destroy_all
+Restaurant.destroy_all
+Table.destroy_all
 
-puts"creating a restaurant"
+puts "creating a restaurant"
 resto = Restaurant.new(name: "Be Burger", address: "Hector Henneaulaan 164, 1930 Zaventem")
 resto.save!
 
-puts"creating 3 starters"
+puts "creating a table"
+table = Table.new(table_number: "1",capacity: 17)
+table.restaurant = resto
+table.save!
+
+puts "creating 3 starters"
 
 starter1 = Item.new(name: "Salad", description: "Classic salad", price: 3.50, category: "starters")
 starter1.restaurant = resto
@@ -27,9 +40,9 @@ starter3 = Item.new(name: "Chicken salad", description: "Classic salad with chic
 starter3.restaurant = resto
 starter3.save!
 
-puts"3 starters created"
+puts "3 starters created"
 
-puts"creating 3 burgers"
+puts "creating 3 burgers"
 burger1 = Item.new(name: "Hamburger", description: "Black Angus beef, Iceberg lettuce, Homemade sauce", price: 8.50, category: "burgers")
 burger1.restaurant = resto
 burger1.save!
@@ -42,7 +55,7 @@ burger3 = Item.new(name: "Bacon burger", description: "Black Angus beef, Iceberg
 burger3.restaurant = resto
 burger3.save!
 
-puts"3 burgers created"
+puts "3 burgers created"
 
 puts"creating 3 sides"
 side1 = Item.new(name: "Belgian Fries", description: "Portion French fries", price: 3.50, category: "sides")
