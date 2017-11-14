@@ -1,0 +1,12 @@
+<%=  link_to 'pass a new order', new_table_orderline_path(@table), class: 'btn btn-info' %> 
+
+<% @orders.each do |order| %>
+  <div class="container">
+    <h3>Order number <%= order.id %> for table <%= @table.table_number %> </h3>
+    <ul>
+      <% order.orderlines.each do |orderline| %>
+      <li><%= orderline.item.name %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end  %>

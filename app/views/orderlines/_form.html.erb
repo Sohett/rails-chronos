@@ -1,0 +1,8 @@
+<%= simple_form_for [@table, @orderline] do |f| %>
+  <%= f.error_notification %>
+
+  <%= f.input :quantity %>
+  <%= f.input :item_id, collection: @items %>
+
+  <%= f.submit 'Add this to your basket' %>
+<% end  %>

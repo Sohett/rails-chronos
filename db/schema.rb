@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171113142725) do
+ActiveRecord::Schema.define(version: 20171114100139) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,24 @@ ActiveRecord::Schema.define(version: 20171113142725) do
     t.index ["restaurant_id"], name: "index_items_on_restaurant_id"
   end
 
+  create_table "orderlines", force: :cascade do |t|
+    t.bigint "order_id"
+    t.bigint "item_id"
+    t.integer "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_orderlines_on_item_id"
+    t.index ["order_id"], name: "index_orderlines_on_order_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.bigint "table_id"
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["table_id"], name: "index_orders_on_table_id"
+  end
+
   create_table "restaurants", force: :cascade do |t|
     t.string "name"
     t.string "address"
@@ -33,5 +51,18 @@ ActiveRecord::Schema.define(version: 20171113142725) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "tables", force: :cascade do |t|
+    t.bigint "restaurant_id"
+    t.string "table_number"
+    t.integer "capacity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["restaurant_id"], name: "index_tables_on_restaurant_id"
+  end
+
   add_foreign_key "items", "restaurants"
+  add_foreign_key "orderlines", "items"
+  add_foreign_key "orderlines", "orders"
+  add_foreign_key "orders", "tables"
+  add_foreign_key "tables", "restaurants"
 end
