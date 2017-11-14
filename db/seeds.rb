@@ -6,12 +6,16 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-puts "suppressing all the previous seeds"
+puts "deleting all the previous seeds"
 Item.destroy_all
+Restaurant.destroy_all
+Table.destroy_all
 
 puts"creating a restaurant"
 resto = Restaurant.new(name: "Be Burger", address: "Hector Henneaulaan 164, 1930 Zaventem")
 resto.save!
+
+puts "creating a table"
 
 puts"creating 3 starters"
 
