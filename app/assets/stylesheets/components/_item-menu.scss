@@ -1,21 +1,27 @@
-.item-box {
-  background: #FFFFFF;
-  box-shadow: 0 0 10px rgba(0,0,0,0.2);
-}
+
 
 .item {
-  background-color: $generic-gray;
-  color: #FDB543;
+  opacity: 0.9;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-top: 15px;
-  padding-left: 20px;
-  padding-bottom: 15px;
-  padding-right: 15px;
+  padding: 8px 11px 11px;
   border-top: 1px solid grey;
-  border-left: 1px solid grey;
-  border-right: 1px solid grey;
+}
+
+.item h3 {
+  font-size: 24px;
+}
+
+.item p {
+  font-size: 16px;
+  opacity: 0.8;
+  font-weight: lighter;
+}
+
+#price {
+  opacity: 0.9;
+  font-weight: bolder;
 }
 
 .item li {
@@ -77,8 +83,8 @@
   align-items: center;
 }
 .item-links a {
-  color: #adaeaa;
-  opacity: 0.9;
+  color: $yellow;
+  opacity: 0.8;
   text-decoration: none;
   font-size: 18px;
   padding: 0px 10px;

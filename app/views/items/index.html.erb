@@ -1,26 +1,45 @@
 <%= render 'shared/banner'  %>
 
+<div class="container">
+  <div class="row text-center">
+    <div class="col-xs-6 col-md-3">
+      <%= link_to "Starters", "", class: "btn btn-primary btn-header" %>
+    </div>
+
+    <div class="col-xs-6 col-md-3">
+      <%= link_to "Burgers", "" , class: "btn btn-primary btn-header" %>
+    </div>
+
+    <div class="col-xs-6 col-md-3">
+      <%= link_to "Sides", "", class: "btn btn-primary btn-header" %>
+    </div>
+
+    <div class="col-xs-6 col-md-3">
+      <%= link_to "Drinks", "", class: "btn btn-primary btn-header" %>
+    </div>
+  </div>
+</div>
 
 <!-- My work below this line, Alex's work above -->
 <div class="container">
   <h2>Digital menu</h2>
-  <div class="item-box">
-    <% @items.each do |item|%>
-    <div class="item">
-      <div class="item-descritption">
-      <li>
-        <h3><%= item.name %></h3>
-        <p><%= item.description %></p>
-        <p><%= item.price  %>€</p>
-      </li>
+      <div class="item-box">
+        <% @items.each do |item|%>
+        <div class="item">
+          <div class="item-descritption">
+            <li>
+              <h3><%= item.name %></h3>
+              <p><%= item.description %></p>
+              <p id="price"><%= item.price%> €</p>
+            </li>
+          </div>
+          <ul class="list-inline item-list item-links">
+            <!-- <li class="item-cancel"><a href="#"><i class="fa fa-times"></i></a></li> -->
+            <li class="item-reduce"><a href="#"><i class="fa fa-minus"></i></a></li>
+            <li><a href="#"><i class="fa fa-plus"></i></a></li>
+          </ul>
+        </div>
+        <% end %>
       </div>
-      <ul class="list-inline item-list item-links">
-        <li class="item-cancel"><a href="#"><i class="fa fa-times"></i></a></li>
-        <li class="item-reduce"><a href="#"><i class="fa fa-minus"></i></a></li>
-        <li><a href="#"><i class="fa fa-plus"></i></a></li>
-      </ul>
     </div>
-    <% end %>
-    <ul></ul>
-  </div>
-</div>
+
