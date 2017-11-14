@@ -11,9 +11,21 @@ class ItemsController < ApplicationController
 
     @orderline = Orderline.new
     @order = current_order
+
+    @total_price = price_computation
   end
 
   private
+
+  def price_computation
+    total_price = 0
+    @order = current_order
+    @order.orderlines.each do |orderline|
+      price = orderline.quantity * orderline.item.price
+      total_price += price
+    end
+    return total_price
+  end
 
   def set_table
     @table = Table.find(params[:table_id])

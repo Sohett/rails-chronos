@@ -2,10 +2,10 @@
 
 <% @orders.each do |order| %>
   <div class="container">
-    <h3>Order number <%= order.id %> for table <%= @table.table_number %>. Status: <%= order.status %> </h3>
+    <h3>Order number <%= order.id %> for table <%= @table.table_number %>. Status: <%= order.status %> <%= link_to "delete order", table_order_path(@table, order), method: :delete, class: "btn btn-danger" %></h3>  
     <ul>
       <% order.orderlines.each do |orderline| %>
-      <li><%= orderline.item.name %></li>
+      <li><%= orderline.item.name %> </li>
       <% end %>
     </ul>
   </div>

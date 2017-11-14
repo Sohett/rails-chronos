@@ -1,5 +1,5 @@
 class OrderlinesController < ApplicationController
-  before_action :set_table, only: [:new, :create]
+  before_action :set_table, only: [:new, :create, :destroy]
 
   def new
     @orderline = Orderline.new
@@ -11,7 +11,6 @@ class OrderlinesController < ApplicationController
     @order = current_order
     item = Item.find(params[:orderline][:item])
     list = item_in_list
-
     if list.include?(item.id)
       @orderline = @order.orderlines.where(item_id: "#{item.id}").first
       @orderline.quantity += 1
@@ -21,8 +20,18 @@ class OrderlinesController < ApplicationController
       @orderline.order = @order
       @orderline.quantity = 1
     end
-
     @orderline.save!
+    redirect_to "#{table_items_path(@table)}#accordion"
+  end
+
+  def destroy
+  @orderline = Orderline.find(params[:id])
+    if @orderline.quantity > 1
+      @orderline.quantity -= 1
+      @orderline.save
+    else
+      @orderline.destroy
+    end
     redirect_to "#{table_items_path(@table)}#accordion"
   end
 

@@ -3,8 +3,8 @@ Rails.application.routes.draw do
 
   resources :tables, only: [:index, :show] do
     resources :items, only: [:index]
-    resources :orderlines, only: [:new, :create]
-    resources :orders, only: [:index, :update]
+    resources :orderlines, only: [:new, :create, :destroy]
+    resources :orders, only: [:index, :update, :destroy]
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

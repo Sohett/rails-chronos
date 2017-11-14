@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :set_table, only: [:index, :update]
+  before_action :set_table, only: [:index, :update, :destroy]
 
   def index
     @orders = @table.orders
@@ -11,6 +11,15 @@ class OrdersController < ApplicationController
     @order.status = "order send"
     @order.save
     redirect_to table_orders_path(@table), alert: "your order has been sent succesfully"
+  end
+
+  def destroy
+    @order = Order.find(params[:id])
+    @order.orderlines.each do |orderline|
+      orderline.destroy
+    end
+    @order.destroy
+    redirect_to table_orders_path(@table)
   end
 
   private

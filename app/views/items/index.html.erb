@@ -4,17 +4,24 @@
 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 
   <div class="panel panel-default">
-
     <div class="container text-center">
       <h2>Your Basket</h2>
-      <ul>
+      <div class="row">
         <% @order.orderlines.each do |orderline| %>
-        <li><%= orderline.quantity %> : <%= orderline.item.name %></li>
+          <div class="col-xs-6">
+            <%= orderline.quantity %> x <%= orderline.item.name %> (<%= orderline.item.price %> €)
+          </div>
+          <div class="col-xs-6">
+            <%= link_to '<i class="fa fa-minus" style="color: #feb632"></i>'.html_safe, table_orderline_path(@table, orderline), method: :delete%>
+          </div>
         <% end %>
-      </ul>
+      </div>
+      <div class="div">
+        <h4>Total price</h4>
+        <p><%= @total_price %> €</p>
+      </div>
       <%= link_to "pass order", table_order_path(@table, @order), method: :patch, class: 'btn btn-info', style:'margin:20px' %>
     </div>
-
   </div>
 
   <div class="panel panel-default">
@@ -29,7 +36,7 @@
       </h4>
     </div>
 
-    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+    <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
       <div class="panel-body">
         <div class="item-box">
           <% @items_starters.each do |item|%>
