@@ -4,19 +4,21 @@
 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 
   <div class="panel panel-default">
-    <div class="panel-heading" role="tab" id="headingOne">
-      <h4 class="panel-title">
-        <div class= "text-center">
-          <a class= "btn btn-header" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-            user guide
-          </a>
-        </div>
-      </h4>
+
+    <div class="container text-center">
+      <h2>Your Basket</h2>
+      <ul>
+        <% @order.orderlines.each do |orderline| %>
+        <li><%= orderline.quantity %> : <%= orderline.item.name %></li>
+        <% end %>
+      </ul>
+      <%= link_to "pass order", table_order_path(@table, @order), method: :patch, class: 'btn btn-info', style:'margin:20px' %>
     </div>
-    <p>explanation</p>
+
   </div>
 
   <div class="panel panel-default">
+
     <div class="panel-heading" role="tab" id="headingOne">
       <h4 class="panel-title">
         <div class= "text-center">
@@ -26,6 +28,7 @@
         </div>
       </h4>
     </div>
+
     <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
       <div class="panel-body">
         <div class="item-box">
@@ -38,16 +41,18 @@
                 <p id="price"><%= item.price%> €</p>
               </li>
             </div>
-            <ul class="list-inline item-list item-links">
-              <!-- <li class="item-cancel"><a href="#"><i class="fa fa-times"></i></a></li> -->
-              <li class="item-reduce"><a href="#"><i class="fa fa-minus"></i></a></li>
-              <li><a href="#"><i class="fa fa-plus"></i></a></li>
-            </ul>
+              <%= simple_form_for [@table, @orderline] do |f| %>
+                <%= f.input :item,  :as => :hidden, :input_html => { :value => item.id } %>
+                <%= f.button :button do %>
+                  <i class="fa fa-plus" style="color: #feb632"></i>
+              <% end %>
+              <% end  %>
           </div>
           <% end %>
         </div>
       </div>
     </div>
+
   </div>
 
   <div class="panel panel-default">
@@ -72,11 +77,12 @@
                 <p id="price"><%= item.price%> €</p>
               </li>
             </div>
-            <ul class="list-inline item-list item-links">
-              <!-- <li class="item-cancel"><a href="#"><i class="fa fa-times"></i></a></li> -->
-              <li class="item-reduce"><a href="#"><i class="fa fa-minus"></i></a></li>
-              <li><a href="#"><i class="fa fa-plus"></i></a></li>
-            </ul>
+            <%= simple_form_for [@table, @orderline] do |f| %>
+              <%= f.input :item,  :as => :hidden, :input_html => { :value => item.id } %>
+              <%= f.button :button do %>
+                <i class="fa fa-plus" style="color: #feb632"></i>
+            <% end %>
+            <% end %>
           </div>
           <% end %>
         </div>
@@ -105,11 +111,12 @@
                 <p id="price"><%= item.price%> €</p>
               </li>
             </div>
-            <ul class="list-inline item-list item-links">
-              <!-- <li class="item-cancel"><a href="#"><i class="fa fa-times"></i></a></li> -->
-              <li class="item-reduce"><a href="#"><i class="fa fa-minus"></i></a></li>
-              <li><a href="#"><i class="fa fa-plus"></i></a></li>
-            </ul>
+            <%= simple_form_for [@table, @orderline] do |f| %>
+              <%= f.input :item,  :as => :hidden, :input_html => { :value => item.id } %>
+              <%= f.button :button do %>
+                <i class="fa fa-plus" style="color: #feb632"></i>
+            <% end %>
+            <% end  %>
           </div>
           <% end %>
         </div>
@@ -138,11 +145,12 @@
                 <p id="price"><%= item.price%> €</p>
               </li>
             </div>
-            <ul class="list-inline item-list item-links">
-              <!-- <li class="item-cancel"><a href="#"><i class="fa fa-times"></i></a></li> -->
-              <li class="item-reduce"><a href="#"><i class="fa fa-minus"></i></a></li>
-              <li><a href="#"><i class="fa fa-plus"></i></a></li>
-            </ul>
+            <%= simple_form_for [@table, @orderline] do |f| %>
+              <%= f.input :item,  :as => :hidden, :input_html => { :value => item.id } %>
+              <%= f.button :button do %>
+                <i class="fa fa-plus" style="color: #feb632"></i>
+            <% end %>
+            <% end  %>
           </div>
           <% end %>
         </div>
