@@ -1,0 +1,21 @@
+.btn-header{
+  padding: 10px 25px;
+  margin: 5px;
+  border-radius:30px;
+  background: transparent;
+  font-family: "Raleway", "Helvetica", "sans-serif";
+  font-weight: 500;
+  line-height: 1.1;
+  color: black !important;
+  border-color: $yellow !important;
+  border: solid;
+}
+
+.btn-header:hover {
+  background-color: $yellow ;
+  text-decoration: none;
+}
+
+.btn-header:active {
+  background-color: $yellow !important;
+}
