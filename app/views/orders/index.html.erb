@@ -1,27 +1,75 @@
-<% flash.each do |key, value| %>
+<div class="container">
+  <% flash.each do |key, value| %>
   <div class="alert alert-<%= key %>"><%= value %></div>
-<% end %>
+  <% end %>
 
-<div class="container" style="margin:20px">
-  <%=  link_to 'pass a new order', table_items_path(@table), class: 'btn btn-info' %>
-</div>
+  <div class="row">
+    <div class="col-md-3">
+      <h3><u>Orders pending</u></h3>
+      <% @orders_pending.each do |order| %>
+      <div class="container">
+        <h5>Order number <%= order.number %> for table <%= @table.table_number %></h5>
+        <ul>
+          <% order.orderlines.each do |orderline| %>
+          <li><%= orderline.item.name %> x <%= orderline.quantity %></li>
+          <% end %>
+        </ul>
+      </div>
+      <% end  %>
+    </div>
 
-<div class="container" style="margin:20px">
-  <%= link_to 'Clear table', table_clear_path(@table), method: :delete, class: "btn btn-danger", :data => {:confirm => 'This will delete all the orders. Confirm?'} %>
-</div>
+    <div class="col-md-3">
+      <h3><u>Orders in process</u></h3>
+      <% @orders_in_process.each do |order| %>
+      <div class="container">
+        <h5>Order number <%= order.number %> for table <%= @table.table_number %></h5>
+        <p>
+          <%= link_to "delivered", table_order_status_path(@table, order),method: :get, class: "btn btn-info" %>
+        </p>
+        <ul>
+          <% order.orderlines.each do |orderline| %>
+          <li><%= orderline.item.name %> x <%= orderline.quantity %>  </li>
+          <% end %>
+        </ul>
+      </div>
+      <% end  %>
+    </div>
 
-<% @orders_not_deleted.each do |order| %>
-  <div class="container">
-    <h3>
-      Order number <%= order.number %> for table <%= @table.table_number %>. Status: <%= order.status %>
-      <%= link_to "deleted", table_order_path(@table, order), method: :delete, class: "btn btn-danger" %>
-      <%= link_to "delivered", table_order_status_path(@table, order),method: :get, class: "btn btn-info" %>
-      <%= link_to "paid", table_order_status_path(@table, order),method: :get, class: "btn btn-info" %>
-    </h3>
-    <ul>
-      <% order.orderlines.each do |orderline| %>
-      <li><%= orderline.item.name %> x <%= orderline.quantity %>  </li>
-      <% end %>
-    </ul>
+    <div class="col-md-3">
+      <h3><u>Orders delivered</u></h3>
+      <% @orders_delivered.each do |order| %>
+      <div class="container">
+        <h5>Order number <%= order.number %> for table <%= @table.table_number %></h5>
+        <p>
+          <%= link_to "paid", table_order_status_path(@table, order),method: :get, class: "btn btn-info" %>
+        </p>
+        <ul>
+          <% order.orderlines.each do |orderline| %>
+          <li><%= orderline.item.name %> x <%= orderline.quantity %>  </li>
+          <% end %>
+        </ul>
+      </div>
+      <% end  %>
+    </div>
+
+    <div class="col-md-3">
+      <h3><u>Orders paid</u></h3>
+      <% @orders_paid.each do |order| %>
+      <div class="container">
+        <h5>Order number <%= order.number %> for table <%= @table.table_number %></h5>
+        <p><%= link_to "deleted", table_order_path(@table, order), method: :delete, class: "btn btn-danger" %></p>
+        <ul>
+          <% order.orderlines.each do |orderline| %>
+          <li><%= orderline.item.name %> x <%= orderline.quantity %>  </li>
+          <% end %>
+        </ul>
+      </div>
+      <% end  %>
+    </div>
   </div>
-<% end  %>
+
+  <div class="container text-center" style="margin:50px 0">
+    <%= link_to 'Clear table', table_clear_path(@table), method: :delete, class: "btn btn-danger", :data => {:confirm => 'This will delete all the orders. Confirm?'} %>
+  </div>
+
+</div>

@@ -37,7 +37,7 @@ class ItemsController < ApplicationController
     end
 
     unless session[:order_id]
-      order = Order.new(table: @table, status: "Pending order")
+      order = Order.new(table: @table, status: "pending")
       order.number = session[:order_number]
       order.save!
       session[:order_id] = order.id

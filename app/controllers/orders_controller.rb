@@ -3,9 +3,11 @@ class OrdersController < ApplicationController
   before_action :set_order, only: [:destroy, :status]
 
   def index
-    @orders = @table.orders
-    @orders_deleted = @orders.where(status: "deleted")
-    @orders_not_deleted = @orders - @orders_deleted
+    @orders_not_deleted = @table.orders.where.not(status: 'deleted')
+    @orders_pending = @table.orders.where(status: 'pending')
+    @orders_in_process = @table.orders.where(status: 'in process')
+    @orders_delivered = @table.orders.where(status: 'delivered')
+    @orders_paid = @table.orders.where(status: 'paid')
   end
 
   def update
