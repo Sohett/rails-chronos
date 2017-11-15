@@ -10,8 +10,7 @@ class OrdersController < ApplicationController
     session.delete(:order_id)
     @order.status = "order received"
     @order.save
-    
-    redirect_to table_orders_path(@table), notice: "your order has been sent succesfully"
+    redirect_to table_orders_path(@table), alert: "your order has been sent succesfully"
   end
 
   def destroy
