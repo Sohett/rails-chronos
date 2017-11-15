@@ -32,13 +32,20 @@ class ItemsController < ApplicationController
   end
 
   def current_order
+    unless session[:order_number]
+      session[:order_number] = 1
+    end
+
     unless session[:order_id]
-      order = Order.new(table: @table, status: "order to be confirmed by user")
+      order = Order.new(table: @table, status: "Pending order")
+      order.number = session[:order_number]
       order.save!
       session[:order_id] = order.id
       order
     else
-      Order.find(session[:order_id])
+      order = Order.find(session[:order_id])
+      order.number = session[:order_number]
+      return order
     end
   end
 end

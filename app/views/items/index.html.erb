@@ -1,5 +1,9 @@
 <%= render 'shared/banner'  %>
 
+<% flash.each do |key, value| %>
+  <div class="alert alert-<%= key %>"><%= value %></div>
+<% end %>
+
 <div class="panel panel-default" style="margin:0">
   <div class="container text-center" style="background:#1d1f21; color:#ffffff">
     <h2>Your Basket</h2>

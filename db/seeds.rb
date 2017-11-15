@@ -10,14 +10,17 @@ Item.destroy_all
 Restaurant.destroy_all
 Table.destroy_all
 
-puts "creating a restaurant"
+puts "creating 1 restaurant"
 resto = Restaurant.new(name: "Be Burger", address: "Hector Henneaulaan 164, 1930 Zaventem")
 resto.save!
 
-puts "creating a table"
-table = Table.new(table_number: "1",capacity: 17)
-table.restaurant = resto
-table.save!
+puts "creating 2 tables"
+table1 = Table.new(table_number: "1",capacity: 17)
+table2 = Table.new(table_number: "2",capacity: 8)
+table1.restaurant = resto
+table2.restaurant = resto
+table1.save!
+table2.save!
 
 puts "creating 3 starters"
 
