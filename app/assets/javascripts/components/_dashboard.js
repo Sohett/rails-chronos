@@ -1,4 +1,4 @@
-$( ".column" ).sortable({
+  $(".column" ).sortable({
     connectWith: ".column",
     handle: ".portlet-header",
     cancel: ".portlet-toggle",
