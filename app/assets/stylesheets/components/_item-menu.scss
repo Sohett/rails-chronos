@@ -23,7 +23,7 @@
   font-weight: lighter;
 }
 
-#price {
+#price-menu {
   opacity: 0.9;
   font-weight: bolder;
 }
@@ -76,7 +76,6 @@
 }
 
 .item-reduce {
-  border-right: 1px solid grey;
 }
 
 .item-links {
@@ -93,4 +92,88 @@
 .item-links a:hover {
   color: $yellow;
   opacity: 1;
+}
+
+
+
+
+// My basket
+
+.basket {
+  border: 3px solid $yellow;
+  margin: 5px;
+}
+
+.basket h2 {
+  font-size: 30px;
+  letter-spacing: 4px;
+}
+
+.basket-title:after {
+  content: "•••••••";
+  color: $yellow;
+  font-size: 30px;
+  letter-spacing: 10px;
+  display: block;
+}
+
+
+.item-order p {
+  text-align: left;
+  font-size: 15px;
+  opacity: 0.9;
+  font-weight: lighter;
+}
+
+// mobile
+@media(max-width: 500px) {
+  .item-line {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 25px;
+    align-items: center;
+    flex-wrap: nowrap;
+  }
+  .item-name {
+    max-width: 150px;
+  }
+  .button-price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-width: 150px;
+  }
+}
+
+// large screens
+@media(min-width: 500px) {
+  .item-line {
+    display: flex;
+    justify-content: space-around;
+  }
+  .item-name {
+    min-width: 250px;
+    text-align: left;
+    font-size: 15px;
+    opacity: 0.9;
+    font-weight: lighter;
+  }
+  .button-price {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.price h5 {
+  font-weight: bolder;
+  opacity: 0.9;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.price p {
+  font-weight: bolder;
+  opacity: 0.9;
+  margin-top: -5px;
+  font-size: 15px;
 }

@@ -1,23 +1,30 @@
 <%= render 'shared/banner'  %>
 
-<div class="panel panel-default" style="margin:0">
-  <div class="container text-center" style="background:#1d1f21; color:#ffffff">
-    <h2>Your Basket</h2>
+<div class="panel panel-default">
+  <div class="box basket text-center">
+    <h2 class="basket-title">My Basket</h2>
     <div class="row">
-      <% @order.orderlines.each do |orderline| %>
-        <div class="col-xs-6">
-          <p style="font-size: 10px"><%= orderline.quantity %> x <%= orderline.item.name %> (<%= orderline.item.price %> €)</p>
+      <div class="item-order">
+        <% @order.orderlines.each do |orderline| %>
+        <div class="item-line">
+          <div class="item-name">
+            <p><strong><%= orderline.quantity %> x</strong> <%= orderline.item.name %></p>
+          </div>
+          <div class="button-price">
+                <p style="padding:1px;"><%= link_to '<i class="fa fa-minus btn btn-default" style="color: #feb632; font-size:17px"></i>'.html_safe, table_orderline_path(@table, orderline), method: :delete%></p>
+                <p style="padding:1px;"><%= link_to '<i class="fa fa-youtube btn btn-default" style="color: #feb632; font-size:17px"></i>'.html_safe, table_orderline_path(@table, orderline), method: :delete%></p>
+                <p style="padding:1px;"><%= link_to '<i class="fa fa-facebook btn btn-default" style="color: #feb632; font-size:17px"></i>'.html_safe, table_orderline_path(@table, orderline), method: :delete%></p>
+                <p style="padding-left:10px; width:61px;"><%= orderline.item.price %> €</p>
+          </div>
         </div>
-        <div class="col-xs-6">
-          <p><%= link_to '<i class="fa fa-minus" style="color: #feb632; font-size:10px"></i>'.html_safe, table_orderline_path(@table, orderline), method: :delete%></p>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
-    <div class="div">
-      <h5>Total price</h5>
+    <div class="div price">
+      <h5>Total</h5>
       <p><%= @total_price %> €</p>
     </div>
-    <%= link_to "pass order", table_order_path(@table, @order), method: :patch, class: 'btn btn-info', style:'margin:20px' %>
+    <%= link_to "Confirm order", table_order_path(@table, @order), method: :patch, class: 'btn btn-info', style:'margin:20px' %>
   </div>
 </div>
 
@@ -46,15 +53,15 @@
               <li>
                 <h3><%= item.name %></h3>
                 <p><%= item.description %></p>
-                <p id="price"><%= item.price%> €</p>
+                <p id="price-menu"><%= item.price%> €</p>
               </li>
             </div>
-              <%= simple_form_for [@table, @orderline] do |f| %>
-                <%= f.input :item,  :as => :hidden, :input_html => { :value => item.id } %>
-                <%= f.button :button do %>
-                  <i class="fa fa-plus" style="color: #feb632"></i>
-              <% end %>
-              <% end  %>
+            <%= simple_form_for [@table, @orderline] do |f| %>
+            <%= f.input :item,  :as => :hidden, :input_html => { :value => item.id } %>
+            <%= f.button :button do %>
+            <i class="fa fa-plus" style="color: #feb632"></i>
+            <% end %>
+            <% end  %>
           </div>
           <% end %>
         </div>
@@ -82,13 +89,13 @@
               <li>
                 <h3><%= item.name %></h3>
                 <p><%= item.description %></p>
-                <p id="price"><%= item.price%> €</p>
+                <p id="price-menu"><%= item.price%> €</p>
               </li>
             </div>
             <%= simple_form_for [@table, @orderline] do |f| %>
-              <%= f.input :item,  :as => :hidden, :input_html => { :value => item.id } %>
-              <%= f.button :button do %>
-                <i class="fa fa-plus" style="color: #feb632"></i>
+            <%= f.input :item,  :as => :hidden, :input_html => { :value => item.id } %>
+            <%= f.button :button do %>
+            <i class="fa fa-plus" style="color: #feb632"></i>
             <% end %>
             <% end %>
           </div>
@@ -116,13 +123,13 @@
               <li>
                 <h3><%= item.name %></h3>
                 <p><%= item.description %></p>
-                <p id="price"><%= item.price%> €</p>
+                <p id="price-menu"><%= item.price%> €</p>
               </li>
             </div>
             <%= simple_form_for [@table, @orderline] do |f| %>
-              <%= f.input :item,  :as => :hidden, :input_html => { :value => item.id } %>
-              <%= f.button :button do %>
-                <i class="fa fa-plus" style="color: #feb632"></i>
+            <%= f.input :item,  :as => :hidden, :input_html => { :value => item.id } %>
+            <%= f.button :button do %>
+            <i class="fa fa-plus" style="color: #feb632"></i>
             <% end %>
             <% end  %>
           </div>
@@ -150,13 +157,13 @@
               <li>
                 <h3><%= item.name %></h3>
                 <p><%= item.description %></p>
-                <p id="price"><%= item.price%> €</p>
+                <p id="price-menu"><%= item.price%> €</p>
               </li>
             </div>
             <%= simple_form_for [@table, @orderline] do |f| %>
-              <%= f.input :item,  :as => :hidden, :input_html => { :value => item.id } %>
-              <%= f.button :button do %>
-                <i class="fa fa-plus" style="color: #feb632"></i>
+            <%= f.input :item,  :as => :hidden, :input_html => { :value => item.id } %>
+            <%= f.button :button do %>
+            <i class="fa fa-plus" style="color: #feb632"></i>
             <% end %>
             <% end  %>
           </div>
