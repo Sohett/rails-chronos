@@ -17,6 +17,31 @@
   text-decoration: none;
 }
 
-.btn-header:active {
+
+
+
+.btn-reset{
+  padding: 10px;
+  border-radius:30px;
+  background: transparent;
+  font-family: "Raleway", "Helvetica", "sans-serif";
+  font-weight: 500;
+  line-height: 1.1;
+  color: white !important;
+  border-color: $yellow !important;
+  border: solid;
+  width: auto;
+  text-align: center;
+  margin: auto;
+}
+
+
+.btn-reset:active {
   background-color: $yellow !important;
+}
+
+
+.btn-reset:hover {
+  background-color: $yellow ;
+  text-decoration: none;
 }
