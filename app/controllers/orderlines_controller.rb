@@ -51,14 +51,7 @@ class OrderlinesController < ApplicationController
   end
 
   def current_order
-    unless session[:order_id]
-      order = Order.new(table: @table, status: "order in session")
-      order.save!
-      session[:order_id] = order.id
-      order
-    else
-      Order.find(session[:order_id])
-    end
+    Order.find(session[:order_id])
   end
 
   def set_table
