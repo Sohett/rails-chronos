@@ -4,20 +4,20 @@
 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 
   <div class="panel panel-default">
-    <div class="container text-center">
+    <div class="container text-center" style="background:#1d1f21; color:#ffffff">
       <h2>Your Basket</h2>
       <div class="row">
         <% @order.orderlines.each do |orderline| %>
           <div class="col-xs-6">
-            <%= orderline.quantity %> x <%= orderline.item.name %> (<%= orderline.item.price %> €)
+            <p style="font-size: 10px"><%= orderline.quantity %> x <%= orderline.item.name %> (<%= orderline.item.price %> €)</p>
           </div>
           <div class="col-xs-6">
-            <%= link_to '<i class="fa fa-minus" style="color: #feb632"></i>'.html_safe, table_orderline_path(@table, orderline), method: :delete%>
+            <p><%= link_to '<i class="fa fa-minus" style="color: #feb632; font-size:10px"></i>'.html_safe, table_orderline_path(@table, orderline), method: :delete%></p>
           </div>
         <% end %>
       </div>
       <div class="div">
-        <h4>Total price</h4>
+        <h5>Total price</h5>
         <p><%= @total_price %> €</p>
       </div>
       <%= link_to "pass order", table_order_path(@table, @order), method: :patch, class: 'btn btn-info', style:'margin:20px' %>
