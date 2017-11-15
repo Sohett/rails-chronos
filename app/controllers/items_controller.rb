@@ -33,7 +33,7 @@ class ItemsController < ApplicationController
 
   def current_order
     unless session[:order_id]
-      order = Order.new(table: @table, status: "order in session")
+      order = Order.new(table: @table, status: "order to be confirmed by user")
       order.save!
       session[:order_id] = order.id
       order
