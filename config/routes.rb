@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  root to: 'tables#index'
+  root to: 'restaurants#index'
+
+  get 'dashboard', to:'restaurants#dashboard', as: :dashboard
 
   resources :tables, only: [:index, :show] do
 
@@ -8,7 +10,8 @@ Rails.application.routes.draw do
 
     resources :orders, only: [:index, :update, :destroy]
     delete 'orders', to:'orders#clear_table', as: :clear
-    get 'orders/:id', to:'orders#status', as: :order_status
+    get 'orders/:id/delivered', to:'orders#delivered', as: :order_delivered
+    get 'orders/:id/paid', to:'orders#paid', as: :order_paid
 
     resources :orderlines, only: [:new, :create, :destroy]
     put 'orderlines/:id/increase', to:'orderlines#increase_item', as: :increase_item

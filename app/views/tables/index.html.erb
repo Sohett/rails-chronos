@@ -1,10 +1,12 @@
-<div class="container" style="margin: 20px">
+
+<!-- <div class="container" style="margin: 20px">
+<div class="container text-center" style="margin: 20px">
+  <p><u>Don't forget to resize your browser as your client will see this from a smartphone</u></p>
+  <p>Here are the tables of the restaurant</p>
   <% @tables.each do |table| %>
   <%= link_to table.table_number, table_items_path(table), class: 'btn btn-info' %>
   <% end %>
-</div>
-
-
+</div> -->
 
 <body>
   <div id="container">
@@ -15,27 +17,73 @@
 
 
 
-    <div id="orderstat" class="column box">
-
-      <h4>Pending Orders</h4>
 
 
-      <div class="portlet order-card">
-        <div class="portlet-header">Feeds</div>
-        <div class="portlet-content">Lorem ipsum dolor sit amet, consectetuer adipiscing elit</div>
+
+    <div id="orderstat" class="box">
+
+      <div><h5>Orders in process</h5>
       </div>
 
 
-      <div class="portlet order-card">
-        <div class="portlet-header">News</div>
-        <div class="portlet-content">Lorem ipsum dolor sit amet, consectetuer adipiscing elit</div>
-      </div>
+    <div>
+      <div class="panel-group">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" href="#collapse1">Table 1 Order 2</a>
+        <div class="btn glyphicon glyphicon-arrow-right">
+    </div>
+      </h4>
+    </div>
+    <div id="collapse1" class="panel-collapse collapse">
+      <ul class="list-group">
+        <li class="list-group-item">One</li>
+        <li class="list-group-item">Two</li>
+        <li class="list-group-item">Three</li>
+      </ul>
+    </div>
+  </div>
+</div>
     </div>
 
 
-    <div id="orderstat" class="column box"><h4>Orders in process</h4></div>
-    <div id="orderstat" class="column box"><h4>Orders delivered</h4></div>
-    <div id="orderstat" class="column box"><h4>Orders paid</h4></div>
+
+    <div>
+      <div class="panel-group">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" href="#collapse2">Table 6 Order 9</a>
+         <div class="btn glyphicon glyphicon-arrow-right">
+    </div>
+      </h4>
+    </div>
+    <div id="collapse2" class="panel-collapse collapse">
+      <ul class="list-group">
+        <li class="list-group-item">One</li>
+        <li class="list-group-item">Two</li>
+        <li class="list-group-item">Three</li>
+      </ul>
+    </div>
+  </div>
+</div>
+    </div>
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+    <div id="orderstat" class="box">
+      <h5>Orders delivered</h5></div>
+    <div id="orderstat" class="box"><h5>Orders paid</h5></div>
 
 
 

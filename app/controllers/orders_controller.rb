@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
-  before_action :set_table, only: [:index, :update, :destroy, :clear_table, :status]
-  before_action :set_order, only: [:destroy, :status]
+  before_action :set_table, only: [:index, :update, :destroy, :clear_table, :delivered, :paid]
+  before_action :set_order, only: [:destroy, :delivered, :paid]
 
   def index
     @orders_not_deleted = @table.orders.where.not(status: 'deleted')
@@ -30,14 +30,16 @@ class OrdersController < ApplicationController
     session.delete(:order_id)
   end
 
-  def status
-    if @order.status == "in process"
-      @order.status = "delivered"
-    elsif @order.status == "delivered"
-      @order.status = "paid"
-    end
+  def delivered
+    @order.status = "delivered"
     @order.save!
-    redirect_to table_orders_path(@table)
+    redirect_to dashboard_path
+  end
+
+  def paid
+    @order.status = "paid"
+    @order.save!
+    redirect_to dashboard_path
   end
 
   def clear_table
