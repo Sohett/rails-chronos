@@ -4,7 +4,7 @@ class OrdersController < ApplicationController
 
   def index
     @orders_all = @table.orders
-    @orders_not_deleted = @table.orders.where.not(status: 'deleted')
+    @orders_not_paid = @table.orders.where.not(status: 'paid') - @table.orders.where(status: 'deleted') - @table.orders.where(status: 'pending')
     @orders_pending = @table.orders.where(status: 'pending')
     @orders_in_process = @table.orders.where(status: 'in process')
     @orders_delivered = @table.orders.where(status: 'delivered')
@@ -44,16 +44,14 @@ class OrdersController < ApplicationController
   end
 
   def clear_table
-    if @table.orders.any?
-      @orders = @table.orders
-      @orders.each do |order|
-        order.status = "deleted"
-        order.save!
-      end
+    @orders = @table.orders
+    @orders.each do |order|
+      order.status = "deleted"
+      order.save!
     end
     session[:order_number] = 1
     session.delete(:order_id)
-    redirect_to table_orders_path(@table), notice: "Table cleared"
+    redirect_to dashboard_path, notice: "Table cleared"
   end
 
   private
