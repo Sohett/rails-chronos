@@ -55,27 +55,15 @@
   margin-bottom: 0;
 }
 
+// if we want to include an image
 .item-image{
   max-width: 12%;
   height: auto;
 }
 
-.item-upvote {
-  padding: 10px;
-  flex: 0 0 3%;
-  text-align: center;
-}
-
 .item-list {
   margin: 0px;
   border: 1px solid grey;
-}
-
-.item-cancel {
-  border-right: 1px solid grey;
-}
-
-.item-reduce {
 }
 
 .item-links {
@@ -94,11 +82,13 @@
   opacity: 1;
 }
 
-// My basket
+// Basket Summary
 
 .basket {
-  border: 3px solid $yellow;
+  // border: 3px solid $yellow;
   margin: 5px;
+  height: 88vh;
+  overflow: auto;
 }
 
 .basket h2 {
@@ -107,10 +97,10 @@
 }
 
 .basket-title:after {
-  content: "•••••••";
+  content: "••••••••••";
   color: $yellow;
-  font-size: 30px;
-  letter-spacing: 10px;
+  font-size: 25px;
+  letter-spacing: 2px;
   display: block;
 }
 
@@ -120,6 +110,18 @@
   font-size: 15px;
   opacity: 0.9;
   font-weight: lighter;
+}
+
+.back {
+  font-size: 15px;
+  opacity: 0.9;
+  font-weight: lighter;
+  color: #333333 !important;
+  text-decoration: none !important;
+  padding: 10px;
+  background-color: rgba(249,251,245,0.95);
+  box-shadow: 1px 1px 5px lightgrey;
+  border-radius: 4px;
 }
 
 // mobile
@@ -143,7 +145,15 @@
 }
 
 // mobile: Iphone 5 only!
-@media(max-width: 320px) {
+@media(max-width: 360px) {
+  .basket {
+    border: 3px solid $yellow;
+    margin: 5px;
+    height: 86vh;
+    overflow: auto;
+}
+  }
+
   .item-line {
     display: flex;
     justify-content: space-between;
@@ -171,7 +181,6 @@
   font-size: 25px;
   letter-spacing: 4px;
   }
-}
 
 // large screens
 @media(min-width: 500px) {
@@ -204,4 +213,15 @@
   opacity: 0.9;
   margin-top: -5px;
   font-size: 15px;
+}
+
+// Basket footer
+
+.item-number-basket{
+  border: 1px solid $yellow;
+  background-color: $generic-gray;
+  padding-top: 0px;
+  padding-left: 8px;
+  padding-right: 8px;
+  margin-bottom: 6px;
 }
