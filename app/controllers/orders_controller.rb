@@ -3,6 +3,7 @@ class OrdersController < ApplicationController
   before_action :set_order, only: [:destroy, :delivered, :paid]
 
   def index
+    @orders_all = @table.orders
     @orders_not_deleted = @table.orders.where.not(status: 'deleted')
     @orders_pending = @table.orders.where(status: 'pending')
     @orders_in_process = @table.orders.where(status: 'in process')
