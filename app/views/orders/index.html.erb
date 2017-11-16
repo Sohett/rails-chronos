@@ -3,73 +3,24 @@
   <div class="alert alert-<%= key %>"><%= value %></div>
   <% end %>
 
-  <div class="row">
-    <div class="col-md-3">
-      <h3><u>Orders pending</u></h3>
-      <% @orders_pending.each do |order| %>
-      <div class="container">
-        <h5>Order number <%= order.number %> for table <%= @table.table_number %></h5>
-        <ul>
-          <% order.orderlines.each do |orderline| %>
-          <li><%= orderline.item.name %> x <%= orderline.quantity %></li>
-          <% end %>
-        </ul>
-      </div>
-      <% end  %>
-    </div>
+  <h3>Orders only for table <%= @table.table_number %></h3>
 
-    <div class="col-md-3">
-      <h3><u>Orders in process</u></h3>
-      <% @orders_in_process.each do |order| %>
-      <div class="container">
-        <h5>Order number <%= order.number %> for table <%= @table.table_number %></h5>
-        <p>
-          <%= link_to "delivered", table_order_status_path(@table, order),method: :get, class: "btn btn-info" %>
-        </p>
-        <ul>
-          <% order.orderlines.each do |orderline| %>
-          <li><%= orderline.item.name %> x <%= orderline.quantity %>  </li>
-          <% end %>
-        </ul>
-      </div>
-      <% end  %>
-    </div>
+  <ul>
+    <% @orders_all.each do |order| %>
+    <li>
+      <p>order number <%= order.number %> | table number<%= order.table.table_number %>  | status : <%= order.status %></p>
+    </li>
+    <% end %>
+  </ul>
 
-    <div class="col-md-3">
-      <h3><u>Orders delivered</u></h3>
-      <% @orders_delivered.each do |order| %>
-      <div class="container">
-        <h5>Order number <%= order.number %> for table <%= @table.table_number %></h5>
-        <p>
-          <%= link_to "paid", table_order_status_path(@table, order),method: :get, class: "btn btn-info" %>
-        </p>
-        <ul>
-          <% order.orderlines.each do |orderline| %>
-          <li><%= orderline.item.name %> x <%= orderline.quantity %>  </li>
-          <% end %>
-        </ul>
-      </div>
-      <% end  %>
-    </div>
+  <% if @orders_not_deleted.any? %>
+    <p>Attention, you have <%= @orders_not_deleted.count %> orders not yet paid for this table. Delete them before clearing the table</p>
+  <% end %>
 
-    <div class="col-md-3">
-      <h3><u>Orders paid</u></h3>
-      <% @orders_paid.each do |order| %>
-      <div class="container">
-        <h5>Order number <%= order.number %> for table <%= @table.table_number %></h5>
-        <p><%= link_to "deleted", table_order_path(@table, order), method: :delete, class: "btn btn-danger" %></p>
-        <ul>
-          <% order.orderlines.each do |orderline| %>
-          <li><%= orderline.item.name %> x <%= orderline.quantity %>  </li>
-          <% end %>
-        </ul>
-      </div>
-      <% end  %>
-    </div>
-  </div>
-
+  <% unless @orders_not_deleted.any? %>
   <div class="container text-center" style="margin:50px 0">
     <%= link_to 'Clear table', table_clear_path(@table), method: :delete, class: "btn btn-danger", :data => {:confirm => 'This will delete all the orders. Confirm?'} %>
   </div>
+  <% end %>
 
 </div>
