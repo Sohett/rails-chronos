@@ -17,9 +17,9 @@ class OrdersController < ApplicationController
       @order.status = "in process"
       @order.save!
       session[:order_number] += 1
-      redirect_to "#{table_items_path(@table)}#accordion", notice: "Your order has been sent succesfully"
+      redirect_to "#{table_items_path(@table)}#basket", notice: "Your order has been sent succesfully"
     else
-      redirect_to "#{table_items_path(@table)}#accordion", notice: "There is nothing in your basket to be send"
+      redirect_to "#{table_items_path(@table)}#basket", notice: "There is nothing in your basket to be send"
     end
   end
 
