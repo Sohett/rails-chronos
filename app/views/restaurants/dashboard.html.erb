@@ -1,32 +1,3 @@
-<!-- <div class="container">
-  <p>here you can find the dashboard for a specific restaurant</p>
-  <p>As a restaurant owner, this what you will mainly use, use it wisely.</p>
-  <p>Our product is made with love from @lewagon, in order to make your life easier ;) </p>
-
-  <ul>
-    <h2>Orders in process</h2>
-    <% @orders_in_process.each do |order| %>
-    <li>order number.<%= order.number %> TABLE: <%= order.table.table_number %> STATUS: <%= order.status %></li>
-    <%= link_to 'set order as delivered', table_order_delivered_path(order.table, order) %>
-    <% end %>
-  </ul>
-
-  <ul>
-    <h2>Orders delivered</h2>
-    <% @orders_delivered.each do |order| %>
-    <li>order number.<%= order.number %> TABLE: <%= order.table.table_number %> STATUS: <%= order.status %></li>
-    <%= link_to 'set order as paid', table_order_paid_path(order.table, order) %>
-    <% end %>
-  </ul>
-
-  <ul>
-    <h2>Orders paid</h2>
-    <% @orders_paid.each do |order| %>
-    <li>order number.<%= order.number %> TABLE: <%= order.table.table_number %> STATUS: <%= order.status %></li>
-    <% end %>
-  </ul>
-</div>
- -->
 
 <body>
   <div id="container">
@@ -34,73 +5,84 @@
 
     <div id="orderstat" class="box">
 
-      <div><h5>Orders in process</h5>
+      <div>
+        <h5>Orders in process</h5>
       </div>
-
-
-    <div>
-      <div class="panel-group">
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h4 class="panel-title">
-        <a data-toggle="collapse" href="#collapse1">Table 1 Order 2</a>
-        <div class="btn glyphicon glyphicon-arrow-right">
+      <% @orders_in_process.each do |order| %>
+      <div>
+        <div class="panel-group">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" href="#collapse-<%=  order.id %>">Table<%= order.table.table_number %> Order <%= order.number %>  </a>
+                <p><%= link_to '<i class="fa fa-arrow-right btn btn-default" style="color: #feb632; font-size:17px"></i>'.html_safe, table_order_delivered_path(order.table, order) %></p>
+              </h4>
+            </div>
+            <div id="collapse-<%=  order.id %>" class="panel-collapse collapse">
+              <ul class="list-group">
+                <% order.orderlines.each do |orderline| %>
+                <li class="list-group-item"><%= orderline.item.name %> x <%= orderline.quantity %> </li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% end %>
     </div>
-      </h4>
-    </div>
-    <div id="collapse1" class="panel-collapse collapse">
-      <ul class="list-group">
-        <li class="list-group-item">One</li>
-        <li class="list-group-item">Two</li>
-        <li class="list-group-item">Three</li>
-      </ul>
-    </div>
-  </div>
-</div>
-    </div>
-
-
-
-    <div>
-      <div class="panel-group">
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h4 class="panel-title">
-        <a data-toggle="collapse" href="#collapse2">Table 6 Order 9</a>
-         <div class="btn glyphicon glyphicon-arrow-right">
-    </div>
-      </h4>
-    </div>
-    <div id="collapse2" class="panel-collapse collapse">
-      <ul class="list-group">
-        <li class="list-group-item">One</li>
-        <li class="list-group-item">Two</li>
-        <li class="list-group-item">Three</li>
-      </ul>
-    </div>
-  </div>
-</div>
-    </div>
-
-
-
-
-    </div>
-
-
-
-
-
-
 
     <div id="orderstat" class="box">
-      <h5>Orders delivered</h5></div>
-    <div id="orderstat" class="box"><h5>Orders paid</h5></div>
+      <div>
+        <h5>Orders delivered</h5>
+      </div>
+      <% @orders_delivered.each do |order| %>
+      <div>
+        <div class="panel-group">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" href="#collapse-<%=  order.id %>">Table<%= order.table.table_number %> Order <%= order.number %>  </a>
+                <p><%= link_to '<i class="fa fa-arrow-right btn btn-default" style="color: #feb632; font-size:17px"></i>'.html_safe, table_order_paid_path(order.table, order) %></p>
+              </h4>
+            </div>
+            <div id="collapse-<%=  order.id %>" class="panel-collapse collapse">
+              <ul class="list-group">
+                <% order.orderlines.each do |orderline| %>
+                <li class="list-group-item"><%= orderline.item.name %> x <%= orderline.quantity %> </li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
 
-
-
-
-
+    <div id="orderstat" class="box">
+      <div>
+        <h5>Orders paid</h5>
+      </div>
+      <% @orders_paid.each do |order| %>
+      <div>
+        <div class="panel-group">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" href="#collapse-<%=  order.id %>">Table<%= order.table.table_number %> Order <%= order.number %>  </a>
+              </h4>
+            </div>
+            <div id="collapse-<%=  order.id %>" class="panel-collapse collapse">
+              <ul class="list-group">
+                <% order.orderlines.each do |orderline| %>
+                <li class="list-group-item"><%= orderline.item.name %> x <%= orderline.quantity %> </li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
 
 
     <div id="linebtm" class="box">
