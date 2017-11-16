@@ -1,5 +1,5 @@
 class OrderlinesController < ApplicationController
-  before_action :set_table, only: [:new, :create, :destroy]
+  before_action :set_table, only: [:new, :create, :cancel_item, :increase_item, :decrease_item]
 
   def new
     @orderline = Orderline.new
@@ -21,10 +21,17 @@ class OrderlinesController < ApplicationController
       @orderline.quantity = 1
     end
     @orderline.save!
-    redirect_to "#{table_items_path(@table)}#accordion"
+    redirect_to "#{table_items_path(@table)}#basket"
   end
 
-  def destroy
+  def increase_item
+    @orderline = Orderline.find(params[:id])
+    @orderline.quantity += 1
+    @orderline.save
+    redirect_to "#{table_items_path(@table)}#basket"
+  end
+
+  def decrease_item
   @orderline = Orderline.find(params[:id])
     if @orderline.quantity > 1
       @orderline.quantity -= 1
@@ -32,7 +39,13 @@ class OrderlinesController < ApplicationController
     else
       @orderline.destroy
     end
-    redirect_to "#{table_items_path(@table)}#accordion"
+    redirect_to "#{table_items_path(@table)}#basket"
+  end
+
+  def cancel_item
+    @orderline = Orderline.find(params[:id])
+    @orderline.destroy
+    redirect_to "#{table_items_path(@table)}#basket"
   end
 
   private
