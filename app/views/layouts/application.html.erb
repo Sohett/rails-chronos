@@ -10,9 +10,9 @@
   </head>
   <body>
 
-
+    <% if controller_name != "tables" %>
     <%= render 'shared/navbar' %>
-
+    <% end %>
     <%= yield %>
     <% if controller_name != "tables" %>
     <%= render 'shared/footer' %>
