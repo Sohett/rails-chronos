@@ -4,7 +4,12 @@ class RestaurantsController < ApplicationController
     @restaurants = Restaurant.all
   end
 
-  def show
-    @restaurant = Restaurant.first
+  def dashboard
+    restaurant = Restaurant.first
+    @orders_all =  restaurant.orders
+    @orders_in_process = restaurant.orders.where(status: 'in process')
+    @orders_delivered = restaurant.orders.where(status: 'delivered')
+    @orders_paid = restaurant.orders.where(status: 'paid')
   end
+
 end
