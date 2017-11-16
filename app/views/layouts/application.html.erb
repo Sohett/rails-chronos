@@ -10,13 +10,10 @@
   </head>
   <body>
 
-    <% if controller_name != "tables" %>
+    <% if controller_name != "restaurants" %>
     <%= render 'shared/navbar' %>
     <% end %>
     <%= yield %>
-    <% if controller_name != "tables" %>
-    <%= render 'shared/footer' %>
-    <% end %>
 
     <%= javascript_include_tag 'application' %>
 

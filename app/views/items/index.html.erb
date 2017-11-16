@@ -152,16 +152,13 @@
 
 <div>
   <%= link_to table_basket_summary_path(@table), method: :get, class: "btn btn-info btn-summary", style: 'width:100%' do %>
-    <% if @order.quantity == 0 %>
-    <span>Nothing yet</span>
-    <% elsif @order.quantity < 2 %>
-    <%= @order.quantity.to_s  + " item for" %>
+    <% if @quantity == 0 %>
+    <span> Empty basket </span>
+    <% elsif @quantity < 2 %>
+    <%= @quantity.to_s  + " item for" %>
     <% else %>
-    <%= @order.quantity.to_s  + " items for" %>
+    <%= @quantity.to_s  + " items for" %>
     <% end %>
-    <%= @order.total_price.to_s + "€" %>
+    <%= @total_price.to_s + "€" %>
   <% end %>
 </div>
-
-
-

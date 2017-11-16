@@ -13,6 +13,11 @@ class ItemsController < ApplicationController
     @order = current_order
 
     @total_price = price_computation_simple
+    @quantity = 0
+    @order.orderlines.each do |orderline|
+      @quantity += orderline.quantity
+    end
+    @quantity
   end
 
   def basket_summary
@@ -33,7 +38,7 @@ class ItemsController < ApplicationController
       price = orderline.quantity * orderline.item.price
       total_price += price
     end
-    return total_price
+    total_price
   end
 
   def set_table
