@@ -18,9 +18,6 @@
   text-decoration: none;
 }
 
-
-
-
 .btn-reset{
   padding: 10px;
   border-radius:30px;
@@ -36,14 +33,17 @@
   margin: auto;
 }
 
-
 .btn-reset:active {
   background-color: $yellow !important;
 }
-
 
 .btn-reset:hover {
   background-color: $yellow ;
   text-decoration: none;
 }
 
+.btn-summary{
+  background-color: $generic-black;
+  color: $yellow;
+  border: none;
+}

@@ -1,9 +1,7 @@
 <%= render 'shared/banner'  %>
 
-<%= link_to 'basket_summary', table_basket_summary_path(@table), method: :get, class: "btn btn-info" %>
-
 <% flash.each do |key, value| %>
-  <div class="alert alert-<%= key %>" style="margin-bottom: 10px"><%= value %></div>
+<div class="alert alert-<%= key %>" style="margin-bottom: 10px"><%= value %></div>
 <% end %>
 
 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
@@ -149,3 +147,21 @@
     </div>
   </div>
 </div>
+
+<!-- Basket summary -->
+
+<div>
+  <%= link_to table_basket_summary_path(@table), method: :get, class: "btn btn-info btn-summary", style: 'width:100%' do %>
+    <% if @order.quantity == 0 %>
+    <span>Nothing yet</span>
+    <% elsif @order.quantity < 2 %>
+    <%= @order.quantity.to_s  + " item for" %>
+    <% else %>
+    <%= @order.quantity.to_s  + " items for" %>
+    <% end %>
+    <%= @order.total_price.to_s + "€" %>
+  <% end %>
+</div>
+
+
+
