@@ -1,0 +1,28 @@
+<div class="container">
+  <p>here you can find the dashboard for a specific restaurant</p>
+  <p>As a restaurant owner, this what you will mainly use, use it wisely.</p>
+  <p>Our product is made with love from @lewagon, in order to make your life easier ;) </p>
+
+  <ul>
+    <h2>Orders in process</h2>
+    <% @orders_in_process.each do |order| %>
+    <li>order number.<%= order.number %> TABLE: <%= order.table.table_number %> STATUS: <%= order.status %></li>
+    <%= link_to 'set order as delivered', table_order_delivered_path(order.table, order) %>
+    <% end %>
+  </ul>
+
+  <ul>
+    <h2>Orders delivered</h2>
+    <% @orders_delivered.each do |order| %>
+    <li>order number.<%= order.number %> TABLE: <%= order.table.table_number %> STATUS: <%= order.status %></li>
+    <%= link_to 'set order as paid', table_order_paid_path(order.table, order) %>
+    <% end %>
+  </ul>
+
+  <ul>
+    <h2>Orders paid</h2>
+    <% @orders_paid.each do |order| %>
+    <li>order number.<%= order.number %> TABLE: <%= order.table.table_number %> STATUS: <%= order.status %></li>
+    <% end %>
+  </ul>
+</div>
