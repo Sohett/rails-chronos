@@ -1,9 +1,3 @@
-.order-card{
-  background-color: #aaaaaa;
-  border-radius: 5px;
-  color:white
-
-}
 
 #container {
   height: 500px;
@@ -21,24 +15,28 @@
 
 }
 
-#container h4 {
-  margin: 0px;
+#orderstat {
+  display: flex;
+  width: 30%;
+  height: 90%;
+  margin: 5px;
+  flex-direction: column;
+  border-radius: 15px;
+  background: #969C98;;
+  color: $yellow;
+
+
+}
+
+#orderstat h5 {
+  margin: -18px;
   font-size: 17px;
   text-align: center;
   font-weight: bold;
   text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
-}
-
-#orderstat {
-  width: 20%;
-  height: 75%;
-  margin: 5px;
-  flex-direction: column;
-  border-radius: 20px;
-  background: #3d3e40;
-  color: $yellow;
-
-
+  background: $generic-black;
+  padding: 15px;
+  margin-bottom: 6px;
 }
 
 #linetop {
@@ -63,5 +61,77 @@
   margin-top: 30px;
 
 }
+
+.panel.panel-default {
+  margin-left: 10px;
+  margin-right: 10px;
+
+
+}
+
+.panel-heading {
+
+  text-align: center;
+  text-decoration: none;
+  padding: 0px;
+
+}
+
+.panel-heading a {
+  text-decoration: none;
+  font-weight: bold;
+  font-size: auto;
+
+}
+
+.panel-group {
+  margin-bottom: 6px;
+  border-radius: 10px;
+}
+
+.panel-title {
+  font-size: 18px;
+}
+
+.glyphicon.glyphicon-arrow-right {
+  position: relative;
+  right: -50px;
+  padding: 0px;
+  margin-left: 35px;
+}
+
+.list-group-item {
+  padding: 3px 5px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
