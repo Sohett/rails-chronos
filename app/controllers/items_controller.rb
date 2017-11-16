@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_table, only: [:index]
+  before_action :set_table, only: [:index, :basket_summary]
 
   def index
     @restaurant = Restaurant.first
@@ -12,12 +12,21 @@ class ItemsController < ApplicationController
     @orderline = Orderline.new
     @order = current_order
 
-    @total_price = price_computation
+    @total_price = price_computation_simple
+  end
+
+  def basket_summary
+    @order = current_order
+    @total_price = price_computation_simple
   end
 
   private
 
-  def price_computation
+  def price_computation_vat
+    #code
+  end
+
+  def price_computation_simple
     total_price = 0
     @order = current_order
     @order.orderlines.each do |orderline|
