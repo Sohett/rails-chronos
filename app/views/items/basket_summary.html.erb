@@ -1,4 +1,4 @@
-<div class="panel panel-default" id="basket">
+
   <div class="box basket text-center">
     <h2 class="basket-title" >My Basket</h2>
     <div class="row">
@@ -9,7 +9,7 @@
             <p><strong><%= orderline.quantity %> x</strong> <%= orderline.item.name %></p>
           </div>
           <div class="button-price">
-            <p style="padding:1px;"><%= link_to '<i class="fa fa-minus btn btn-default" style="color: #feb632; font-size:17px"></i>'.html_safe, table_decrease_item_path(@table, orderline), method: :put%></p>
+            <p style="padding:1px;"><%= link_to '<i class="fa fa-minus btn btn-default" style="color: #feb632; font-size:17px"></i>'.html_safe, table_decrease_item_path(@table, orderline), method: :put%>
             <p style="padding:1px;"><%= link_to '<i class="fa fa-plus btn btn-default" style="color: #feb632; font-size:17px"></i>'.html_safe, table_increase_item_path(@table, orderline), method: :put%></p>
             <p style="padding:1px;"><%= link_to '<i class="fa fa-times btn btn-default" style="color: #feb632; font-size:17px"></i>'.html_safe, table_cancel_item_path(@table, orderline), method: :delete%></p>
             <p style="padding-left:10px; width:61px;"><%= orderline.item.price %> €</p>
@@ -23,9 +23,9 @@
       <p> <%= @total_price %> €</p>
     </div>
     <div>
-      <%= link_to "Confirm order", table_order_path(@table, @order), method: :patch, class: 'btn btn-info', style:'margin:20px' %>
+      <%= link_to "Confirm order", table_order_path(@table, @order), method: :patch, class: 'btn btn-confirm' %>
     </div>
-    <div>
-      <%= link_to 'Back to menu', table_items_path(@table), class: 'btn btn-info' %>
+    <div style="margin-bottom: 10px">
+      <%= link_to 'Back to menu', table_items_path(@table), class: 'btn-back' %>
     </div>
   </div>

@@ -42,8 +42,39 @@
   text-decoration: none;
 }
 
+// btn for the basket footer allowing to access the basket summary
 .btn-summary{
-  background-color: $generic-black;
-  color: $yellow;
+  background-color: $generic-black !important;
+  color: $yellow !important;
   border: none;
+  font-family: "Open Sans", "Helvetica", "sans-serif";
+  font-size: 15px;
+  height: 50px;
+  padding-top: 14px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn-back{
+  font-size: 15px;
+  opacity: 0.9;
+  font-weight: lighter;
+  color: #333333 !important;
+  text-decoration: none !important;
+  padding: 10px;
+  background-color: rgba(245,245,245,0.95);
+  box-shadow: 1px 1px 5px lightgrey;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.btn-confirm{
+    opacity: 0.9;
+    color: #fff !important;
+    background-color: $yellow !important;
+    box-shadow: 1px 1px 5px lightgrey;
+    margin-top: 30px;
+    margin-bottom: 25px;
+    border-radius: 40px;
+    padding: 13px
 }
