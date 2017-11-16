@@ -13,10 +13,10 @@
         <div class="panel-group">
           <div class="panel panel-default">
             <div class="panel-heading">
-              <h4 class="panel-title">
-                <a data-toggle="collapse" href="#collapse-<%=  order.id %>">Table<%= order.table.table_number %> Order <%= order.number %>
+              <div class="dashboard-order">
+                <a class="dash" data-toggle="collapse" href="#collapse-<%=  order.id %>"><span class="back"><span class="words-dashboard">Table <%= order.table.table_number %></span> Order <%= order.number %></span>
                 <%= link_to '<i class="fa fa-arrow-right btn btn-default" style="color: #feb632; font-size:17px"></i>'.html_safe, table_order_delivered_path(order.table, order) %></a>
-              </h4>
+              </div>
             </div>
             <div id="collapse-<%=  order.id %>" class="panel-collapse collapse">
               <ul class="list-group">
@@ -40,11 +40,11 @@
         <div class="panel-group">
           <div class="panel panel-default">
             <div class="panel-heading">
-              <h4 class="panel-title">
-                <a data-toggle="collapse" href="#collapse-<%=  order.id %>">Table<%= order.table.table_number %> Order <%= order.number %>
+              <div class="dashboard-order">
+                <a class="dash" data-toggle="collapse" href="#collapse-<%=  order.id %>"><span class="back"><span class="words-dashboard">Table <%= order.table.table_number %></span> Order <%= order.number %></span>
                 <%= link_to '<i class="fa fa-arrow-right btn btn-default" style="color: #feb632; font-size:17px"></i>'.html_safe, table_order_paid_path(order.table, order) %>
                 </a>
-              </h4>
+              </div>
             </div>
             <div id="collapse-<%=  order.id %>" class="panel-collapse collapse">
               <ul class="list-group">
@@ -68,9 +68,9 @@
         <div class="panel-group">
           <div class="panel panel-default">
             <div class="panel-heading">
-              <h4 class="panel-title">
-                <a data-toggle="collapse" href="#collapse-<%=  order.id %>">Table<%= order.table.table_number %> Order <%= order.number %>  </a>
-              </h4>
+              <div class="dashboard-order">
+                <a class="dash" data-toggle="collapse" href="#collapse-<%=  order.id %>"><span class="back"><span class="words-dashboard">Table <%= order.table.table_number %></span> Order <%= order.number %> </span> </a>
+              </div>
             </div>
             <div id="collapse-<%=  order.id %>" class="panel-collapse collapse">
               <ul class="list-group">
