@@ -3,7 +3,7 @@
   <div id="container">
     <div id="linetop" class="box"><h3>Restaurant Dashboard</h3></div>
 
-    <div id="orderstat" class="box">
+    <div class="orderstat box">
 
       <div>
         <h5>Orders in process</h5>
@@ -14,14 +14,15 @@
           <div class="panel panel-default">
             <div class="panel-heading">
               <div class="dashboard-order">
-                <a class="dash" data-toggle="collapse" href="#collapse-<%=  order.id %>"><span class="words-dashboard">Table <%= order.table.table_number %></span> Order <%= order.number %>
+                <a class="dash" data-toggle="collapse" href="#collapse-<%=  order.id %>"><span class="words-dashboard">Table <%= order.table.table_number %></span> <span class="words-dashboard">Order <%= order.number %></span>
+                  <%= order.price_per_order %>€
                 <%= link_to '<i class="fa fa-arrow-right btn btn-default" style="color: #feb632; font-size:17px"></i>'.html_safe, table_order_delivered_path(order.table, order) %></a>
               </div>
             </div>
             <div id="collapse-<%=  order.id %>" class="panel-collapse collapse">
               <ul class="list-group">
                 <% order.orderlines.each do |orderline| %>
-                <li class="list-group-item"><%= orderline.item.name %> x <%= orderline.quantity %> </li>
+                <li class="list-group-item"><%= orderline.item.name %> x <%= orderline.quantity %> - <%= orderline.quantity * orderline.item.price %> €</li>
                 <% end %>
               </ul>
             </div>
@@ -31,7 +32,7 @@
       <% end %>
     </div>
 
-    <div id="orderstat" class="box">
+    <div class="orderstat box">
       <div>
         <h5>Orders delivered</h5>
       </div>
@@ -41,7 +42,8 @@
           <div class="panel panel-default">
             <div class="panel-heading">
               <div class="dashboard-order">
-                <a class="dash" data-toggle="collapse" href="#collapse-<%=  order.id %>"><span class="words-dashboard">Table <%= order.table.table_number %></span> Order <%= order.number %>
+                <a class="dash" data-toggle="collapse" href="#collapse-<%=  order.id %>"><span class="words-dashboard">Table <%= order.table.table_number %></span> <span class="words-dashboard">Order <%= order.number %></span>
+                  <%= order.price_per_order %>€
                 <%= link_to '<i class="fa fa-arrow-right btn btn-default" style="color: #feb632; font-size:17px"></i>'.html_safe, table_order_paid_path(order.table, order) %>
                 </a>
               </div>
@@ -49,7 +51,7 @@
             <div id="collapse-<%=  order.id %>" class="panel-collapse collapse">
               <ul class="list-group">
                 <% order.orderlines.each do |orderline| %>
-                <li class="list-group-item"><%= orderline.item.name %> x <%= orderline.quantity %> </li>
+                <li class="list-group-item"><%= orderline.item.name %> x <%= orderline.quantity %> - <%= orderline.quantity * orderline.item.price %> €</li>
                 <% end %>
               </ul>
             </div>
@@ -59,7 +61,7 @@
       <% end %>
     </div>
 
-    <div id="orderstat" class="box">
+    <div class="orderstat box">
       <div>
         <h5>Orders paid</h5>
       </div>
@@ -69,13 +71,14 @@
           <div class="panel panel-default">
             <div class="panel-heading">
               <div class="dashboard-order">
-                <a class="dash" data-toggle="collapse" href="#collapse-<%=  order.id %>"><span class="words-dashboard">Table <%= order.table.table_number %></span> Order <%= order.number %>  </a>
+                <a class="dash" data-toggle="collapse" href="#collapse-<%=  order.id %>"><span class="words-dashboard">Table <%= order.table.table_number %></span> <span class="words-dashboard">Order <%= order.number %></span>
+                  <%= order.price_per_order %>€  </a>
               </div>
             </div>
             <div id="collapse-<%=  order.id %>" class="panel-collapse collapse">
               <ul class="list-group">
                 <% order.orderlines.each do |orderline| %>
-                <li class="list-group-item"><%= orderline.item.name %> x <%= orderline.quantity %> </li>
+                <li class="list-group-item"><%= orderline.item.name %> x <%= orderline.quantity %> - <%= orderline.quantity * orderline.item.price %> €</li>
                 <% end %>
               </ul>
             </div>
@@ -98,3 +101,52 @@
 
   </div>
 </body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
