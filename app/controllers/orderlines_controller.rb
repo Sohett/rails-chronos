@@ -26,16 +26,19 @@ class OrderlinesController < ApplicationController
   end
 
   def decrease_item
+  @order = current_order
   @orderline = Orderline.find(params[:id])
     if @orderline.quantity > 1
       @orderline.quantity -= 1
       @orderline.save
       redirect_to table_basket_summary_path(@table)
+    elsif @order.orderlines.count > 1
+      @orderline.destroy
+      redirect_to table_basket_summary_path(@table)
     else
       @orderline.destroy
       redirect_to "#{table_items_path(@table)}#basket"
     end
-
   end
 
   def cancel_item
