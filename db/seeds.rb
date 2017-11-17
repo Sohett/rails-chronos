@@ -15,12 +15,27 @@ resto = Restaurant.new(name: "Be Burger", address: "Hector Henneaulaan 164, 1930
 resto.save!
 
 puts "creating 2 tables"
-table1 = Table.new(table_number: "1",capacity: 17)
-table2 = Table.new(table_number: "2",capacity: 8)
+table1 = Table.new(table_number: "1",capacity: 14)
+table2 = Table.new(table_number: "2",capacity: 11)
+table3 = Table.new(table_number: "3",capacity: 30)
+table4 = Table.new(table_number: "4",capacity: 5)
+table5 = Table.new(table_number: "5",capacity: 8)
+table6 = Table.new(table_number: "6",capacity: 9)
+table7 = Table.new(table_number: "7",capacity: 2)
 table1.restaurant = resto
 table2.restaurant = resto
+table3.restaurant = resto
+table4.restaurant = resto
+table5.restaurant = resto
+table6.restaurant = resto
+table7.restaurant = resto
 table1.save!
 table2.save!
+table3.save!
+table4.save!
+table5.save!
+table6.save!
+table7.save!
 
 puts "creating 3 starters"
 
