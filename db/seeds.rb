@@ -22,6 +22,9 @@ table4 = Table.new(table_number: "4",capacity: 5)
 table5 = Table.new(table_number: "5",capacity: 8)
 table6 = Table.new(table_number: "6",capacity: 9)
 table7 = Table.new(table_number: "7",capacity: 2)
+table8 = Table.new(table_number: "8",capacity: 23)
+table9 = Table.new(table_number: "9",capacity: 21)
+table10 = Table.new(table_number: "10",capacity: 19)
 table1.restaurant = resto
 table2.restaurant = resto
 table3.restaurant = resto
@@ -29,6 +32,9 @@ table4.restaurant = resto
 table5.restaurant = resto
 table6.restaurant = resto
 table7.restaurant = resto
+table8.restaurant = resto
+table9.restaurant = resto
+table10.restaurant = resto
 table1.save!
 table2.save!
 table3.save!
@@ -36,6 +42,9 @@ table4.save!
 table5.save!
 table6.save!
 table7.save!
+table8.save!
+table9.save!
+table10.save!
 
 puts "creating 3 starters"
 
