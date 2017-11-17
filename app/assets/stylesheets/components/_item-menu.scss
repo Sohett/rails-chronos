@@ -88,7 +88,8 @@
   // border: 3px solid $yellow;
   margin: 5px;
   height: 88vh;
-  overflow: auto;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .basket h2 {
