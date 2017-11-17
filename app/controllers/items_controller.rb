@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_table, only: [:index, :basket_summary]
+  before_action :set_table, only: [:index, :basket_summary, :current_order]
 
   def index
     @restaurant = Restaurant.first
@@ -46,19 +46,23 @@ class ItemsController < ApplicationController
   end
 
   def current_order
-    unless session[:order_number]
-      session[:order_number] = 1
+    unless session[:order_number_per_table]
+      session[:order_number_per_table] = {}
+    end
+
+    unless session[:order_number_per_table]["#{@table.id}"]
+      session[:order_number_per_table]["#{@table.id}"] = 1
     end
 
     unless session[:order_id] == true || Order.where(id: session[:order_id]).any?
       order = Order.new(table: @table, status: "pending")
-      order.number = session[:order_number]
+      order.number = session[:order_number_per_table]["#{@table.id}"]
       order.save!
       session[:order_id] = order.id
-      order
+      return order
     else
       order = Order.find(session[:order_id])
-      order.number = session[:order_number]
+      order.number = session[:order_number_per_table]["#{@table.id}"]
       return order
     end
   end
