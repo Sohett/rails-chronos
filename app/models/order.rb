@@ -1,7 +1,7 @@
 class Order < ApplicationRecord
   belongs_to :table
   has_many :orderlines
-
+  
   def price_per_order
     price = 0
     self.orderlines.each do |orderline|
@@ -10,5 +10,5 @@ class Order < ApplicationRecord
     return price
   end
 
-
 end
+

@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :set_table, only: [:index, :update, :destroy, :clear_table, :delivered, :paid]
+  before_action :set_table, only: [:index, :update, :destroy, :clear_table, :delivered, :paid, :price_per_table]
   before_action :set_order, only: [:destroy, :delivered, :paid]
 
   def index
@@ -9,6 +9,7 @@ class OrdersController < ApplicationController
     @orders_in_process = @table.orders.where(status: 'in process')
     @orders_delivered = @table.orders.where(status: 'delivered')
     @orders_paid = @table.orders.where(status: 'paid')
+    @total_price = price_per_table
   end
 
   def update
@@ -55,6 +56,16 @@ class OrdersController < ApplicationController
   end
 
   private
+
+  def price_per_table
+    total_price = 0
+    @table.orders.each do |order|
+      order.orderlines.each do |orderline|
+        total_price += orderline.quantity * orderline.item.price
+      end
+    end
+    total_price
+  end
 
   def set_order
     @order = Order.find(params[:id])
