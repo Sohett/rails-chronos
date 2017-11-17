@@ -13,11 +13,14 @@
     <% end %>
   </ul>
 
-  <% if @orders_not_deleted.any? %>
-    <p>Attention, you have <%= @orders_not_deleted.count %> orders not yet paid for this table. Delete them before clearing the table</p>
-  <% end %>
+  
 
-  <% unless @orders_not_deleted.any? %>
+  <% if @orders_not_paid.any? %>
+    <p>Attention, you have <%= @orders_not_paid.count %> orders not yet paid for this table. Put them to 'PAID' before reseting the table</p>
+  <% end %>
+  <%= link_to 'Dashboard', dashboard_path, class: "btn btn-info" %>
+
+  <% unless @orders_not_paid.any? %>
   <div class="container text-center" style="margin:50px 0">
     <%= link_to 'Clear table', table_clear_path(@table), method: :delete, class: "btn btn-danger", :data => {:confirm => 'This will delete all the orders. Confirm?'} %>
   </div>

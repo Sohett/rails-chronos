@@ -87,19 +87,9 @@
 
 
     <div id="linebtm" class="box">
-
-      <%= link_to "Table 1", "" , class: 'btn btn-reset' %>
-
-      <%= link_to "Table 2", "" , class: 'btn btn-reset' %>
-
-      <%= link_to "Table 3", "" , class: 'btn btn-reset' %>
-
-      <%= link_to "Table 4", "" , class: 'btn btn-reset' %>
-
-      <%= link_to "Table 5", "" , class: 'btn btn-reset' %>
-
-      <%= link_to "Table 6", "" , class: 'btn btn-reset' %>
-
+      <% @tables.each do |table| %>
+      <%= link_to "Table #{table.table_number}", table_orders_path(table) , class: 'btn btn-reset' %>
+      <% end %>
     </div>
 
 

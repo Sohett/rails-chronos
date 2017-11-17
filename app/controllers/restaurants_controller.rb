@@ -6,6 +6,7 @@ class RestaurantsController < ApplicationController
 
   def dashboard
     restaurant = Restaurant.first
+    @tables = restaurant.tables
     @orders_all =  restaurant.orders
     @orders_in_process = restaurant.orders.where(status: 'in process')
     @orders_delivered = restaurant.orders.where(status: 'delivered')

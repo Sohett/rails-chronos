@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     get 'orders/:id/delivered', to:'orders#delivered', as: :order_delivered
     get 'orders/:id/paid', to:'orders#paid', as: :order_paid
 
-    resources :orderlines, only: [:new, :create, :destroy]
+    resources :orderlines, only: [:create, :destroy]
     put 'orderlines/:id/increase', to:'orderlines#increase_item', as: :increase_item
     put 'orderlines/:id/decrease', to:'orderlines#decrease_item', as: :decrease_item
     delete 'orderlines/:id/cancel', to:'orderlines#cancel_item', as: :cancel_item
