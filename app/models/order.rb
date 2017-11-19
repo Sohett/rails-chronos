@@ -1,7 +1,8 @@
 class Order < ApplicationRecord
   belongs_to :table
   has_many :orderlines
-  
+  has_one :restaurant, through: :table
+
   def price_per_order
     price = 0
     self.orderlines.each do |orderline|
@@ -11,4 +12,3 @@ class Order < ApplicationRecord
   end
 
 end
-

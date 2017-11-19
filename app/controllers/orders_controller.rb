@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   before_action :set_table, only: [:index, :update, :destroy, :clear_table, :delivered, :paid, :price_per_table]
   before_action :set_order, only: [:destroy, :delivered, :paid]
+  before_action :set_restaurant, only: [:index, :update, :destroy, :delivered, :paid, :clear_table]
 
   def index
     @orders_all = @table.orders
@@ -15,33 +16,35 @@ class OrdersController < ApplicationController
   def update
     @order = Order.find(session[:order_id])
     if @order.orderlines.any?
-      session.delete(:order_id)
+      if session[:order_id]
+        session.delete(:order_id)
+      end
       @order.status = "in process"
       @order.save!
       session[:order_number_per_table]["#{@table.id}"] += 1
-      redirect_to "#{table_items_path(@table)}#basket", notice: "Your order has been sent succesfully"
+      redirect_to "#{restaurant_table_items_path(@restaurant, @table)}#basket", notice: "Your order has been sent succesfully"
     else
-      redirect_to "#{table_items_path(@table)}#basket", notice: "There is nothing in your basket to be send"
+      redirect_to "#{restaurant_table_items_path(@restaurant, @table)}#basket", notice: "There is nothing in your basket to be send"
     end
   end
 
   def destroy
     @order.status = "deleted"
     @order.save!
-    redirect_to table_orders_path(@table)
+    redirect_to restaurant_table_orders_path(@restaurant, @table)
     session.delete(:order_id)
   end
 
   def delivered
     @order.status = "delivered"
     @order.save!
-    redirect_to dashboard_path
+    redirect_to restaurant_dashboard_path(@restaurant)
   end
 
   def paid
     @order.status = "paid"
     @order.save!
-    redirect_to dashboard_path
+    redirect_to restaurant_dashboard_path(@restaurant)
   end
 
   def clear_table
@@ -50,9 +53,9 @@ class OrdersController < ApplicationController
       order.status = "deleted"
       order.save!
     end
-    session[:order_number_per_table]["#{@table.id}"] = 1
-    session.delete(:order_id)
-    redirect_to dashboard_path
+    # session[:order_number_per_table]["#{@table.id}"] = 1
+    # session.delete(:order_id)
+    redirect_to restaurant_dashboard_path(@restaurant)
   end
 
   private

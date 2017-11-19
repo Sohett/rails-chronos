@@ -9,10 +9,10 @@
     <% if @orders_not_paid.any? %>
     <p>Warning: you have <strong><%= @orders_not_paid.count %> </strong> orders not yet paid for this table. Put them to 'PAID' before reseting the table</p>
     <% end %>
-    <p><%= link_to 'Dashboard', dashboard_path, class: "btn btn-back" %></p>
+    <p><%= link_to 'Dashboard', restaurant_dashboard_path(@restaurant), class: "btn btn-back" %></p>
 
     <% unless @orders_not_paid.any? %>
-      <p><%= link_to 'Clear table', table_clear_path(@table), method: :delete, class: "btn btn-danger", :data => {:confirm => 'This will delete all the orders. Confirm?'} %></p>
+      <p><%= link_to 'Clear table', restaurant_table_clear_path(@restaurant, @table), method: :delete, class: "btn btn-danger", :data => {:confirm => 'This will delete all the orders. Confirm?'} %></p>
     <% end %>
 
     <ul>

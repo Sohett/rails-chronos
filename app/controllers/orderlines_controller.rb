@@ -1,5 +1,6 @@
 class OrderlinesController < ApplicationController
   before_action :set_table, only: [:create, :cancel_item, :increase_item, :decrease_item]
+  before_action :set_restaurant, only: [:create, :cancel_item, :increase_item, :decrease_item]
 
   def create
     @order = current_order
@@ -15,14 +16,14 @@ class OrderlinesController < ApplicationController
       @orderline.quantity = 1
     end
     @orderline.save!
-    redirect_to "#{table_items_path(@table)}#basket"
+    redirect_to "#{restaurant_table_items_path(@restaurant, @table)}#basket"
   end
 
   def increase_item
     @orderline = Orderline.find(params[:id])
     @orderline.quantity += 1
     @orderline.save
-    redirect_to table_basket_summary_path(@table)
+    redirect_to restaurant_table_basket_summary_path(@restaurant, @table)
   end
 
   def decrease_item
@@ -31,20 +32,20 @@ class OrderlinesController < ApplicationController
     if @orderline.quantity > 1
       @orderline.quantity -= 1
       @orderline.save
-      redirect_to table_basket_summary_path(@table)
+      redirect_to restaurant_table_basket_summary_path(@restaurant, @table)
     elsif @order.orderlines.count > 1
       @orderline.destroy
-      redirect_to table_basket_summary_path(@table)
+      redirect_to restaurant_table_basket_summary_path(@restaurant, @table)
     else
       @orderline.destroy
-      redirect_to "#{table_items_path(@table)}#basket"
+      redirect_to "#{restaurant_table_items_path(@restaurant, @table)}#basket"
     end
   end
 
   def cancel_item
     @orderline = Orderline.find(params[:id])
     @orderline.destroy
-    redirect_to table_basket_summary_path(@table)
+    redirect_to restaurant_table_basket_summary_path(@restaurant, @table)
   end
 
   private

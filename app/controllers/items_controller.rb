@@ -1,13 +1,22 @@
 class ItemsController < ApplicationController
   before_action :set_table, only: [:index, :basket_summary, :current_order]
+  before_action :set_restaurant, only: [:index, :basket_summary]
 
   def index
-    @restaurant = Restaurant.first
-    @items = @restaurant.items
-    @items_starters = @items.where(category: 'starters')
-    @items_burgers = @items.where(category: 'burgers')
-    @items_sides = @items.where(category: 'sides')
-    @items_drinks = @items.where(category: 'drinks')
+    @items = {}
+    @categories = @restaurant.list_of_categories
+    @categories.each do |category|
+      @items_category = @restaurant.items.where(category: category)
+      @items[category.to_s] = @items_category
+    end
+    @items
+
+    ###########
+    @items_starters = @restaurant.items.where(category: "starters")
+    @items_burgers = @restaurant.items.where(category: 'burgers')
+    @items_sides = @restaurant.items.where(category: 'sides')
+    @items_drinks = @restaurant.items.where(category: 'drinks')
+
 
     @orderline = Orderline.new
     @order = current_order
