@@ -17,17 +17,15 @@
       </div>
     <% end %>
   <ul>
-    <% @orders_all.each do |order| %>
+    <% @orders_not_paid.each do |order| %>
       <div class="order-line">
         <h4>Order <%= order.number %></h4>
         <span><%= order.price_per_order %> €</span>
-          <% if order.status == 'pending'%>
-            <p class="btn btn-info btn-xs"><%= order.status %></p>
-          <% elsif order.status == 'in process' %>
+          <% if order.status == 'in process' %>
             <p class="btn btn-primary btn-xs"><%= order.status %></p>
           <% elsif order.status == 'delivered' %>
             <p class="btn btn-warning btn-xs"><%= order.status %></p>
-          <% else %>
+          <% elsif order.status == 'paid' %>
             <p class="btn btn-success btn-xs"><%= order.status %></p>
           <% end %>
       </div>
