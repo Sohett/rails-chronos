@@ -4,4 +4,6 @@
     <li>this table has <%= @table.capacity %> seats</li>
     <li>this table is from the <%= @table.restaurant.name %> restaurant</li>
   </ul>
+
+  <%= link_to "Back to the tables for this restaurant", restaurant_tables_path(@restaurant), class: "btn btn-info" %>
 </div>

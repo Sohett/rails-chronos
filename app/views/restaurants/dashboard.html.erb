@@ -16,7 +16,7 @@
               <div class="dashboard-order">
                 <a class="dash" data-toggle="collapse" href="#collapse-<%=  order.id %>"><span class="words-dashboard">Table <%= order.table.table_number %></span> <span class="words-dashboard">Order <%= order.number %></span>
                   <%= order.price_per_order %>€
-                <%= link_to '<i class="fa fa-arrow-right btn btn-default" style="color: #feb632; font-size:17px"></i>'.html_safe, table_order_delivered_path(order.table, order) %></a>
+                <%= link_to '<i class="fa fa-arrow-right btn btn-default" style="color: #feb632; font-size:17px"></i>'.html_safe, restaurant_table_order_delivered_path(@restaurant, order.table, order) %></a>
               </div>
             </div>
             <div id="collapse-<%=  order.id %>" class="panel-collapse collapse">
@@ -44,7 +44,7 @@
               <div class="dashboard-order">
                 <a class="dash" data-toggle="collapse" href="#collapse-<%=  order.id %>"><span class="words-dashboard">Table <%= order.table.table_number %></span> <span class="words-dashboard">Order <%= order.number %></span>
                   <%= order.price_per_order %>€
-                <%= link_to '<i class="fa fa-arrow-right btn btn-default" style="color: #feb632; font-size:17px"></i>'.html_safe, table_order_paid_path(order.table, order) %>
+                <%= link_to '<i class="fa fa-arrow-right btn btn-default" style="color: #feb632; font-size:17px"></i>'.html_safe, restaurant_table_order_paid_path(@restaurant, order.table, order) %>
                 </a>
               </div>
             </div>
@@ -91,62 +91,10 @@
 
     <div id="linebtm" class="box">
       <% @tables.each do |table| %>
-      <%= link_to "Table #{table.table_number}", table_orders_path(table) , class: 'btn btn-reset' %>
+      <%= link_to "Table #{table.table_number}", restaurant_table_orders_path(@restaurant, table) , class: 'btn btn-reset' %>
       <% end %>
     </div>
 
 
-
-
-
   </div>
 </body>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

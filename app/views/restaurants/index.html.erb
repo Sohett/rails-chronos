@@ -7,10 +7,10 @@
           <%= restaurant.id %>. <u>Name</u>: <%= restaurant.name %>. <u>Name Address</u>: <%= restaurant.address %>
           <h3>What your client will see</h3>
           <p>See for yourself how it works. If you want to see what your clients will see, click here below</p>
-          <%= link_to "go to the tables fot this restaurant", tables_path, class: "btn btn-info" %>
+          <%= link_to "go to the tables for this restaurant", restaurant_tables_path(restaurant), class: "btn btn-info" %>
           <h3>your dashboard</h3>
           <p>See for yourself what your dashboard as a restaurant owner will look like</p>
-          <%= link_to "go to dashboard for this restaurant", dashboard_path, class: "btn btn-info" %>
+          <%= link_to "go to dashboard for this restaurant", restaurant_dashboard_path(restaurant), class: "btn btn-info" %>
         </div>
       </li>
       <% end %>
