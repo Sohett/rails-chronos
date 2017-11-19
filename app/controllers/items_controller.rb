@@ -53,6 +53,7 @@ class ItemsController < ApplicationController
       return order
     else
       order = Order.new(table: @table, status: "pending")
+      order.number = 0
       order.save!
       session[:order_id] = order.id
       return order

@@ -7,9 +7,9 @@
 
 puts "Deleting all the previous seeds"
 Item.destroy_all
-Restaurant.destroy_all
+Order.destroy_all
 Table.destroy_all
-
+Restaurant.destroy_all
 
 puts "creating 2 restaurant2"
 resto1 = Restaurant.new(name: "Be Burger", address: "Hector Henneaulaan 164, 1930 Zaventem")
@@ -296,5 +296,16 @@ classico16.save!
 classico17 = Item.new(name: "Lodola Nuova Ruffino", description: "", price: 29.0, category: "Vins rouges")
 classico17.restaurant = resto3
 classico17.save!
+
+puts "creating orders for the database for the number of orders"
+
+Table.all.each do |table|
+  order1 = Order.new(status: "deleted", number: 0)
+  order2 = Order.new(status: "deleted", number: 0)
+  order1.table = table
+  order2.table = table
+  order1.save!
+  order2.save!
+end
 
 puts"finished!"
