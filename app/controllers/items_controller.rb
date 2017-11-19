@@ -53,11 +53,6 @@ class ItemsController < ApplicationController
       return order
     else
       order = Order.new(table: @table, status: "pending")
-      if @table.orders.any?
-        order.number = @table.orders.last.number
-      else
-        order.number = 0
-      end
       order.save!
       session[:order_id] = order.id
       return order

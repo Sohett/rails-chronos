@@ -21,7 +21,11 @@ class OrdersController < ApplicationController
         session.delete(:order_id)
       end
       @order.status = "in process"
-      @order.number += 1
+      if @table.orders.any?
+        order.number = @table.orders.last.number + 1
+      else
+        order.number = 1
+      end
       @order.save!
       redirect_to "#{restaurant_table_items_path(@restaurant, @table)}#basket", notice: "Your order has been sent succesfully"
     else
@@ -51,7 +55,7 @@ class OrdersController < ApplicationController
   def clear_table
     @table.orders.each do |order|
       order.status = "deleted"
-      order.number = 0
+      order.number = 1
       order.save!
     end
     redirect_to restaurant_dashboard_path(@restaurant)
