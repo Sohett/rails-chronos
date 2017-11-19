@@ -15,7 +15,7 @@
       <p><%= link_to 'Clear table', restaurant_table_clear_path(@restaurant, @table), method: :delete, class: "btn btn-danger", :data => {:confirm => 'This will delete all the orders. Confirm?'} %></p>
     <% end %>
   <ul>
-    <% @orders_not_paid.each do |order| %>
+    <% @orders_to_show.each do |order| %>
       <div class="order-line">
         <h4>Order <%= order.number %></h4>
         <span><%= order.price_per_order %> €</span>

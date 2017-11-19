@@ -5,6 +5,7 @@ class OrdersController < ApplicationController
 
   def index
     @orders_all = @table.orders
+    @orders_to_show = @table.orders - @table.orders.where(status: 'deleted') - @table.orders.where(status: 'pending')
     @orders_not_paid = @table.orders.where.not(status: 'paid') - @table.orders.where(status: 'deleted') - @table.orders.where(status: 'pending')
     @orders_pending = @table.orders.where(status: 'pending')
     @orders_in_process = @table.orders.where(status: 'in process')
@@ -60,7 +61,7 @@ class OrdersController < ApplicationController
 
   def price_per_table
     total_price = 0
-    @table.orders.each do |order|
+    @orders_to_show.each do |order|
       order.orderlines.each do |orderline|
         total_price += orderline.quantity * orderline.item.price
       end
