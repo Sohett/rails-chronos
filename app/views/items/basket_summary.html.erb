@@ -9,9 +9,9 @@
             <p><strong><%= orderline.quantity %> x</strong> <%= orderline.item.name %></p>
           </div>
           <div class="button-price">
-            <p style="padding:1px;"><%= link_to '<i class="fa fa-minus btn btn-default" style="color: #feb632; font-size:17px"></i>'.html_safe, table_decrease_item_path(@table, orderline), method: :put%>
-            <p style="padding:1px;"><%= link_to '<i class="fa fa-plus btn btn-default" style="color: #feb632; font-size:17px"></i>'.html_safe, table_increase_item_path(@table, orderline), method: :put%></p>
-            <p style="padding:1px;"><%= link_to '<i class="fa fa-times btn btn-default" style="color: #feb632; font-size:17px"></i>'.html_safe, table_cancel_item_path(@table, orderline), method: :delete%></p>
+            <p style="padding:1px;"><%= link_to '<i class="fa fa-minus btn btn-default" style="color: #feb632; font-size:17px"></i>'.html_safe, restaurant_table_decrease_item_path(@restaurant, @table, orderline), method: :put%>
+            <p style="padding:1px;"><%= link_to '<i class="fa fa-plus btn btn-default" style="color: #feb632; font-size:17px"></i>'.html_safe, restaurant_table_increase_item_path(@restaurant, @table, orderline), method: :put%></p>
+            <p style="padding:1px;"><%= link_to '<i class="fa fa-times btn btn-default" style="color: #feb632; font-size:17px"></i>'.html_safe, restaurant_table_cancel_item_path(@restaurant, @table, orderline), method: :delete%></p>
             <p style="padding-left:10px; width:61px;"><%= orderline.item.price %> €</p>
           </div>
         </div>
@@ -23,9 +23,9 @@
       <p> <%= @total_price %> €</p>
     </div>
     <div>
-      <%= link_to "Confirm order", table_order_path(@table, @order), method: :patch, class: 'btn btn-confirm' %>
+      <%= link_to "Confirm order", restaurant_table_order_path(@restaurant, @table, @order), method: :patch, class: 'btn btn-confirm' %>
     </div>
     <div style="margin-bottom: 10px">
-      <%= link_to 'Back to menu', "#{table_items_path(@table)}#basket", class: 'btn-back' %>
+      <%= link_to 'Back to menu', "#{restaurant_table_items_path(@restaurant, @table)}#basket", class: 'btn-back' %>
     </div>
   </div>

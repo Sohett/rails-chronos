@@ -12,5 +12,5 @@
     <% end %>
   </ul>
 
-  <%= link_to "pass order", table_order_path(@table, @order), method: :patch, class: 'btn btn-info' %>
+  <%= link_to "pass order", restaurant_table_order_path(@restaurant, @table, @order), method: :patch, class: 'btn btn-info' %>
 </div>

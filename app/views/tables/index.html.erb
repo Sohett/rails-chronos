@@ -3,6 +3,6 @@
   <p><u>Don't forget to resize your browser as your client will see this from a smartphone</u></p>
   <p>Here are the tables of the restaurant</p>
   <% @tables.each do |table| %>
-  <%= link_to table.table_number, table_items_path(table), class: 'btn btn-info' %>
+  <%= link_to table.table_number, restaurant_table_items_path(@restaurant, table), class: 'btn btn-info' %>
   <% end %>
 </div>
