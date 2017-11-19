@@ -10,17 +10,8 @@ class ItemsController < ApplicationController
       @items[category.to_s] = @items_category
     end
     @items
-
-    ###########
-    @items_starters = @restaurant.items.where(category: "starters")
-    @items_burgers = @restaurant.items.where(category: 'burgers')
-    @items_sides = @restaurant.items.where(category: 'sides')
-    @items_drinks = @restaurant.items.where(category: 'drinks')
-
-
     @orderline = Orderline.new
     @order = current_order
-
     @total_price = price_computation_simple
     @quantity = 0
     @order.orderlines.each do |orderline|
@@ -55,23 +46,20 @@ class ItemsController < ApplicationController
   end
 
   def current_order
-    unless session[:order_number_per_table]
-      session[:order_number_per_table] = {}
-    end
 
-    unless session[:order_number_per_table]["#{@table.id}"]
-      session[:order_number_per_table]["#{@table.id}"] = 1
-    end
-
-    unless session[:order_id] == true || Order.where(id: session[:order_id]).any?
-      order = Order.new(table: @table, status: "pending")
-      order.number = session[:order_number_per_table]["#{@table.id}"]
+    if session[:order_id] == true || Order.where(id: session[:order_id]).any?
+      order = Order.find(session[:order_id])
       order.save!
-      session[:order_id] = order.id
       return order
     else
-      order = Order.find(session[:order_id])
-      order.number = session[:order_number_per_table]["#{@table.id}"]
+      order = Order.new(table: @table, status: "pending")
+      if @table.orders.any?
+        order.number = @table.orders.last.number
+      else
+        order.number = 0
+      end
+      order.save!
+      session[:order_id] = order.id
       return order
     end
   end

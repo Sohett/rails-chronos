@@ -20,8 +20,8 @@ class OrdersController < ApplicationController
         session.delete(:order_id)
       end
       @order.status = "in process"
+      @order.number += 1
       @order.save!
-      session[:order_number_per_table]["#{@table.id}"] += 1
       redirect_to "#{restaurant_table_items_path(@restaurant, @table)}#basket", notice: "Your order has been sent succesfully"
     else
       redirect_to "#{restaurant_table_items_path(@restaurant, @table)}#basket", notice: "There is nothing in your basket to be send"
@@ -48,13 +48,11 @@ class OrdersController < ApplicationController
   end
 
   def clear_table
-    @orders = @table.orders
-    @orders.each do |order|
+    @table.orders.each do |order|
       order.status = "deleted"
+      order.number = 0
       order.save!
     end
-    # session[:order_number_per_table]["#{@table.id}"] = 1
-    # session.delete(:order_id)
     redirect_to restaurant_dashboard_path(@restaurant)
   end
 
