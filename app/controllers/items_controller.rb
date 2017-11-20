@@ -26,7 +26,7 @@ class ItemsController < ApplicationController
   end
 
   def confirmation_summary
-    @order = current_order
+    @order = Order.find(params[:id])
     @total_price = price_computation_simple
   end
 
