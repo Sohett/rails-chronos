@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  root to: 'restaurants#index'
+  root to: 'restaurants#home'
 
+  get 'home', to:'restaurants#home', as: :home
   resources :restaurants, only: [:index] do
     get 'dashboard', to:'restaurants#dashboard', as: :dashboard
     resources :tables, only: [:index, :show] do
