@@ -1,6 +1,10 @@
 class RestaurantsController < ApplicationController
   before_action :set_restaurant, only: [:dashboard]
 
+  def home
+    #code
+  end
+
   def index
     @restaurants = Restaurant.all
   end
