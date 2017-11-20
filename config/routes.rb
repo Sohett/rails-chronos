@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
       resources :items, only: [:index]
       get 'items/basket', to:'items#basket_summary', as: :basket_summary
+      get 'items/confirmation', to:'items#confirmation_summary', as: :confirmation_summary
 
       resources :orders, only: [:index, :update, :destroy]
       delete 'orders', to:'orders#clear_table', as: :clear

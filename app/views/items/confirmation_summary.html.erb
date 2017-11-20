@@ -1,0 +1,7 @@
+<% flash.each do |key, value| %>
+<div class="alert alert-<%= key %>" style="margin-bottom: 10px"><%= value %></div>
+<% end %>
+<div class="container">
+
+  <%= link_to 'Back to menu', "#{restaurant_table_items_path(@restaurant, @table)}#basket", class: 'btn-back' %>
+</div>

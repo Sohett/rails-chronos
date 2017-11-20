@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
-  before_action :set_table, only: [:index, :basket_summary, :current_order]
-  before_action :set_restaurant, only: [:index, :basket_summary]
+  before_action :set_table, only: [:index, :basket_summary, :current_order, :confirmation_summary]
+  before_action :set_restaurant, only: [:index, :basket_summary, :confirmation_summary]
 
   def index
     @items = {}
@@ -21,6 +21,11 @@ class ItemsController < ApplicationController
   end
 
   def basket_summary
+    @order = current_order
+    @total_price = price_computation_simple
+  end
+
+  def confirmation_summary
     @order = current_order
     @total_price = price_computation_simple
   end
