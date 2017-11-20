@@ -21,7 +21,7 @@
             <div id="collapse-<%=  order.id %>" class="panel-collapse collapse">
               <ul class="list-group">
                 <% order.orderlines.each do |orderline| %>
-                <li class="list-group-item"><%= orderline.item.name %> x <%= orderline.quantity %> - <%= orderline.quantity * orderline.item.price %> €</li>
+                <li class="list-group-item"><%= orderline.quantity %> x <%= orderline.item.name %> - <%= orderline.quantity * orderline.item.price %> €</li>
                 <% end %>
               </ul>
             </div>
@@ -50,7 +50,7 @@
             <div id="collapse-<%=  order.id %>" class="panel-collapse collapse">
               <ul class="list-group">
                 <% order.orderlines.each do |orderline| %>
-                <li class="list-group-item"><%= orderline.item.name %> x <%= orderline.quantity %> - <%= orderline.quantity * orderline.item.price %> €</li>
+                <li class="list-group-item"><%= orderline.quantity %> x <%= orderline.item.name %> - <%= orderline.quantity * orderline.item.price %> €</li>
                 <% end %>
               </ul>
             </div>
@@ -77,7 +77,7 @@
             <div id="collapse-<%=  order.id %>" class="panel-collapse collapse">
               <ul class="list-group">
                 <% order.orderlines.each do |orderline| %>
-                <li class="list-group-item"><%= orderline.item.name %> x <%= orderline.quantity %> - <%= orderline.quantity * orderline.item.price %> €</li>
+                <li class="list-group-item"><%= orderline.quantity %> x <%= orderline.item.name %> - <%= orderline.quantity * orderline.item.price %> €</li>
                 <% end %>
               </ul>
             </div>
@@ -90,7 +90,7 @@
 
     <div id="linebtm" class="box">
       <% @tables.each do |table| %>
-      <%= link_to "Table #{table.table_number}", restaurant_table_orders_path(@restaurant, table) , class: 'btn btn-reset' %>
+      <%= link_to "Table #{table.table_number}", restaurant_table_orders_path(@restaurant, table) , class: 'btn btn-dashboard' %>
       <% end %>
     </div>
 
