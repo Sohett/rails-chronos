@@ -68,6 +68,22 @@
   margin-bottom: 20px;
 }
 
+// to reset the table
+.btn-clear {
+  font-size: 15px;
+  opacity: 1;
+  font-weight: lighter;
+  color: $yellow !important;
+  text-decoration: none !important;
+  padding: 10px;
+  background-color: $generic-black;
+  box-shadow: 1px 1px 5px lightgrey;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+// used notably in the order summary
+
 .btn-confirm{
     opacity: 0.9;
     color: #fff !important;
@@ -77,4 +93,57 @@
     margin-bottom: 25px;
     border-radius: 40px;
     padding: 13px
+}
+
+.btn-status-in-process {
+  font-size: 15px;
+  opacity: 1;
+  color: white !important;
+  text-decoration: none !important;
+  margin-right: -16px;
+  padding: 14px 10px 14px 10px;
+  background-color: #ef4d51;
+  box-shadow: 1px 1px 5px lightgrey;
+  border-radius: 0px;
+  cursor: default !important;
+}
+
+.btn-status-delivered {
+  font-size: 15px;
+  opacity: 1;
+  color: white !important;
+  text-decoration: none !important;
+  margin-right: -16px;
+  padding: 14px 13px 14px 13px;
+  background-color: $yellow;
+  box-shadow: 1px 1px 5px lightgrey;
+  border-radius: 0px;
+  cursor: default !important;
+}
+
+.btn-status-paid {
+  font-size: 15px;
+  opacity: 1;
+  color: white !important;
+  text-decoration: none !important;
+  margin-right: -16px;
+  padding: 14px 30px 14px 30px;
+  background-color: #40A798;
+  box-shadow: 1px 1px 5px lightgrey;
+  border-radius: 0px;
+  cursor: default !important;
+}
+
+.btn-status-paid-text{
+  font-size: 15px;
+  opacity: 1;
+  color: white !important;
+  text-decoration: none !important;
+  margin-right: -16px;
+  padding: 3px 3px 3px 3px;
+  margin-right: 2px;
+  background-color: #40A798;
+  box-shadow: 1px 1px 5px lightgrey;
+  border-radius: 0px;
+  cursor: default !important;
 }

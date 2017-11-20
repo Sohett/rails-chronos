@@ -4,35 +4,40 @@
     <div class="alert alert-<%= key %>"><%= value %></div>
     <% end %>
 
-    <h3 class="basket-title">Table <%= @table.table_number %>: summary</h3>
+    <h3 class="basket-title">Table <%= @table.table_number %> - summary</h3>
     <p><strong>Total price: <%= @total_price %> €</p></strong>
     <% if @orders_not_paid.any? %>
-    <p>Warning: you have <strong><%= @orders_not_paid.count %> </strong> orders not yet paid for this table. Put them to 'PAID' before reseting the table</p>
+    <p><strong>Warning:</strong> you have <strong><%= @orders_not_paid.count %> </strong> unpaid orders.</p>
+    <p>Make sure they are <button class="btn btn-status-paid-text">paid</button> before reseting the table</p>
     <% end %>
-    <p><%= link_to 'Dashboard', restaurant_dashboard_path(@restaurant), class: "btn btn-back" %></p>
+    <div class="btn-flex">
+      <p><%= link_to 'Dashboard', restaurant_dashboard_path(@restaurant), class: "btn btn-back" %></p>
 
-    <% unless @orders_not_paid.any? %>
-      <p><%= link_to 'Clear table', restaurant_table_clear_path(@restaurant, @table), method: :delete, class: "btn btn-danger", :data => {:confirm => 'This will delete all the orders. Confirm?'} %></p>
-    <% end %>
-  <ul>
-    <% @orders_to_show.each do |order| %>
-      <div class="order-line">
-        <h4>Order <%= order.number %></h4>
-        <span><%= order.price_per_order %> €</span>
+      <% unless @orders_not_paid.any? %>
+      <p><%= link_to 'Reset table', restaurant_table_clear_path(@restaurant, @table), method: :delete, class: "btn btn-clear", :data => {:confirm => 'This will delete all the orders. Confirm?'} %></p>
+      <% end %>
+    </div>
+    <div class="summary-centered">
+      <div class="background-summary-centered">
+        <% @orders_to_show.sort_by(&:created_at).reverse.each do |order| %>
+        <div class="order-line">
+          <h4>Order <%= order.number %></h4>
+          <span><%= order.price_per_order %> €</span>
           <% if order.status == 'in process' %>
-            <p class="btn btn-primary btn-xs"><%= order.status %></p>
+          <p class="btn btn-status-in-process "><%= order.status %></p>
           <% elsif order.status == 'delivered' %>
-            <p class="btn btn-warning btn-xs"><%= order.status %></p>
+          <p class="btn btn-status-delivered"><%= order.status %></p>
           <% elsif order.status == 'paid' %>
-            <p class="btn btn-success btn-xs"><%= order.status %></p>
+          <p class="btn btn-status-paid"><%= order.status %></p>
           <% end %>
+        </div>
+        <% order.orderlines.each do |orderline| %>
+        <div class="item-name">
+          <p> - <strong><%= orderline.quantity %> x</strong> <%= orderline.item.name %></p>
+        </div>
+        <% end %>
+        <% end %>
       </div>
-      <% order.orderlines.each do |orderline| %>
-      <div class="item-name">
-        <p> - <strong><%= orderline.quantity %> x</strong> <%= orderline.item.name %></p>
-      </div>
-      <% end %>
-      <% end %>
-    </ul>
+    </div>
   </div>
 </div>
