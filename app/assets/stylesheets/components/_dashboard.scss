@@ -25,8 +25,8 @@ html, body {
   height: 65%;
   margin: 5px;
   flex-direction: column;
-  border-radius: 15px;
-  background: #969C98;;
+  border-radius: 5px;
+  background: white;
   color: $yellow;
   overflow-y: scroll;
   overflow-x: hidden;
@@ -51,7 +51,7 @@ html, body {
   margin: 15px;
   color: $yellow;
   background: $generic-black;
-  border-radius: 30px;
+  border-radius: 5px;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -72,7 +72,7 @@ html, body {
   margin-bottom: 0px;
   background: $generic-black;
   justify-content: space-around;
-  border-radius: 30px;
+  border-radius: 5px;
   margin-top: 30px;
   text-align: center;
   overflow-y: hidden;
@@ -137,6 +137,7 @@ html, body {
 
 }
 
+
 .words-dashboard {
   margin-right: 15px;
   color: $generic-black !important;
@@ -152,8 +153,12 @@ html, body {
 .fa.fa-arrow-right {
 font-size: 13px !important;
 margin-right: 6px;
+background-color: $yellow;
+color: white !important;
 
 }
+
+
 
 @media(min-width: 1300px) {
   #linetop h3 {
@@ -169,8 +174,31 @@ margin-right: 6px;
   }
 }
 
+.btn-dashboard{
+  padding: 10px;
+  border-radius: 5px;
+  background: transparent;
+  font-family: "Raleway", "Helvetica", "sans-serif";
+  font-weight: 500;
+  line-height: 1.1;
+  color: white !important;
+  border-color: $yellow !important;
+  border: solid;
+  width: auto;
+  text-align: center;
+  margin: auto;
+}
 
+.btn-dashboard:hover {
+  background-color: $yellow ;
+  text-decoration: none;
+  color:  $generic-black !important;
+  font-weight: bold;
+}
 
+.btn-reset:active {
+  background-color: $yellow !important;
+}
 
 
 
