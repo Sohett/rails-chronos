@@ -28,6 +28,7 @@ class ItemsController < ApplicationController
   def confirmation_summary
     @orderlines = Order.find(params[:id]).orderlines
     @total_price = price_computation_simple
+    @time = Time.now + 20.minutes
   end
 
   private
