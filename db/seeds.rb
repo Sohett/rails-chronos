@@ -293,7 +293,7 @@ classico16 = Item.new(name: "Chianti Ruffino", description: "", price: 21.0, cat
 classico16.restaurant = resto3
 classico16.save!
 
-classico17 = Item.new(name: "Lodola Nuova Ruffino", description: "", price: 29.0, category: "Vins rouges")
+classico17 = Item.new(name: "Lodola Nuova Ruffino", description: "", price: 29.0, category: "Vins blancs")
 classico17.restaurant = resto3
 classico17.save!
 
