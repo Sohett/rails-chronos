@@ -2,6 +2,7 @@
 <div class="alert alert-<%= key %>" style="margin-bottom: 10px"><%= value %></div>
 <% end %>
 
+
 <div class="container">
   <div class="box basket text-center">
     <h2 class="basket-title" >My Basket</h2>
@@ -22,4 +23,17 @@
     </div>
     <div>
   <%= link_to 'Back to menu', "#{restaurant_table_items_path(@restaurant, @table)}#basket", class: 'btn-back' %>
+
+<div>
+  <ul>
+    <% @orderlines.each do |orderline| %>
+    <li>
+      <%= orderline.item.name %>
+      price : <%= orderline.item.price %> €
+      x <%= orderline.quantity %>
+    </li>
+    <% end %>
+  </ul>
+  <%= link_to 'Back to menu', restaurant_table_items_path(@restaurant, @table), class: 'btn-back' %>
+
 </div>
