@@ -111,34 +111,64 @@ table26.save!
 #################################################################################################
 # BE burger
 #################################################################################################
-puts "creating 3 starters  for Be burgers"
+puts "creating 3 salads for Be burgers"
 
-starter1 = Item.new(name: "Salad", description: "Classic salad", price: 3.50, category: "starters")
-starter1.restaurant = resto1
-starter1.save!
+salad1 = Item.new(name: "Caesar", description: "Grilled chicken / Parmesan cheese / Anchovies / Tomatoes / Romaine lettuce / Croutons / Caesar sauce", price: 15.25, category: "salads")
+salad1.restaurant = resto1
+salad1.save!
 
-starter2 = Item.new(name: "Mediterranean salad", description: "Classic salad with feta and black olives", price: 5.00, category: "starters")
-starter2.restaurant = resto1
-starter2.save!
+salad2 = Item.new(name: "Quino touch", description: "Quinoa / Cucumber / Tomatoes / Romaine lettuce / Coriander / Radishes / Marinated onions / Pumpkin seeds / Cashew nuts / Yogurt sauce", price: 10.25, category: "salads")
+salad2.restaurant = resto1
+salad2.save!
 
-starter3 = Item.new(name: "Chicken salad", description: "Classic salad with chicken", price: 6.50, category: "starters")
-starter3.restaurant = resto1
-starter3.save!
+salad3 = Item.new(name: "Wellington", description: "Scampi / Quinoa / Guacamole / Tomatoes / Romaine lettuce / Coriander / Radishes / Marinated onions / Feta cheese / Yogurt sauce", price: 15.25, category: "salads")
+salad3.restaurant = resto1
+salad3.save!
 
-puts "3 starters created"
+puts "3 salads created"
 
-puts "creating 3 burgers for BE BURGER"
-burger1 = Item.new(name: "Hamburger", description: "Black Angus beef, Iceberg lettuce, Homemade sauce", price: 8.50, category: "burgers")
+puts "creating 10 burgers for BE BURGER"
+burger1 = Item.new(name: "Brussels burger", description: "Black Angus beef / Bacon / Onion confit with beer / Gherkins / Iceberg lettuce / Belgian Passendale cheese / Mustard mayonnaise / Be Burger sauce", price: 12.75, category: "burgers")
 burger1.restaurant = resto1
 burger1.save!
 
-burger2 = Item.new(name: "Cheese burger", description: "Black Angus beef, Iceberg lettuce, Giant sauce, Cheese", price: 10.00, category: "burgers")
+burger2 = Item.new(name: "Cancun burger", description: "Black Angus beef / Guacamole / Cheddar cheese / Onions with paprika / Jalapeños* / Iceberg lettuce / Be Burger sauce", price: 13.75, category: "burgers")
 burger2.restaurant = resto1
 burger2.save!
 
 burger3 = Item.new(name: "Bacon burger", description: "Black Angus beef, Iceberg lettuce, BBQ sauce, Bacon", price: 11.50, category: "burgers")
 burger3.restaurant = resto1
 burger3.save!
+
+burger4 = Item.new(name: "London burger", description: "Black Angus beef / Bacon / Fried onions / Tomatoes / Iceberg lettuce / Be Burger sauce", price: 12.00, category: "burgers")
+burger4.restaurant = resto1
+burger4.save!
+
+burger5 = Item.new(name: "New-York burger", description: "Black Angus beef / Bacon / Onions with paprika / Gherkins / Tomatoes / Iceberg lettuce / Cheddar cheese / Be Burger sauce / Barbecue sauce", price: 13.50, category: "burgers")
+burger5.restaurant = resto1
+burger5.save!
+
+# To be finished
+
+burger6 = Item.new(name: "Bacon burger", description: "Black Angus beef, Iceberg lettuce, BBQ sauce, Bacon", price: 11.50, category: "burgers")
+burger6.restaurant = resto1
+burger6.save!
+
+burger7 = Item.new(name: "Bacon burger", description: "Black Angus beef, Iceberg lettuce, BBQ sauce, Bacon", price: 11.50, category: "burgers")
+burger7.restaurant = resto1
+burger7.save!
+
+burger8 = Item.new(name: "Bacon burger", description: "Black Angus beef, Iceberg lettuce, BBQ sauce, Bacon", price: 11.50, category: "burgers")
+burger8.restaurant = resto1
+burger8.save!
+
+burger9 = Item.new(name: "Bacon burger", description: "Black Angus beef, Iceberg lettuce, BBQ sauce, Bacon", price: 11.50, category: "burgers")
+burger9.restaurant = resto1
+burger9.save!
+
+burger10 = Item.new(name: "Bacon burger", description: "Black Angus beef, Iceberg lettuce, BBQ sauce, Bacon", price: 11.50, category: "burgers")
+burger10.restaurant = resto1
+burger10.save!
 
 puts "3 burgers created"
 
@@ -171,10 +201,8 @@ puts"3 sides created"
 
 
 
-
-
 #################################################################################################
-# schievelavabo
+# Schievelavabo
 #################################################################################################
 entree1 = Item.new(name: "Véritable servelat", description: "", price: 4.5, category: "POUR PATIENTER")
 entree1.restaurant = resto2
