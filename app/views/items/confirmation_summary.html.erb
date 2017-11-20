@@ -1,7 +1,25 @@
 <% flash.each do |key, value| %>
 <div class="alert alert-<%= key %>" style="margin-bottom: 10px"><%= value %></div>
 <% end %>
-<div class="container">
 
+<div class="container">
+  <div class="box basket text-center">
+    <h2 class="basket-title" >My Basket</h2>
+    <div class="row">
+      <div class="item-order">
+        <% @order.orderlines.each do |orderline| %>
+        <div class="item-line">
+          <div class="item-name">
+            <p><strong><%= orderline.quantity %> x</strong> <%= orderline.item.name %></p>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="div price">
+      <h5>Total</h5>
+      <p> <%= @total_price %> €</p>
+    </div>
+    <div>
   <%= link_to 'Back to menu', "#{restaurant_table_items_path(@restaurant, @table)}#basket", class: 'btn-back' %>
 </div>
