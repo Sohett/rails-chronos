@@ -2,8 +2,6 @@
 <div class="alert alert-<%= key %>" style="margin-bottom: 10px"><%= value %></div>
 <% end %>
 
-
-<div class="container">
   <div class="box basket text-center">
     <h2 class="basket-title" >My Order</h2>
     <div class="row">
@@ -12,11 +10,10 @@
         <div class="confirmation-centered">
           <!-- <div class="item-name"> -->
             <p><strong><%= orderline.quantity %> x</strong> <%= orderline.item.name %></p>
-            <p><%= humanized_money_with_symbol(orderline.item.price) %></p>
+            <p style="min-width: 50px; max-width: 50px"><%= humanized_money_with_symbol(orderline.item.price) %></p>
             <!--   </div> -->
           </div>
           <% end %>
-        </div>
       </div>
       <div class="div price">
         <h5>Total</h5>
@@ -31,3 +28,20 @@
       </div>
       </div>
     </div>
+    <div class="div price">
+      <h5>Total</h5>
+      <p> <%= @total_price %> €</p>
+    </div>
+    <div class="expected-time">
+      <p>Thanks for your order!</p>
+        <div style="margin-top: -10px;"><i class="fa fa-clock-o fa-4x" aria-hidden="true"></i></div>
+      <p class="expected-time-message">You should approximately receive it around <strong> <%= @time.strftime("%H:%M") %></strong></p>
+    </div>
+    <div style="margin-bottom: 15px">
+      <%= link_to 'Back to menu', "#{restaurant_table_items_path(@restaurant, @table)}#basket", class: 'btn-back' %>
+    </div>
+    <div class="footer-links">
+    <a href="#"><i class="fa fa-instagram"></i></a>
+    <a href="#"><i class="fa fa-facebook"></i></a>
+  </div>
+  </div>
