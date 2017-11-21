@@ -10,6 +10,7 @@
   </div>
 </div>
 
+
 <a href="#" class="scroll-down" address="true"></a>
 <section class="ok">
 
@@ -22,34 +23,36 @@
       </div>
       <div class="row">
         <div class="col-sm-4">
-          <ul>
+          <ul class="list-unstyled">
             <li>
-              <h3>Digital Menu</h3>
+              <h3><%= image_tag 'widget.png' %> Digital Menu</h3>
               <p style="text-align: justify;">Your customers have now access to the whole menu through any device, we will ensure that your menu meet the highest standards in term of desgin and ergonomy</p>
             </li>
             <li>
-              <h3>Order with a QR-code</h3>
-              <p style="text-align: justify;">The whole process of ordering will now be way easier for the customer who just needs to scan the QR-code in order to access the menu directly</p>
+              <h3><%= image_tag 'preferences.png' %> Statistics</h3>
+              <p style="text-align: justify;">Thanks to all the data gathered, you will be able to get an overview of your restaurant activity to permit a better understanding of your business</p>
             </li>
             <li>
-              <h3>Entertaining aspect for your customers</h3>
+              <h3><%= image_tag 'award-48.png' %> Entertaining aspect for your customers</h3>
               <p style="text-align: justify;">Enhance your customer's experience with the technology, no app downloading is needed. Everything will be directly available from the browser to ensure an ordering process always quicker</p>
             </li>
           </ul>
         </div>
-        <div class="col-sm-4 col-sm-push-4">
-          <ul class="item-list-left item-list-big">
+        <div class="col-sm-4">
+          <%= image_tag 'iphone2.png', class: "iphone" %>
+        </div>
+        <div class="col-sm-4">
+          <ul class="list-unstyled item-list-left item-list-big">
             <li>
-              <h3>Statistics</h3>
-              <p style="text-align: justify;">Thanks to all the data gathered, you will be able to get an overview of your restaurant activity to permit a better understanding of your business</p>
-            </li>
-
-            <li>
-              <h3>Integrated Payment</h3>
-              <p style="text-align: justify;">Every order can be paid in a fast and safe way through the application while the option to pay by cash is still available</p>
+              <h3><%= image_tag 'barcode-qr.png' %> Order with a QR-code</h3>
+              <p style="text-align: justify;">Streamline the ordering process for you customers by allowing them to access the menu through a scannable QR-code</p>
             </li>
             <li>
-              <h3>Focus more on the services that matter</h3>
+              <h3><%= image_tag 'lock.png' %> Integrated Payment</h3>
+              <p style="text-align: justify;">Customers can pay for their orders quickly and safely by card during the process, while retaining the option to pay by cash</p>
+            </li>
+            <li>
+              <h3><%= image_tag 'diamond.png' %> Focus more on the services that matter</h3>
               <p style="text-align: justify;">Chronos automates the actions with the less added-value, your staff will then be able to focus way more on the activities that are really enhancing your customer's experience</p>
             </li>
           </ul>
