@@ -12,7 +12,7 @@
         <div class="confirmation-centered">
           <!-- <div class="item-name"> -->
             <p><strong><%= orderline.quantity %> x</strong> <%= orderline.item.name %></p>
-            <p><%= orderline.item.price %> €</p>
+            <p><%= humanized_money_with_symbol(orderline.item.price) %></p>
             <!--   </div> -->
           </div>
           <% end %>
@@ -20,7 +20,7 @@
       </div>
       <div class="div price">
         <h5>Total</h5>
-        <p> <%= @total_price %> €</p>
+        <p> <%= humanized_money_with_symbol(@order.amount) %></p>
       </div>
       <div class="expected-time">
         <p>Thanks for your order!</p>

@@ -5,7 +5,7 @@
     <% end %>
 
     <h3 class="basket-title">Table <%= @table.table_number %> - summary</h3>
-    <p><strong>Total price: <%= @total_price %> €</p></strong>
+    <p><strong>Total price: <%= humanized_money_with_symbol(@total_price) %></p></strong>
     <% if @orders_not_paid.any? %>
     <p><strong>Warning:</strong> you have <strong><%= @orders_not_paid.count %> </strong> unpaid orders.</p>
     <p>Make sure they are <button class="btn btn-status-paid-text">paid</button> before reseting the table</p>
@@ -22,7 +22,7 @@
         <% @orders_to_show.sort_by(&:created_at).reverse.each do |order| %>
         <div class="order-line">
           <h4>Order <%= order.number %></h4>
-          <span><%= order.price_per_order %> €</span>
+          <span><%= humanized_money_with_symbol(order.price_per_order) %></span>
           <% if order.status == 'in process' %>
           <p class="btn btn-status-in-process "><%= order.status %></p>
           <% elsif order.status == 'delivered' %>

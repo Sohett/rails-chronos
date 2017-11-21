@@ -22,12 +22,14 @@ class ItemsController < ApplicationController
 
   def basket_summary
     @order = current_order
-    @total_price = price_computation_simple
+    @total = price_computation_simple
+    @order.amount = @total
+    @order.save!
   end
 
   def confirmation_summary
+    @order = order = Order.find((params[:id]))
     @orderlines = Order.find(params[:id]).orderlines
-    @total_price = price_computation_simple
     @time = Time.now + 20.minutes
   end
 

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'restaurants#home'
+  root to: 'restaurants#index'
 
   get 'home', to:'restaurants#home', as: :home
   resources :restaurants, only: [:index] do
@@ -11,7 +11,9 @@ Rails.application.routes.draw do
       get 'items/basket', to:'items#basket_summary', as: :basket_summary
       get 'items/confirmation/orders/:id', to:'items#confirmation_summary', as: :confirmation_summary
 
-      resources :orders, only: [:index, :update, :destroy]
+      resources :orders, only: [:index, :update, :destroy] do
+        resources :payments, only: [:new, :create]
+      end
       delete 'orders', to:'orders#clear_table', as: :clear
       get 'orders/:id/delivered', to:'orders#delivered', as: :order_delivered
       get 'orders/:id/paid', to:'orders#paid', as: :order_paid

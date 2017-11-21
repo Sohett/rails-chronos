@@ -1,18 +1,21 @@
+<% flash.each do |key, value| %>
+<div class="alert alert-<%= key %>" style="margin-bottom: 10px"><%= value %></div>
+<% end %>
 
-  <div class="box basket text-center">
-    <h2 class="basket-title" >My Basket</h2>
-    <div class="row">
-      <div class="item-order">
-        <% @order.orderlines.each do |orderline| %>
-        <div class="item-line">
-          <div class="item-name">
-            <p><strong><%= orderline.quantity %> x</strong> <%= orderline.item.name %></p>
-          </div>
-          <div class="button-price">
-            <p style="padding:1px;"><%= link_to '<i class="fa fa-minus btn btn-default" style="color: #feb632; font-size:17px"></i>'.html_safe, restaurant_table_decrease_item_path(@restaurant, @table, orderline), method: :put%>
+<div class="box basket text-center">
+  <h2 class="basket-title" >My Basket</h2>
+  <div class="row">
+    <div class="item-order">
+      <% @order.orderlines.each do |orderline| %>
+      <div class="item-line">
+        <div class="item-name">
+          <p><strong><%= orderline.quantity %> x</strong> <%= orderline.item.name %></p>
+        </div>
+        <div class="button-price">
+          <p style="padding:1px;"><%= link_to '<i class="fa fa-minus btn btn-default" style="color: #feb632; font-size:17px"></i>'.html_safe, restaurant_table_decrease_item_path(@restaurant, @table, orderline), method: :put%>
             <p style="padding:1px;"><%= link_to '<i class="fa fa-plus btn btn-default" style="color: #feb632; font-size:17px"></i>'.html_safe, restaurant_table_increase_item_path(@restaurant, @table, orderline), method: :put%></p>
             <p style="padding:1px;"><%= link_to '<i class="fa fa-times btn btn-default" style="color: #feb632; font-size:17px"></i>'.html_safe, restaurant_table_cancel_item_path(@restaurant, @table, orderline), method: :delete%></p>
-            <p style="padding-left:10px; width:61px;"><%= orderline.item.price %> €</p>
+            <p style="padding-left:10px; width:61px;"><%= humanized_money_with_symbol(orderline.item.price) %></p>
           </div>
         </div>
         <% end %>
@@ -20,12 +23,38 @@
     </div>
     <div class="div price">
       <h5>Total</h5>
-      <p> <%= @total_price %> €</p>
+      <p> <%= humanized_money_with_symbol(@order.amount) %></p>
     </div>
+
     <div>
+      <% # Confirm order without paying / meaning paying later to the restaurant owner %>
       <%= link_to "Confirm order", restaurant_table_order_path(@restaurant, @table, @order), method: :patch, class: 'btn btn-confirm' %>
     </div>
-    <div style="margin-bottom: 10px">
+
+
+
+    <div class="container">
+
+      <%= form_tag restaurant_table_order_payments_path(@restaurant, @table, @order) do %>
+      <article>
+        <label class="amount">
+          <!-- <span>Amount: <%= humanized_money_with_symbol(@order.amount) %></span> -->
+        </label>
+      </article>
+
+      <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+      data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+      data-name=" <%= @restaurant.name %>"
+      data-email="stripe@chronos-app.com"
+      data-description="<%= pluralize(@order.orderlines.count, 'item') %>"
+      data-amount="<%= @order.amount_cents %>"
+      data-currency="<%= @order.amount.currency %>"></script>
+
+      <% end %>
+    </div>
+
+    <div style="margin-top: 30px">
       <%= link_to 'Back to menu', "#{restaurant_table_items_path(@restaurant, @table)}#basket", class: 'btn-back' %>
     </div>
+
   </div>
