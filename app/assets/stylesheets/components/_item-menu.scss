@@ -257,3 +257,34 @@
   display: flex;
   justify-content: space-evenly;
 }
+
+// confirmation summary
+
+.item-line-confirmation {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 0 25px;
+    align-items: center;
+    flex-wrap: nowrap;
+  }
+
+  .confirmation-centered {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.expected-time{
+  background-color: $yellow;
+  text-align: center;
+  color: white;
+  height: 115px;
+  width: 100%;
+  margin-bottom: 25px;
+}
+
+.expected-time p {
+  padding-top: 10px;
+}
+
