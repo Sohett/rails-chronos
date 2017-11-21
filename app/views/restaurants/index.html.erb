@@ -1,89 +1,18 @@
-<%= render 'shared/navbar'  %>
-
-<div class="banner-homepage" style="background-image: linear-gradient(-225deg, rgba(255, 240, 0, 0.2) 0%, rgba(62, 54, 0, 0.3) 30%), url(<%= image_path "homepage.jpg"%>); background-position: center;">
-
-  <div class="banner-content">
-    <h1>Digitalize your restaurant thanks to Chronos</h1>
-    <div class="btn btn-homepage">
-      Get your digital menu now !
-    </div>
-  </div>
+<div class="container">
+  <h2>They decided to trust us and to work with us</h2>
+  <ul>
+    <% @restaurants.each do |restaurant|%>
+    <li>
+      <div class="container" style="margin-bottom: 100px">
+        <%= restaurant.id %>. <u>Name</u>: <%= restaurant.name %>. <u>Name Address</u>: <%= restaurant.address %>
+        <h3>What your client will see</h3>
+        <p>See for yourself how it works. If you want to see what your clients will see, click here below</p>
+        <%= link_to "go to the tables for this restaurant", restaurant_tables_path(restaurant), class: "btn btn-info" %>
+        <h3>your dashboard</h3>
+        <p>See for yourself what your dashboard as a restaurant owner will look like</p>
+        <%= link_to "go to dashboard for this restaurant", restaurant_dashboard_path(restaurant), class: "btn btn-info" %>
+      </div>
+    </li>
+    <% end %>
+  </ul>
 </div>
-
-<a href="#" class="scroll-down" address="true"></a>
-<section class="ok">
-
-  <!-- FEATURES BEGIN -->
-  <section id="features" class="img-block-3col">
-    <div class="container">
-      <div class="title" style="text-align: center;">
-        <h2>How does it work ?</h2>
-        <p>Here is some of the features that Chronos has to offer</p>
-      </div>
-      <div class="row">
-        <div class="col-sm-4">
-          <ul>
-            <li>
-              <h3>Digital Menu</h3>
-              <p style="text-align: justify;">Your customers have now access to the whole menu through any device, we will ensure that your menu meet the highest standards in term of desgin and ergonomy</p>
-            </li>
-            <li>
-              <h3>Order with a QR-code</h3>
-              <p style="text-align: justify;">The whole process of ordering will now be way easier for the customer who just needs to scan the QR-code in order to access the menu directly</p>
-            </li>
-            <li>
-              <h3>Entertaining aspect for your customers</h3>
-              <p style="text-align: justify;">Enhance your customer's experience with the technology, no app downloading is needed. Everything will be directly available from the browser to ensure an ordering process always quicker</p>
-            </li>
-          </ul>
-        </div>
-        <div class="col-sm-4 col-sm-push-4">
-          <ul class="item-list-left item-list-big">
-            <li>
-              <h3>Statistics</h3>
-              <p style="text-align: justify;">Thanks to all the data gathered, you will be able to get an overview of your restaurant activity to permit a better understanding of your business</p>
-            </li>
-
-            <li>
-              <h3>Integrated Payment</h3>
-              <p style="text-align: justify;">Every order can be paid in a fast and safe way through the application while the option to pay by cash is still available</p>
-            </li>
-            <li>
-              <h3>Focus more on the services that matter</h3>
-              <p style="text-align: justify;">Chronos automates the actions with the less added-value, your staff will then be able to focus way more on the activities that are really enhancing your customer's experience</p>
-            </li>
-          </ul>
-        </div>
-
-
-      </div>
-    </div>
-  </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
