@@ -12,9 +12,13 @@
 .footer-links {
   display: flex;
   align-items: center;
+  // justify-content for footer in the confirmation page
+  justify-content: center;
 }
 .footer-links a {
-  color: #adaeaa;
+  // use in the confirmation page as above
+  margin-top: 40px;
+  color: black;
   opacity: 0.9;
   text-decoration: none;
   font-size: 18px;
