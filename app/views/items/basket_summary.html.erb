@@ -25,7 +25,7 @@
     <div>
       <%= link_to "Confirm order", restaurant_table_order_path(@restaurant, @table, @order), method: :patch, class: 'btn btn-confirm' %>
     </div>
-    <div style="margin-bottom: 10px">
+    <div style="margin-bottom: 15px">
       <%= link_to 'Back to menu', "#{restaurant_table_items_path(@restaurant, @table)}#basket", class: 'btn-back' %>
     </div>
   </div>
