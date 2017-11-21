@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   get 'home', to:'restaurants#home', as: :home
   resources :restaurants, only: [:index] do
+    put 'kitchen', to: 'restaurants#kitchen', as: :kitchen
     get 'dashboard', to:'restaurants#dashboard', as: :dashboard
     resources :tables, only: [:index, :show] do
 

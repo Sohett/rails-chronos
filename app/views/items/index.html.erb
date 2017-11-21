@@ -1,5 +1,7 @@
 <%= render 'shared/banner'  %>
 
+<% if @restaurant.kitchen %>
+
 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
   <p id="basket"></p>
 
@@ -27,7 +29,7 @@
                 <p id="price-menu"><%= item.price%> €</p>
               </li>
             </div>
-            <%= simple_form_for [@restaurant, @table, @orderline] do |f| %>
+            <%= simple_form_for([@restaurant, @table, @orderline]) do |f| %>
             <%= f.input :item,  :as => :hidden, :input_html => { :value => item.id } %>
             <%= f.button :button do %>
             <i class="fa fa-plus" style="color: #feb632"></i>
@@ -58,3 +60,5 @@
     <% end %>
   <% end %>
 </div>
+
+<% end  %>
