@@ -26,7 +26,7 @@
               <li>
                 <h3><%= item.name %></h3>
                 <p style="max-width: 240px"><%= item.description %></p>
-                <p id="price-menu"><%= item.price%> €</p>
+                <p id="price-menu"><%= humanized_money_with_symbol(item.price) %></p>
               </li>
             </div>
             <%= simple_form_for([@restaurant, @table, @orderline]) do |f| %>
@@ -55,7 +55,7 @@
       <span>Check my basket</span>
     </div>
     <div>
-      <%= @total_price.to_s + " €" %>
+      <%= humanized_money_with_symbol(@total_price) %>
     </div>
     <% end %>
   <% end %>

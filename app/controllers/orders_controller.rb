@@ -16,17 +16,13 @@ class OrdersController < ApplicationController
 
   def update
     @order = Order.find(session[:order_id])
-    if @order.orderlines.any?
-      if session[:order_id]
-        session.delete(:order_id)
-      end
-      @order.status = "in process"
-      @order.number = Order.find(@table.orders.last.id - 1).number + 1
-      @order.save!
-      redirect_to restaurant_table_confirmation_summary_path(@restaurant, @table), notice: "Your order has been sent succesfully"
-    else
-      redirect_to "#{restaurant_table_items_path(@restaurant, @table)}#basket", notice: "There is nothing in your basket to be send"
+    if session[:order_id]
+      session.delete(:order_id)
     end
+    @order.status = "in process"
+    @order.number = Order.find(@table.orders.last.id - 1).number + 1
+    @order.save!
+    redirect_to restaurant_table_confirmation_summary_path(@restaurant, @table, @order), notice: "Your order has been sent succesfully"
   end
 
   def destroy
@@ -43,7 +39,7 @@ class OrdersController < ApplicationController
   end
 
   def paid
-    @order.status = "paid"
+    @order.paid = true
     @order.save!
     redirect_to restaurant_dashboard_path(@restaurant)
   end
