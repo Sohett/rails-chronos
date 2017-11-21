@@ -1,6 +1,11 @@
 <div class="banner" style="background-image: linear-gradient(-225deg, rgba(255, 240, 0, 0.2) 0%, rgba(62, 54, 0, 0.3) 30%), url(<%= image_path "#{@restaurant.id}.jpg"%>); background-position: center;">
   <div class="banner-content">
+    <% if @restaurant.kitchen %>
     <h1><%= @restaurant.name %> </h1>
+    <% else %>
+    <h1>Sorry the kitchen is closed</h1>
+    <h4> We are open every day between 6pm and 10pm</h4>
+    <% end %>
   </div>
 </div>
 

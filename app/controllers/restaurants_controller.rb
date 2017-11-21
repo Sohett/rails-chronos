@@ -1,5 +1,5 @@
 class RestaurantsController < ApplicationController
-  before_action :set_restaurant, only: [:dashboard]
+  before_action :set_restaurant, only: [:dashboard, :kitchen]
 
   def home
     #code
@@ -18,4 +18,8 @@ class RestaurantsController < ApplicationController
     @orders_deleted = @restaurant.orders.where(status: 'deleted')
   end
 
+  def kitchen
+    @restaurant.status_kitchen
+    redirect_to restaurant_dashboard_path(@restaurant)
+  end
 end
