@@ -6,11 +6,11 @@ class OrdersController < ApplicationController
   def index
     @orders_all = @table.orders
     @orders_to_show = @table.orders - @table.orders.where(status: 'deleted') - @table.orders.where(status: 'pending')
-    @orders_not_paid = @table.orders.where.not(status: 'paid') - @table.orders.where(status: 'deleted') - @table.orders.where(status: 'pending')
+    @orders_not_paid = @table.orders.where(paid: false) - @table.orders.where(status: 'deleted') - @table.orders.where(status: 'pending')
     @orders_pending = @table.orders.where(status: 'pending')
     @orders_in_process = @table.orders.where(status: 'in process')
     @orders_delivered = @table.orders.where(status: 'delivered')
-    @orders_paid = @table.orders.where(status: 'paid')
+    @orders_paid = @table.orders.where(paid: true)
     @total_price = price_per_table
   end
 

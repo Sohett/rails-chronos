@@ -42,13 +42,16 @@
         </label>
       </article>
 
-      <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+      <script
+      src="https://checkout.stripe.com/checkout.js"
+      class="stripe-button"
       data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
       data-name=" <%= @restaurant.name %>"
-      data-email="stripe@chronos-app.com"
-      data-description="<%= pluralize(@order.orderlines.count, 'item') %>"
+      data-email=""
+      data-description="<%= pluralize(@quantity, 'item') %>"
       data-amount="<%= @order.amount_cents %>"
-      data-currency="<%= @order.amount.currency %>"></script>
+      data-currency="<%= @order.amount.currency %>">
+      </script>
 
       <% end %>
     </div>

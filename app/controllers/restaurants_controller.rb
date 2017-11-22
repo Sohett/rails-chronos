@@ -12,6 +12,7 @@ class RestaurantsController < ApplicationController
   def dashboard
     @tables = @restaurant.tables
     @orders_all =  @restaurant.orders
+    @orders_pending = @restaurant.orders.where(status: 'pending')
     @orders_in_process = @restaurant.orders.where(status: 'in process')
     @orders_delivered = @restaurant.orders.where(status: 'delivered')
     @orders_paid = @restaurant.orders.where(status: 'paid')
