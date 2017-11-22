@@ -66,7 +66,7 @@ class OrdersController < ApplicationController
   end
 
   def clear_table
-    @table.orders.each do |order|
+    @table.orders.where.not(status:'pending').each do |order|
       order.status = "deleted"
       order.save!
     end
