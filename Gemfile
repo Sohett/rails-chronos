@@ -18,6 +18,8 @@ gem 'uglifier'
 gem 'money-rails'
 gem 'stripe'
 gem 'prawn'
+gem 'chartkick'
+gem 'groupdate'
 
 group :development, :test do
   gem 'capybara'
