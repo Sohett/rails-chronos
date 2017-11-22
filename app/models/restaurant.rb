@@ -12,6 +12,14 @@ class Restaurant < ApplicationRecord
     self.save!
   end
 
+  def average_order_price
+    orders.where(paid: true).average(:amount_cents) / 100.0
+  end
+
+  def unpaid_orders_count
+    orders.where(paid: false).count
+  end
+
   def list_of_categories
     list = []
     self.items.each do |item|
