@@ -50,6 +50,7 @@ class OrdersController < ApplicationController
         send_data pdf.render
       end
     end
+    @order.ticket = true
   end
 
   def delivered

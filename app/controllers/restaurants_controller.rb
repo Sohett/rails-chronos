@@ -15,8 +15,8 @@ class RestaurantsController < ApplicationController
     @orders_pending = @restaurant.orders.where(status: 'pending')
     @orders_in_process = @restaurant.orders.where(status: 'in process')
     @orders_delivered = @restaurant.orders.where(status: 'delivered')
-    @orders_paid = @restaurant.orders.where(status: 'paid')
     @orders_deleted = @restaurant.orders.where(status: 'deleted')
+    @order_not_yet_printed = @restaurant.orders.where(printed: false)
   end
 
   def kitchen
