@@ -4,12 +4,12 @@ html, body {
 
 
 #container {
-  height: 90%;
+  height: 100%;
   display: flex;
   justify-content: space-around;
   flex-flow: row wrap;
   color: $generic-black;
-  width: 80%;
+  width: 65%;
   position:absolute;
   left:20%;
 }
@@ -23,7 +23,7 @@ html, body {
 
 .orderstat {
   display: flex;
-  width: 30%;
+  width: 41%;
   height: 105%;
   margin: 5px;
   flex-direction: column;
@@ -133,6 +133,7 @@ html, body {
   font-size: 18px;
   display: flex;
   justify-content: space-between;
+  flex-direction: row;
   padding-top: 5px;
   padding-bottom: 5px;
 
@@ -141,9 +142,8 @@ html, body {
 
 
 .words-dashboard {
-  margin-right: 15px;
   color: $generic-black !important;
-
+  margin-right: 15px;
 }
 
 .words-list {

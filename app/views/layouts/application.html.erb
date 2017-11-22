@@ -10,9 +10,8 @@
   </head>
   <body>
 
-    <% if controller_name != "restaurants" %>
     <%= render 'shared/navbar' %>
-    <% end %>
+
     <%= yield %>
 
     <%= javascript_include_tag 'application' %>
