@@ -7,6 +7,42 @@
     <div class="orderstat box">
 
       <div>
+        <h5>Orders Pending (will arrive)</h5>
+      </div>
+      <% @orders_pending.each do |order| %>
+      <div>
+        <div class="panel-group">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <div class="dashboard-order">
+                <a class="dash" data-toggle="collapse" href="#collapse-<%=  order.id %>">
+                  <span class="words-dashboard">
+                  </span>
+                  <span class="words-dashboard">
+                    Table <%= order.table.table_number %>
+                  </span>
+                  <span class="words-dashboard">
+                    Order <%= order.number %>
+                  </span>
+                  <%= humanized_money_with_symbol(order.price_per_order) %>
+                </a>
+              </div>
+            </div>
+            <div id="collapse-<%=  order.id %>" class="panel-collapse collapse">
+              <ul class="list-group">
+                <% order.orderlines.each do |orderline| %>
+                <li class="list-group-item"><%= orderline.quantity %> x <%= orderline.item.name %> - <%= humanized_money_with_symbol(orderline.quantity * orderline.item.price) %></li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+
+    <div class="orderstat box">
+      <div>
         <h5>Orders in process</h5>
       </div>
       <% @orders_in_process.each do |order| %>
@@ -15,9 +51,23 @@
           <div class="panel panel-default">
             <div class="panel-heading">
               <div class="dashboard-order">
-                <a class="dash" data-toggle="collapse" href="#collapse-<%=  order.id %>"><span class="words-dashboard">Table <%= order.table.table_number %></span> <span class="words-dashboard">Order <%= order.number %></span>
+                <a class="dash" data-toggle="collapse" href="#collapse-<%=  order.id %>">
+                  <span class="words-dashboard">
+                    <% if order.paid  %>
+                    <i class="fa fa-check-square-o" style="color: #53ba81" aria-hidden="true"></i>
+                    <% else %>
+                    <%= link_to '<i class="fa fa-square-o" style="color: #ce6564" aria-hidden="true"></i>'.html_safe, restaurant_table_order_paid_path(@restaurant, order.table, order) %>
+                    <% end %>
+                  </span>
+                  <span class="words-dashboard">
+                    Table <%= order.table.table_number %>
+                  </span>
+                  <span class="words-dashboard">
+                    Order <%= order.number %>
+                  </span>
                   <%= humanized_money_with_symbol(order.price_per_order) %>
-                <%= link_to '<i class="fa fa-arrow-right btn btn-default" style="color: #feb632; font-size:17px"></i>'.html_safe, restaurant_table_order_delivered_path(@restaurant, order.table, order) %></a>
+                <%= link_to '<i class="fa fa-arrow-right btn btn-default" style="color: #feb632; font-size:17px"></i>'.html_safe, restaurant_table_order_delivered_path(@restaurant, order.table, order) %>
+                </a>
               </div>
             </div>
             <div id="collapse-<%=  order.id %>" class="panel-collapse collapse">
@@ -43,37 +93,22 @@
           <div class="panel panel-default">
             <div class="panel-heading">
               <div class="dashboard-order">
-                <a class="dash" data-toggle="collapse" href="#collapse-<%=  order.id %>"><span class="words-dashboard">Table <%= order.table.table_number %></span> <span class="words-dashboard">Order <%= order.number %></span>
-                  <%= humanized_money_with_symbol(order.price_per_order) %>
-                <%= link_to '<i class="fa fa-arrow-right btn btn-default" style="color: #feb632; font-size:17px"></i>'.html_safe, restaurant_table_order_paid_path(@restaurant, order.table, order) %>
-                </a>
-              </div>
-            </div>
-            <div id="collapse-<%=  order.id %>" class="panel-collapse collapse">
-              <ul class="list-group">
-                <% order.orderlines.each do |orderline| %>
-                <li class="list-group-item"><%= orderline.quantity %> x <%= orderline.item.name %> - <%= humanized_money_with_symbol(orderline.quantity * orderline.item.price) %></li>
-                <% end %>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-      <% end %>
-    </div>
-
-    <div class="orderstat box">
-      <div>
-        <h5>Orders paid</h5>
-      </div>
-      <% @orders_paid.each do |order| %>
-      <div>
-        <div class="panel-group">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <div class="dashboard-order">
-                <a class="dash" data-toggle="collapse" href="#collapse-<%=  order.id %>"><span class="words-dashboard">Table <%= order.table.table_number %></span> <span class="words-dashboard">Order <%= order.number %></span>
-                  <%= humanized_money_with_symbol(order.price_per_order) %> </a>
+                <a class="dash" data-toggle="collapse" href="#collapse-<%=  order.id %>">
+                  <span class="words-dashboard">
+                    <% if order.paid  %>
+                    <i class="fa fa-check-square-o" style="color: #53ba81" aria-hidden="true"></i>
+                    <% else %>
+                    <%= link_to '<i class="fa fa-square-o" style="color: #ce6564" aria-hidden="true"></i>'.html_safe, restaurant_table_order_paid_path(@restaurant, order.table, order) %>
+                    <% end %>
+                  </span>
+                  <span class="words-dashboard">
+                    Table <%= order.table.table_number %>
+                  </span>
+                  <span class="words-dashboard">
+                    Order <%= order.number %>
+                  </span>
+                    <%= humanized_money_with_symbol(order.price_per_order) %>
+                   </a>
               </div>
             </div>
             <div id="collapse-<%=  order.id %>" class="panel-collapse collapse">
