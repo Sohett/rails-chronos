@@ -17,6 +17,7 @@ gem 'simple_form'
 gem 'uglifier'
 gem 'money-rails'
 gem 'stripe'
+gem 'prawn'
 
 group :development, :test do
   gem 'capybara'
