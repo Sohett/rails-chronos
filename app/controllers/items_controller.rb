@@ -59,7 +59,6 @@ class ItemsController < ApplicationController
   end
 
   def current_order
-
     if session[:order_id] == true || Order.where(id: session[:order_id]).any?
       order = Order.find(session[:order_id])
       order.save!

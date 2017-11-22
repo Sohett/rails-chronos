@@ -20,7 +20,6 @@ class OrdersController < ApplicationController
       session.delete(:order_id)
     end
     @order.status = "in process"
-    @order.number = Order.find(@table.orders.last.id - 1).number + 1
     @order.save!
     redirect_to restaurant_table_confirmation_summary_path(@restaurant, @table, @order), notice: "Your order has been sent succesfully"
   end
@@ -47,7 +46,6 @@ class OrdersController < ApplicationController
   def clear_table
     @table.orders.each do |order|
       order.status = "deleted"
-      order.number = 0
       order.save!
     end
     redirect_to restaurant_dashboard_path(@restaurant)

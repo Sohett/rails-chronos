@@ -5,7 +5,6 @@
     <div id="linetop" class="box"><h3>Restaurant Dashboard</h3></div>
 
     <div class="orderstat box">
-
       <div>
         <h5>Orders Pending (will arrive)</h5>
       </div>
@@ -22,7 +21,7 @@
                     Table <%= order.table.table_number %>
                   </span>
                   <span class="words-dashboard">
-                    Order <%= order.number %>
+                    <%= (order.created_at + 60.minutes ).strftime("%H:%M") %>
                   </span>
                   <%= humanized_money_with_symbol(order.price_per_order) %>
                 </a>
@@ -63,7 +62,7 @@
                     Table <%= order.table.table_number %>
                   </span>
                   <span class="words-dashboard">
-                    Order <%= order.number %>
+                    <%= (order.created_at + 60.minutes ).strftime("%H:%M") %>
                   </span>
                   <%= humanized_money_with_symbol(order.price_per_order) %>
                 <%= link_to '<i class="fa fa-arrow-right btn btn-default" style="color: #feb632; font-size:17px"></i>'.html_safe, restaurant_table_order_delivered_path(@restaurant, order.table, order) %>
@@ -105,10 +104,10 @@
                     Table <%= order.table.table_number %>
                   </span>
                   <span class="words-dashboard">
-                    Order <%= order.number %>
+                    <%= (order.created_at + 60.minutes ).strftime("%H:%M") %>
                   </span>
                     <%= humanized_money_with_symbol(order.price_per_order) %>
-                   </a>
+                </a>
               </div>
             </div>
             <div id="collapse-<%=  order.id %>" class="panel-collapse collapse">
