@@ -1,8 +1,9 @@
-<script> setTimeout(location.reload.bind(location), 30000); </script>
+
 
 <body>
+  <%= render 'shared/sidebar' %>
   <div id="container">
-    <div id="linetop" class="box"><h3>Restaurant Dashboard</h3></div>
+    <!-- <div id="linetop" class="box"><h3>Restaurant Dashboard</h3></div> -->
 
     <div class="orderstat box">
 
@@ -90,19 +91,13 @@
     </div>
 
 
-    <div id="linebtm" class="box">
+    <!-- <div id="linebtm" class="box">
       <% @tables.each do |table| %>
       <%= link_to "Table #{table.table_number}", restaurant_table_orders_path(@restaurant, table) , class: 'btn btn-dashboard' %>
       <% end %>
-    </div>
+    </div> -->
 
-    <div>
-      <% if @restaurant.kitchen == false  %>
-      <%= link_to "Open kitchen", restaurant_kitchen_path(@restaurant), method: :put, class: "btn btn-back" %>
-      <% else %>
-      <%= link_to "Close kitchen", restaurant_kitchen_path(@restaurant), method: :put, class: "btn btn-back" %>
-      <% end %>
-    </div>
+
 
 
   </div>

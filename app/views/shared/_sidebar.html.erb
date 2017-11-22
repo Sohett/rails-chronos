@@ -1,0 +1,82 @@
+<style>
+  .cutlery-icon::before {
+    margin-left: 12px;
+    margin-right: 10px;
+  }
+
+  .stats-icon::before {
+    margin-left: 8px;
+    margin-right: 3px;
+  }
+
+  .dash-icon::before {
+   margin-right: 5px;
+  }
+
+</style>
+
+<div class="nav-side-menu">
+    <div class="brand"><%= image_tag 'chronos.png', :style => "width: 10%" %> Chronos </div>
+    <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+    <div class="menu-list">
+        <ul id="menu-content" class="menu-content collapse out">
+            <li>
+                <a href="#">
+                    <i class="fa fa-dashboard fa-lg dash-icon"></i> Dashboard
+                </a>
+            </li>
+            <li data-toggle="collapse" data-target="#products" class="collapsed active">
+                <i class="fa fa-cutlery fa-lg cutlery-icon"></i>All Tables <span class="arrow"></span>
+            </li>
+            <ul class="sub-menu collapse" id="products">
+                <li class="hidden"><a href="#">Tables</a></li>
+                <% @tables.each do |table| %>
+                  <li>
+                   <%= link_to restaurant_table_orders_path(@restaurant, table) do %>
+                    Table <%= table.table_number %>
+                    <% end %>
+                  </li>
+                <% end %>
+            </ul>
+
+
+
+            <li data-toggle="collapse" data-target="#new" class="collapsed">
+                <i class="fa fa-bar-chart fa-lg stats-icon"></i> Statistics <span class="arrow"></span>
+            </li>
+            <ul class="sub-menu collapse" id="new">
+                <li>Metric 1</li>
+                <li>Metric 2</li>
+                <li>Metric 3</li>
+            </ul>
+
+            <li>
+                <% if @restaurant.kitchen == false  %>
+              <%= link_to restaurant_kitchen_path(@restaurant), method: :put do %>
+                <i class="fa fa-unlock fa-lg"></i> Open Kitchen
+                <% end %>
+              <% else %>
+              <%= link_to restaurant_kitchen_path(@restaurant), method: :put do %>
+                <i class="fa fa-lock fa-lg"></i> Close Kitchen
+                <% end %>
+              <% end %>
+            </li>
+
+
+
+            <li>
+                <a href="#">
+                    <i class="fa fa-user fa-lg"></i> Profile
+                </a>
+            </li>
+
+        </ul>
+    </div>
+</div>
+<!-- <div class="container" id="main">
+    <div class="row">
+        <div class="col-md-12">
+            <h4>This is suppose to be in the main content</h4>
+        </div>
+    </div>
+</div> -->
