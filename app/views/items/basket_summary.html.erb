@@ -26,21 +26,16 @@
       <p> <%= humanized_money_with_symbol(@order.amount) %></p>
     </div>
 
-    <div>
-      <% # Confirm order without paying / meaning paying later to the restaurant owner %>
-      <%= link_to "Confirm order", restaurant_table_order_path(@restaurant, @table, @order), method: :patch, class: 'btn btn-confirm' %>
-    </div>
 
+    <div class="confirm-order">
+      <div class="confirm-order-message">
+        <p>Confirm your order</p>
+      </div>
+      <div class="confirm-order-btns">
+        <% # Confirm order without paying / meaning paying later to the restaurant owner %>
+        <%= link_to "Pay later", restaurant_table_order_path(@restaurant, @table, @order), method: :patch, class: 'btn btn-pay-later' %>
 
-
-    <div class="container">
-
-      <%= form_tag restaurant_table_order_payments_path(@restaurant, @table, @order) do %>
-      <article>
-        <label class="amount">
-          <!-- <span>Amount: <%= humanized_money_with_symbol(@order.amount) %></span> -->
-        </label>
-      </article>
+        <%= form_tag restaurant_table_order_payments_path(@restaurant, @table, @order) do %>
 
       <script
       src="https://checkout.stripe.com/checkout.js"
@@ -53,11 +48,11 @@
       data-currency="<%= @order.amount.currency %>">
       </script>
 
-      <% end %>
-    </div>
+        <% end %>
+        </div>
+      </div>
 
-    <div style="margin-top: 30px">
-    <div style="margin-bottom: 15px">
+    <div style="margin-bottom: 15px; margin-top: 30px;">
       <%= link_to 'Back to menu', "#{restaurant_table_items_path(@restaurant, @table)}#basket", class: 'btn-back' %>
     </div>
 
