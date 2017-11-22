@@ -14,7 +14,7 @@
         <div class="button-price">
           <p style="padding:1px;"><%= link_to '<i class="fa fa-minus btn btn-default" style="color: #feb632; font-size:17px"></i>'.html_safe, restaurant_table_decrease_item_path(@restaurant, @table, orderline), method: :put%>
             <p style="padding:1px;"><%= link_to '<i class="fa fa-plus btn btn-default" style="color: #feb632; font-size:17px"></i>'.html_safe, restaurant_table_increase_item_path(@restaurant, @table, orderline), method: :put%></p>
-            <p style="padding:1px;"><%= link_to '<i class="fa fa-times btn btn-default" style="color: #feb632; font-size:17px"></i>'.html_safe, restaurant_table_cancel_item_path(@restaurant, @table, orderline), method: :delete%></p>
+            <p style="padding:1px;"><%= link_to '<i class="fa fa-times btn btn-default" style="color: rgba(254, 50, 50, 0.81); font-size:17px"></i>'.html_safe, restaurant_table_cancel_item_path(@restaurant, @table, orderline), method: :delete%></p>
             <p style="padding-left:10px; width:61px;"><%= humanized_money_with_symbol(orderline.item.price) %></p>
           </div>
         </div>

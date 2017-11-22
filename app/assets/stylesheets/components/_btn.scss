@@ -113,6 +113,10 @@
   border-color: #ec9f10;
 }
 
+.btn-pay-later:hover{
+  color: white;
+}
+
 // mobile: Iphone 5 only!
 @media(max-width: 360px) {
   .btn-pay-later{
