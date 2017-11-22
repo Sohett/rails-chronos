@@ -7,7 +7,7 @@
 }
 </style>
 
-<script> setTimeout(location.reload.bind(location), 30000); </script>
+
 
 <body>
   <%= render 'shared/sidebar-left' %>
@@ -33,13 +33,15 @@
                     <% end %>
                   </span>
                 <a class="dash" data-toggle="collapse" href="#collapse-<%=  order.id %>">
-                  <span class="words-dashboard">
-                    Table <%= order.table.table_number %>
-                  </span>
-                  <span class="words-dashboard">
-                    <%= (order.created_at + 60.minutes ).strftime("%H:%M") %>
-                  </span>
-                <%= humanized_money_with_symbol(order.price_per_order) %>
+
+                <span style="margin-right: 10px;  margin-left: -10px;">Table <%= order.table.table_number %></span>
+
+
+                 <span style="margin-right: 10px;"><%= (order.created_at + 60.minutes ).strftime("%H:%M") %></span>
+
+                 <span><%= humanized_money_with_symbol(order.price_per_order) %></span>
+
+
                 <%= link_to '<i class="fa fa-arrow-right btn btn-default" style="color: #feb632; font-size:17px"></i>'.html_safe, restaurant_table_order_delivered_path(@restaurant, order.table, order) %>
                 </a>
               </div>
@@ -74,11 +76,11 @@
                     <%= link_to '<i class="fa fa-square-o" style="color: #ce6564" aria-hidden="true"></i>'.html_safe, restaurant_table_order_paid_path(@restaurant, order.table, order) %>
                     <% end %>
                   </span>
-                <a class="dash" data-toggle="collapse" href="#collapse-<%=  order.id %>">
-                  <span class="words-dashboard">
+                <a class="dash" data-toggle="collapse" href="#collapse-<%=  order.id %>" style="margin-right: 20px;">
+                  <span style="margin-right: 10px; margin-left: -10px;">
                     Table <%= order.table.table_number %>
                   </span>
-                  <span class="words-dashboard">
+                  <span style="margin-right: 10px;">
                     <%= (order.created_at + 60.minutes ).strftime("%H:%M") %>
                   </span>
                     <%= humanized_money_with_symbol(order.price_per_order) %>
