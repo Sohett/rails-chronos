@@ -95,6 +95,31 @@
     padding: 13px
 }
 
+// used in the order confirmation next to the stripe btn
+.btn-pay-later {
+  color: #fff;
+  background: $yellow !important;
+  padding: 0 30px;
+  margin-right: 30px;
+  height: 32px;
+  line-height: 30px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: bold;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  text-shadow: 0 1px 1px rgba(0,0,0,0.53);
+  // box-shadow: inset 0 1px 0 rgba(255,255,255,0.25);
+  box-shadow: 1px 1px 1px lightgrey;
+  border-color: #ec9f10;
+}
+
+// mobile: Iphone 5 only!
+@media(max-width: 360px) {
+  .btn-pay-later{
+  margin-right: 20px;
+  }
+}
+
 .btn-status-in-process {
   font-size: 15px;
   opacity: 1;
@@ -147,3 +172,4 @@
   border-radius: 0px;
   cursor: default !important;
 }
+
