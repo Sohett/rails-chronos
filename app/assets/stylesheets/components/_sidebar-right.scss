@@ -1,0 +1,23 @@
+
+.nav-side-right-menu {
+  overflow: auto;
+  font-family: verdana;
+  font-size: 17px;
+  font-weight: 200;
+  background-color: #2e353d;
+  position: right;
+  width: 15%;
+  height: 90%;
+  color: #e1ffff;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+}
+.nav-side-right-menu .brand {
+  background-color: $generic-black;
+  line-height: 50px;
+  display: block;
+  text-align: center;
+  font-size: 25px;
+
+}
