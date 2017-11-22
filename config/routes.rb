@@ -17,6 +17,7 @@ Rails.application.routes.draw do
       delete 'orders', to:'orders#clear_table', as: :clear
       get 'orders/:id/delivered', to:'orders#delivered', as: :order_delivered
       get 'orders/:id/paid', to:'orders#paid', as: :order_paid
+      get 'orders/:id/ticket', to: 'orders#ticket', as: :order_ticket
 
       resources :orderlines, only: [:create, :destroy]
       put 'orderlines/:id/increase', to:'orderlines#increase_item', as: :increase_item

@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
-  before_action :set_table, only: [:index, :update, :destroy, :clear_table, :delivered, :paid, :price_per_table]
-  before_action :set_order, only: [:destroy, :delivered, :paid]
-  before_action :set_restaurant, only: [:index, :update, :destroy, :delivered, :paid, :clear_table]
+  before_action :set_table, only: [:index, :update, :destroy, :clear_table, :delivered, :paid, :price_per_table, :ticket]
+  before_action :set_order, only: [:destroy, :delivered, :paid, :ticket]
+  before_action :set_restaurant, only: [:index, :update, :destroy, :delivered, :paid, :clear_table, :ticket]
 
   def index
     @orders_all = @table.orders
@@ -21,7 +21,7 @@ class OrdersController < ApplicationController
     end
     @order.status = "in process"
     @order.save!
-    redirect_to restaurant_table_confirmation_summary_path(@restaurant, @table, @order), notice: "Your order has been sent succesfully"
+    redirect_to restaurant_table_confirmation_summary_path(@restaurant, @table, @order)
   end
 
   def destroy
@@ -29,6 +29,28 @@ class OrdersController < ApplicationController
     @order.save!
     redirect_to restaurant_table_orders_path(@restaurant, @table)
     session.delete(:order_id)
+  end
+
+  def ticket
+    respond_to do |format|
+      format.pdf do
+        pdf = Prawn::Document.new
+        content = []
+        content << @restaurant.name.to_s.upcase
+        content << " "
+        content << "Table number : " + (@order.table.table_number).to_s
+        content << "Order passed at " + (@order.created_at + 60.minutes ).strftime("%H:%M")
+        content << " "
+        content << "items".upcase
+        content << " "
+        @order.orderlines.each do |ol|
+          content << "- " + ol.item.name.to_s + " x " + ol.quantity.to_s
+        end
+        pdf.text content.join("\n")
+        send_data pdf.render
+      end
+    end
+    @order.ticket = true
   end
 
   def delivered
