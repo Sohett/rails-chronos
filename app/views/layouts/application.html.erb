@@ -1,27 +1,31 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chronos</title>
-    <%= csrf_meta_tags %>
-    <%= action_cable_meta_tag %>
-    <%= stylesheet_link_tag 'application', media: 'all' %>
-    <%= javascript_include_tag 'application' %>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= yield(:title_tag).blank? ? "ChronosApp - Digitalize your restaurant" : yield(:title_tag) %></title>
 
-    <script
-      src="https://code.jquery.com/jquery-3.2.1.min.js"
-      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-      crossorigin="anonymous">
-    </script>
-  </head>
+  <meta name="description" content="ChronosApp helps your restaurant to take full advantage of the techonology by offering the best experience to your clients and ensure your employees can focus on providing services that really matter.">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <%= favicon_link_tag asset_path('favicon.png'), :rel => 'icon', :type =>  'image/png' %>
+  <%= csrf_meta_tags %>
+  <%= action_cable_meta_tag %>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
 
-  <body>
+  <script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous">
+</script>
+</head>
 
-    <%= render 'shared/navbar' %>
+<body>
 
-    <%= yield %>
+  <%= render 'shared/navbar' %>
+
+  <%= yield %>
 
 
-  </body>
+</body>
 </html>
