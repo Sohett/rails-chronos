@@ -1,11 +1,8 @@
 
 <div class="nav-side-right-menu">
   <div class="brand"> Key Metrics </div>
-  <p>Number of active tables <%= @active_tables %></p>
 
-  <p>Active orders <%= @active_orders.count %> </p>
 
-  <p>Orders not yet paid <%= @orders_not_yet_paid.count %> </p>
 
 
   <% if @dangerous_orders.any? %>
@@ -22,4 +19,25 @@
 $(function () {
   $('[data-toggle="popover"]').popover()
 })
-</script>
+  <h4 style="text-align: center; margin-top: 50px;">Active Tables</h4>
+
+   <div class="label label-default green-sideb"><%= @occupied_tables.to_i %>%</div>
+
+
+
+  <h4 style="text-align: center; margin-top: 50px;">Active Orders</h4>
+
+
+   <div class="label label-default orange-sideb"><%= @active_orders.count %></div>
+
+
+  <h4 style="text-align: center; margin-top: 50px;">Unpaid Orders</h4>
+
+
+
+   <div class="label label-default red-sideb"><%= @orders_not_yet_paid.count %></div>
+
+</div>
+
+
+

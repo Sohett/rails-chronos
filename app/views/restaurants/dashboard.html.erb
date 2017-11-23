@@ -28,9 +28,9 @@
               <div class="dashboard-order">
                   <span class="words-dashboard">
                     <% if order.paid  %>
-                    <i class="fa fa-check-square-o" style="color: #53ba81" aria-hidden="true"></i>
+                    <i class="fa fa-eur" style="color: #53ba81" aria-hidden="true"></i>
                     <% else %>
-                    <%= link_to '<i class="fa fa-square-o" style="color: #ce6564" aria-hidden="true"></i>'.html_safe, restaurant_table_order_paid_path(@restaurant, order.table, order) %>
+                    <%= link_to '<i class="fa fa-square-o" style="color: #53ba81" aria-hidden="true"></i>'.html_safe, restaurant_table_order_paid_path(@restaurant, order.table, order) %>
                     <% end %>
                   </span>
                 <a class="dash" data-toggle="collapse" href="#collapse-<%=  order.id %>">
@@ -72,9 +72,9 @@
               <div class="dashboard-order">
                   <span class="words-dashboard">
                     <% if order.paid  %>
-                    <i class="fa fa-check-square-o" style="color: #53ba81" aria-hidden="true"></i>
+                    <i class="fa fa-eur" style="color: #53ba81" aria-hidden="true"></i>
                     <% else %>
-                    <%= link_to '<i class="fa fa-square-o" style="color: #ce6564" aria-hidden="true"></i>'.html_safe, restaurant_table_order_paid_path(@restaurant, order.table, order) %>
+                    <%= link_to '<i class="fa fa-square-o" style="color: #53ba81" aria-hidden="true"></i>'.html_safe, restaurant_table_order_paid_path(@restaurant, order.table, order) %>
                     <% end %>
                   </span>
                 <a class="dash" data-toggle="collapse" href="#collapse-<%=  order.id %>" style="margin-right: 20px;">
