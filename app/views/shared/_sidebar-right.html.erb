@@ -21,14 +21,6 @@
   <div class="label label-default red-sideb"><%= @orders_not_yet_paid.count %></div>
 
 
-  <% if @dangerous_orders.any? %>
-  <button type="button" style="margin-top: 10px" class="label label-default orange-sideb" data-placement="top" data-toggle="popover" title="Unpaid since 60 min" data-content="
-  <% @dangerous_orders.each do |order| %>
-  Table <%=order.table.table_number %> <%= (order.time + 60.minutes ).strftime("%H:%M")%>
-  <% end %>
-  "><%= @dangerous_orders.count %></button>
-  <% end %>
-
 </div>
 
 <script>
