@@ -1,11 +1,16 @@
 class RestaurantsController < ApplicationController
-  before_action :set_restaurant, only: [:dashboard, :kitchen, :statistics]
+  before_action :set_restaurant, only: [:dashboard, :kitchen, :turnover, :metrics]
 
   def home
     #code
   end
 
-  def statistics
+  def turnover
+    #code
+  end
+
+  def metrics
+    #code
   end
 
   def index
@@ -23,7 +28,7 @@ class RestaurantsController < ApplicationController
 
     @dangerous_orders = []
     @orders_not_yet_paid.each do |order|
-      if (Time.now - order.time) > 40.minutes
+      if (Time.now - order.time) > 60.minutes
         @dangerous_orders << order
       end
     end

@@ -15,10 +15,7 @@
     <h4 class="text-center">Number of orders by week</h4>
     <%= line_chart @restaurant.orders.group_by_week(:time, week_start: :mon).count %>
   </div> -->
-  <div class="chart">
-    <h4 class="text-center">Turnover (€/day)</h4>
-    <%= column_chart @restaurant.orders.group_by_day(:time).sum("amount_cents / 100") %>
-  </div>
+
 
   <div class="text-center">
     <%= link_to 'Dashboard', restaurant_dashboard_path(@restaurant), class: "btn btn-back" %>
