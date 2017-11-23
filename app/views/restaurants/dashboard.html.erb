@@ -37,7 +37,7 @@
                 <span style="margin-right: 10px;  margin-left: -10px;">Table <%= order.table.table_number %></span>
 
 
-                 <span style="margin-right: 10px;"><%= (order.created_at + 60.minutes ).strftime("%H:%M") %></span>
+                 <span style="margin-right: 10px;"><%= (order.time + 60.minutes ).strftime("%H:%M") %></span>
 
                  <span><%= humanized_money_with_symbol(order.price_per_order) %></span>
 
@@ -81,7 +81,7 @@
                     Table <%= order.table.table_number %>
                   </span>
                   <span style="margin-right: 10px;">
-                    <%= (order.created_at + 60.minutes ).strftime("%H:%M") %>
+                    <%= (order.time + 60.minutes ).strftime("%H:%M") %>
                   </span>
                     <%= humanized_money_with_symbol(order.price_per_order) %>
                 </a>

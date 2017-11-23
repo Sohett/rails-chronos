@@ -12,6 +12,7 @@ class OrdersController < ApplicationController
     @orders_delivered = @table.orders.where(status: 'delivered')
     @orders_paid = @table.orders.where(paid: true)
     @total_price = price_per_table
+    @index = true
   end
 
   def update
@@ -19,6 +20,7 @@ class OrdersController < ApplicationController
     if session[:order_id]
       session.delete(:order_id)
     end
+    @order.time = Time.now
     @order.status = "in process"
     @order.save!
     redirect_to restaurant_table_confirmation_summary_path(@restaurant, @table, @order)
@@ -39,7 +41,7 @@ class OrdersController < ApplicationController
         content << @restaurant.name.to_s.upcase
         content << " "
         content << "Table number : " + (@order.table.table_number).to_s
-        content << "Order passed at " + (@order.created_at + 60.minutes ).strftime("%H:%M")
+        content << "Order passed at " + (@order.time + 60.minutes ).strftime("%H:%M")
         content << " "
         content << "items".upcase
         content << " "
@@ -50,7 +52,7 @@ class OrdersController < ApplicationController
         send_data pdf.render
       end
     end
-    @order.ticket = true
+    @order.printed = true
   end
 
   def delivered
@@ -62,7 +64,11 @@ class OrdersController < ApplicationController
   def paid
     @order.paid = true
     @order.save!
-    redirect_to restaurant_dashboard_path(@restaurant)
+    if params[:format]
+      redirect_to restaurant_table_orders_path(@restaurant, @table)
+    else
+      redirect_to restaurant_dashboard_path(@restaurant)
+    end
   end
 
   def clear_table
