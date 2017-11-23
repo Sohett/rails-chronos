@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   resources :restaurants, only: [:index] do
     put 'kitchen', to: 'restaurants#kitchen', as: :kitchen
     get 'dashboard', to:'restaurants#dashboard', as: :dashboard
-    get 'statistics', to:'restaurants#statistics', as: :statistics
+    get 'statistics/turnover', to:'restaurants#turnover', as: :turnover
+    get 'statistics/metrics', to:'restaurants#metrics', as: :metrics
     resources :tables, only: [:index, :show] do
 
       resources :items, only: [:index]
