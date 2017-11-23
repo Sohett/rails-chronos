@@ -16,8 +16,8 @@ class RestaurantsController < ApplicationController
     @tables = @restaurant.tables
     @orders_all =  @restaurant.orders
     @orders_pending = @restaurant.orders.where(status: 'pending')
-    @orders_in_process = @restaurant.orders.where(status: 'in process')
-    @orders_delivered = @restaurant.orders.where(status: 'delivered')
+    @orders_in_process = @restaurant.orders.where(status: 'in process').order(:time)
+    @orders_delivered = @restaurant.orders.where(status: 'delivered').order(:time)
     @orders_deleted = @restaurant.orders.where(status: 'deleted')
     @orders_not_yet_paid = @restaurant.orders.where(paid: false) - @orders_deleted - @orders_pending
 
@@ -38,6 +38,8 @@ class RestaurantsController < ApplicationController
       end
     end
     @active_tables
+
+    @occupied_tables = (@active_tables.to_f/@tables.count.to_f) * 100
 
   end
 

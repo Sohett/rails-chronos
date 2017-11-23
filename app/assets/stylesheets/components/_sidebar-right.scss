@@ -12,6 +12,10 @@
   position: fixed;
   right: 0;
   bottom: 0;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  text-align: center;
 }
 .nav-side-right-menu .brand {
   background-color: $generic-black;
@@ -21,4 +25,35 @@
   font-size: 25px;
   border-top: 2px solid $yellow;
   border-bottom: 2px solid $yellow;
+  top: 0;
 }
+
+.green-sideb {
+  text-align:center;
+  background-color: #2ECC40 !important;
+  font-size: -webkit-xxx-large;
+  padding: 10px;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.orange-sideb {
+  text-align:center;
+  background-color: $yellow !important;
+  font-size: -webkit-xxx-large;
+  padding: 10px;
+  margin-right: 10px;
+  margin-left: 10px;
+
+}
+
+.red-sideb {
+  text-align:center;
+  background-color: #ce6564 !important;
+  font-size: -webkit-xxx-large;
+  padding: 10px;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+

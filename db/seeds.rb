@@ -113,38 +113,38 @@ table18.save!
 #################################################################################################
 puts "creating 3 salads for Burger Palace"
 
-salad1 = Item.new(name: "Caesar salad", description: "Grilled chicken / Parmesan cheese / Anchovies / Tomatoes / Romaine lettuce / Croutons / Caesar sauce", price: 12.50, category: "salads")
+salad1 = Item.new(vat: 1200, name: "Caesar salad", description: "Grilled chicken / Parmesan cheese / Anchovies / Tomatoes / Romaine lettuce / Croutons / Caesar sauce", price: 12.50, category: "salads")
 salad1.restaurant = resto1
 salad1.save!
 
-salad2 = Item.new(name: "Fresh salad", description: "Quinoa / Cucumber / Tomatoes / Romaine lettuce / Coriander / Radishes / Marinated onions / Pumpkin seeds / Cashew nuts / Yogurt sauce", price: 13.50, category: "salads")
+salad2 = Item.new(vat: 1200, name: "Fresh salad", description: "Quinoa / Cucumber / Tomatoes / Romaine lettuce / Coriander / Radishes / Marinated onions / Pumpkin seeds / Cashew nuts / Yogurt sauce", price: 13.50, category: "salads")
 salad2.restaurant = resto1
 salad2.save!
 
-salad3 = Item.new(name: "Fancy salad", description: "Scampi / Quinoa / Guacamole / Tomatoes / Romaine lettuce / Coriander / Radishes / Marinated onions / Feta cheese / Yogurt sauce", price: 15.00, category: "salads")
+salad3 = Item.new(vat: 1200, name: "Fancy salad", description: "Scampi / Quinoa / Guacamole / Tomatoes / Romaine lettuce / Coriander / Radishes / Marinated onions / Feta cheese / Yogurt sauce", price: 15.00, category: "salads")
 salad3.restaurant = resto1
 salad3.save!
 
 puts "3 salads created"
 
 puts "creating 5 burgers for Burger Palace"
-burger1 = Item.new(name: "Belgian burger", description: "Black Angus beef / Bacon / Onion confit with beer / Iceberg lettuce / Belgian cheese / Mayonaise", price: 12.50, category: "burgers")
+burger1 = Item.new(vat: 1200, name: "Belgian burger", description: "Black Angus beef / Bacon / Onion confit with beer / Iceberg lettuce / Belgian cheese / Mayonaise", price: 12.50, category: "burgers")
 burger1.restaurant = resto1
 burger1.save!
 
-burger2 = Item.new(name: "Bacon burger", description: "Black Angus beef / Bacon / Iceberg lettuce / BBQ sauce", price: 13.50, category: "burgers")
+burger2 = Item.new(vat: 1200, name: "Bacon burger", description: "Black Angus beef / Bacon / Iceberg lettuce / BBQ sauce", price: 13.50, category: "burgers")
 burger2.restaurant = resto1
 burger2.save!
 
-burger3 = Item.new(name: "Mexican burger", description: "Black Angus beef / Guacamole / Cheddar cheese / Onions with paprika / Iceberg lettuce / Homemade sauce", price: 14.00, category: "burgers")
+burger3 = Item.new(vat: 1200, name: "Mexican burger", description: "Black Angus beef / Guacamole / Cheddar cheese / Onions with paprika / Iceberg lettuce / Homemade sauce", price: 14.00, category: "burgers")
 burger3.restaurant = resto1
 burger3.save!
 
-burger4 = Item.new(name: "Manhattan burger", description: "Black Angus beef / Bacon / Onions with paprika / Tomatoes / Iceberg lettuce / Cheddar cheese / Homemade sauce", price: 14.50, category: "burgers")
+burger4 = Item.new(vat: 1200, name: "Manhattan burger", description: "Black Angus beef / Bacon / Onions with paprika / Tomatoes / Iceberg lettuce / Cheddar cheese / Homemade sauce", price: 14.50, category: "burgers")
 burger4.restaurant = resto1
 burger4.save!
 
-burger5 = Item.new(name: "Special burger", description: "Black Angus beef / Cheddar/ Fried onions / Tomatoes / Iceberg lettuce / Mayonaise with truffle", price: 15.00, category: "burgers")
+burger5 = Item.new(vat: 1200, name: "Special burger", description: "Black Angus beef / Cheddar/ Fried onions / Tomatoes / Iceberg lettuce / Mayonaise with truffle", price: 15.00, category: "burgers")
 burger5.restaurant = resto1
 burger5.save!
 
@@ -152,37 +152,37 @@ burger5.save!
 puts "5 burgers created"
 
 puts"creating 3 sides for Burger Palace"
-side1 = Item.new(name: "Belgian Fries", description: "Portion French fries", price: 3.50, category: "sides")
+side1 = Item.new(vat: 1200, name: "Belgian Fries", description: "Portion French fries", price: 3.50, category: "sides")
 side1.restaurant = resto1
 side1.save!
 
-side2 = Item.new(name: "Cheese croquettes", description: "Mini cheese croquettes", price: 6.50, category: "sides")
+side2 = Item.new(vat: 1200, name: "Cheese croquettes", description: "Mini cheese croquettes", price: 6.50, category: "sides")
 side2.restaurant = resto1
 side2.save!
 
-side3 = Item.new(name: "Onion rings", description: "Smoked onion rings & barbecue sauce", price: 5.00, category: "sides")
+side3 = Item.new(vat: 1200, name: "Onion rings", description: "Smoked onion rings & barbecue sauce", price: 5.00, category: "sides")
 side3.restaurant = resto1
 side3.save!
 puts"3 sides created"
 
 puts"creating 5 drinks for Burger Palace"
-drink1 = Item.new(name: "Coca-Cola", description: "", price: 1.50, category: "drinks")
+drink1 = Item.new(vat: 2100, name: "Coca-Cola", description: "", price: 1.50, category: "drinks")
 drink1.restaurant = resto1
 drink1.save!
 
-drink2 = Item.new(name: "Fanta", description: "", price: 1.50, category: "drinks")
+drink2 = Item.new(vat: 2100, name: "Fanta", description: "", price: 1.50, category: "drinks")
 drink2.restaurant = resto1
 drink2.save!
 
-drink3 = Item.new(name: "Sprite", description: "", price: 1.50, category: "drinks")
+drink3 = Item.new(vat: 2100, name: "Sprite", description: "", price: 1.50, category: "drinks")
 drink3.restaurant = resto1
 drink3.save!
 
-drink4 = Item.new(name: "Iced Tea", description: "Homemade Iced tea", price: 3.50, category: "drinks")
+drink4 = Item.new(vat: 2100, name: "Iced Tea", description: "Homemade Iced tea", price: 3.50, category: "drinks")
 drink4.restaurant = resto1
 drink4.save!
 
-drink5 = Item.new(name: "Beer", description: "Belgian pils", price: 2.00, category: "drinks")
+drink5 = Item.new(vat: 2100, name: "Beer", description: "Belgian pils", price: 2.00, category: "drinks")
 drink5.restaurant = resto1
 drink5.save!
 
@@ -194,78 +194,78 @@ puts"5 drinks created"
 
 puts "creating 3 starters for Pizza Mania"
 
-starter1 = Item.new(name: "Bruschetta", description: "Bruschetta with tomato and basil", price: 7.50, category: "starters")
+starter1 = Item.new(vat: 1200, name: "Bruschetta", description: "Bruschetta with tomato and basil", price: 7.50, category: "starters")
 starter1.restaurant = resto2
 starter1.save!
 
-starter2 = Item.new(name: "Italian platter", description: "Ham, Buffalo Mozzarella and Bresaola", price: 13.50, category: "starters")
+starter2 = Item.new(vat: 1200, name: "Italian platter", description: "Ham, Buffalo Mozzarella and Bresaola", price: 13.50, category: "starters")
 starter2.restaurant = resto2
 starter2.save!
 
-starter3 = Item.new(name: "Cheese croquettes", description: "Fried Parmesan Cheese croquetes", price: 10.00, category: "starters")
+starter3 = Item.new(vat: 1200, name: "Cheese croquettes", description: "Fried Parmesan Cheese croquetes", price: 10.00, category: "starters")
 starter3.restaurant = resto2
 starter3.save!
 
 puts "3 starters created"
 
 puts "creating 5 pizze for Pizza Mania"
-pizza1 = Item.new(name: "Margherita", description: "Tomato / Mozzarella / Oregano", price: 10.00, category: "pizza")
+pizza1 = Item.new(vat: 1200, name: "Margherita", description: "Tomato / Mozzarella / Oregano", price: 10.00, category: "pizza")
 pizza1.restaurant = resto2
 pizza1.save!
 
-pizza2 = Item.new(name: "Napoletana", description: "Tomato / Mozzarella / Anchovies / Capers", price: 11.50, category: "pizza")
+pizza2 = Item.new(vat: 1200, name: "Napoletana", description: "Tomato / Mozzarella / Anchovies / Capers", price: 11.50, category: "pizza")
 pizza2.restaurant = resto2
 pizza2.save!
 
-pizza3 = Item.new(name: "Siciliana", description: "Tomato / Mozzarella / Salami / Onions / Oregano", price: 12.50, category: "pizza")
+pizza3 = Item.new(vat: 1200, name: "Siciliana", description: "Tomato / Mozzarella / Salami / Onions / Oregano", price: 12.50, category: "pizza")
 pizza3.restaurant = resto2
 pizza3.save!
 
-pizza4 = Item.new(name: "Quattro Stagioni", description: "Tomato / Mushrooms / Ham / Mozzarella / Artichokes", price: 14.50, category: "pizza")
+pizza4 = Item.new(vat: 1200, name: "Quattro Stagioni", description: "Tomato / Mushrooms / Ham / Mozzarella / Artichokes", price: 14.50, category: "pizza")
 pizza4.restaurant = resto2
 pizza4.save!
 
-pizza5 = Item.new(name: "Sea food", description: "Tomato / Clams / Mussels / Calamari / Shrimps", price: 15.00, category: "pizza")
+pizza5 = Item.new(vat: 1200, name: "Sea food", description: "Tomato / Clams / Mussels / Calamari / Shrimps", price: 15.00, category: "pizza")
 pizza5.restaurant = resto2
 pizza5.save!
 
 puts"creating 5 softs for Pizza Mania"
-soft1 = Item.new(name: "Coca-Cola", description: "", price: 1.50, category: "softs")
+soft1 = Item.new(vat: 2100, name: "Coca-Cola", description: "", price: 1.50, category: "softs")
 soft1.restaurant = resto2
 soft1.save!
 
-soft2 = Item.new(name: "Fanta", description: "", price: 1.50, category: "softs")
+soft2 = Item.new(vat: 2100, name: "Fanta", description: "", price: 1.50, category: "softs")
 soft2.restaurant = resto2
 soft2.save!
 
-soft3 = Item.new(name: "Sprite", description: "", price: 1.50, category: "softs")
+soft3 = Item.new(vat: 2100, name: "Sprite", description: "", price: 1.50, category: "softs")
 soft3.restaurant = resto2
 soft3.save!
 
-soft4 = Item.new(name: "Iced Tea", description: "Homemade Iced tea", price: 3.50, category: "softs")
+soft4 = Item.new(vat: 2100, name: "Iced Tea", description: "Homemade Iced tea", price: 3.50, category: "softs")
 soft4.restaurant = resto2
 soft4.save!
 
-soft5 = Item.new(name: "Beer", description: "Belgian pils", price: 2.00, category: "softs")
+soft5 = Item.new(vat: 2100, name: "Beer", description: "Belgian pils", price: 2.00, category: "softs")
 soft5.restaurant = resto2
 soft5.save!
 
 puts"5 softs created"
 
 puts"creating 4 wines for Pizza Mania"
-wine1 = Item.new(name: "Dragani Montepulciano d’Abbruzzo", description: "", price: 19.0, category: "Red Wines")
+wine1 = Item.new(vat: 2100, name: "Dragani Montepulciano d’Abbruzzo", description: "", price: 19.0, category: "Red Wines")
 wine1.restaurant = resto2
 wine1.save!
 
-wine2 = Item.new(name: "Chianti Ruffino", description: "", price: 21.0, category: "Red Wines")
+wine2 = Item.new(vat: 2100, name: "Chianti Ruffino", description: "", price: 21.0, category: "Red Wines")
 wine2.restaurant = resto2
 wine2.save!
 
-wine3 = Item.new(name: "Lodola Nuova Ruffino", description: "", price: 22.0, category: "White wines")
+wine3 = Item.new(vat: 2100, name: "Lodola Nuova Ruffino", description: "", price: 22.0, category: "White wines")
 wine3.restaurant = resto2
 wine3.save!
 
-wine4 = Item.new(name: "Pinot Grigio", description: "", price: 25.0, category: "White wines")
+wine4 = Item.new(vat: 2100, name: "Pinot Grigio", description: "", price: 25.0, category: "White wines")
 wine4.restaurant = resto2
 wine4.save!
 
@@ -273,15 +273,15 @@ puts"4 wines created"
 
 puts"creating 3 desserts for Pizza Mania"
 
-dessert1 = Item.new(name: "Tiramisu", description: "Homemade Tiramisu", price: 6.0, category: "desserts")
+dessert1 = Item.new(vat: 1200, name: "Tiramisu", description: "Homemade Tiramisu", price: 6.0, category: "desserts")
 dessert1.restaurant = resto2
 dessert1.save!
 
-dessert2 = Item.new(name: "Apple Pancake", description: "", price: 8.0, category: "desserts")
+dessert2 = Item.new(vat: 1200, name: "Apple Pancake", description: "", price: 8.0, category: "desserts")
 dessert2.restaurant = resto2
 dessert2.save!
 
-dessert3 = Item.new(name: "Zabaione", description: "Iced Zabaione with Grand Marnier", price: 10.0, category: "desserts")
+dessert3 = Item.new(vat: 1200, name: "Zabaione", description: "Iced Zabaione with Grand Marnier", price: 10.0, category: "desserts")
 dessert3.restaurant = resto2
 dessert3.save!
 

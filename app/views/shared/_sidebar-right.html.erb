@@ -1,17 +1,38 @@
+
 <div class="nav-side-right-menu">
   <div class="brand"> Key Metrics </div>
-  <p>Number of active tables <%= @active_tables %></p>
 
-  <p>Active orders <%= @active_orders.count %> </p>
+  <h4 style="text-align: center; margin-top: 50px;">Active Tables</h4>
 
-  <p>Orders not yet paid <%= @orders_not_yet_paid.count %> </p>
+  <div class="label label-default green-sideb"><%= @occupied_tables.to_i %>%</div>
+
+
+
+  <h4 style="text-align: center; margin-top: 50px;">Active Orders</h4>
+
+
+  <div class="label label-default orange-sideb"><%= @active_orders.count %></div>
+
+
+  <h4 style="text-align: center; margin-top: 50px;">Unpaid Orders</h4>
+
+
+
+  <div class="label label-default red-sideb"><%= @orders_not_yet_paid.count %></div>
+
 
   <% if @dangerous_orders.any? %>
-    <p>ATTENTION : UNPAID ORDERS SINCE 40 min <%= @dangerous_orders.count %> </p>
-    <ul>
-      <% @dangerous_orders.each do |order| %>
-        <li>Order at table <%= order.table.table_number %> </li>
-      <% end %>
-    </ul>
+  <button type="button" style="margin-top: 10px" class="label label-default orange-sideb" data-placement="top" data-toggle="popover" title="Unpaid since 40 min" data-content="
+  <% @dangerous_orders.each do |order| %>
+  Table <%=order.table.table_number %> <%= (order.time + 60.minutes ).strftime("%H:%M")%>
   <% end %>
+  "><%= @dangerous_orders.count %></button>
+  <% end %>
+
 </div>
+
+<script>
+$(function () {
+  $('[data-toggle="popover"]').popover()
+})
+</script>
