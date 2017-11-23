@@ -1,3 +1,4 @@
+
 <div class="nav-side-right-menu">
   <div class="brand"> Key Metrics </div>
   <p>Number of active tables <%= @active_tables %></p>
@@ -6,12 +7,19 @@
 
   <p>Orders not yet paid <%= @orders_not_yet_paid.count %> </p>
 
+
   <% if @dangerous_orders.any? %>
-    <p>ATTENTION : UNPAID ORDERS SINCE 40 min <%= @dangerous_orders.count %> </p>
-    <ul>
-      <% @dangerous_orders.each do |order| %>
-        <li>Order at table <%= order.table.table_number %> </li>
-      <% end %>
-    </ul>
+    <button type="button" style="margin-top: 10px" class="btn btn-info" data-placement="bottom" data-toggle="popover" data-trigger="focus" title="" data-content="
+    <% @dangerous_orders.each do |order| %>
+    Table <%=order.table.table_number %> <%= (order.time + 60.minutes ).strftime("%H:%M")%> 
+    <% end %>
+    ">Dangerous orders</button>
+
   <% end %>
 </div>
+
+<script>
+$(function () {
+  $('[data-toggle="popover"]').popover()
+})
+</script>
