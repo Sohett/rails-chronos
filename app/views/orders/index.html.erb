@@ -30,7 +30,7 @@
               <%= link_to '<i class="fa fa-square-o" style="color: #53ba81" aria-hidden="true"></i>'.html_safe, restaurant_table_order_paid_path(@restaurant, order.table, order, @index) %>
             <% end %>
           </span>
-          <span><strong> <%= order.time.strftime("%H:%M") %></span></strong>
+          <span><strong> <%= (order.time + 1.hour).strftime("%H:%M") %></span></strong>
           <span><%= humanized_money_with_symbol(order.price_per_order) %></span>
           <% if order.status == 'in process' %>
           <p class="btn btn-status-in-process "><%= order.status %></p>
