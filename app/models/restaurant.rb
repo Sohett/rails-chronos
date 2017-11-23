@@ -13,6 +13,7 @@ class Restaurant < ApplicationRecord
   end
 
   def average_order_price
+    order_by_day = orders.group_by_day(:time, week_start: :mon)
     orders.where(paid: true).average(:amount_cents) / 100.0
   end
 

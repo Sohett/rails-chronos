@@ -418,8 +418,8 @@ puts"3 desserts created"
 puts "creating orders for the database for the number of orders"
 
 Table.all.each do |table|
-  order1 = Order.new(status: "deleted", number: 0)
-  order2 = Order.new(status: "deleted", number: 0)
+  order1 = Order.new(status: "deleted", number: 0, time: 2.days.ago)
+  order2 = Order.new(status: "deleted", number: 0, time: 1.day.ago)
   order1.table = table
   order2.table = table
   order1.save!
