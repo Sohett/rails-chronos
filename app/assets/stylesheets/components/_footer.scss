@@ -1,6 +1,6 @@
 .footer {
   box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
-  background: $generic-black;
+  background: #1d1f21;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -12,25 +12,19 @@
 .footer-links {
   display: flex;
   align-items: center;
-  // justify-content for footer in the confirmation page
-  justify-content: center;
 }
 .footer-links a {
-  // use in the confirmation page as above
-  margin-top: 40px;
-  color: black;
+  color: #adaeaa;
   opacity: 0.9;
   text-decoration: none;
   font-size: 18px;
   padding: 0px 10px;
 }
 .footer-links a:hover {
-  color: $yellow;
+  color: #feb632;
   opacity: 1;
 }
-.footer .fa-heart {
-  color: #D23333;
-}
+
 
 // to onky get the copyright and the links on mobile
 @media only screen and (max-width: 640px) {
