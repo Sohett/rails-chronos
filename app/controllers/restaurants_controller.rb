@@ -39,6 +39,8 @@ class RestaurantsController < ApplicationController
     end
     @active_tables
 
+    @occupied_tables = (@active_tables.to_f/@tables.count.to_f) * 100
+
   end
 
   def kitchen
