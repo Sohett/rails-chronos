@@ -16,7 +16,7 @@ class PaymentsController < ApplicationController
     end
     @order.paid = true
     @order.status = 'in process'
-    @order.number = Order.find(@table.orders.last.id - 1).number + 1
+    @order.time = Time.now
     @order.save!
     redirect_to restaurant_table_confirmation_summary_path(@restaurant, @table, @order)
 

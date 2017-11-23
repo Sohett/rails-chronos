@@ -18,8 +18,12 @@
   </div>
 
 <div class="div price">
+  <h6>Subtotal</h6>
+  <p><%= humanized_money_with_symbol(@subtotal) %></p>
+  <h6>VAT</h6>
+  <p><%= humanized_money_with_symbol(@vat) %></p>
   <h5>Total</h5>
-  <p> <%= humanized_money_with_symbol(@order.amount) %> €</p>
+  <p><%= humanized_money_with_symbol(@order.amount) %></p>
 </div>
 
 <div class="expected-time">
@@ -30,9 +34,9 @@
 <div style="margin-bottom: 15px">
   <%= link_to 'Back to menu', "#{restaurant_table_items_path(@restaurant, @table)}#basket", class: 'btn-back' %>
 </div>
-<div style="margin-bottom: 15px">
+<!-- <div style="margin-bottom: 15px">
   <%= link_to 'Print ticket', "#{restaurant_table_order_ticket_path(@restaurant, @table, @order)}.pdf", class: 'btn-back' %>
-</div>
+</div> -->
 <div class="footer-links">
   <a href="#"><i class="fa fa-instagram"></i></a>
   <a href="#"><i class="fa fa-facebook"></i></a>
