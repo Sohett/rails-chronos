@@ -1,8 +1,24 @@
+
 <div class="nav-side-right-menu">
   <div class="brand"> Key Metrics </div>
 
 
 
+
+  <% if @dangerous_orders.any? %>
+    <button type="button" style="margin-top: 10px" class="btn btn-info" data-placement="bottom" data-toggle="popover" data-trigger="focus" title="" data-content="
+    <% @dangerous_orders.each do |order| %>
+    Table <%=order.table.table_number %> <%= (order.time + 60.minutes ).strftime("%H:%M")%> 
+    <% end %>
+    ">Dangerous orders</button>
+
+  <% end %>
+</div>
+
+<script>
+$(function () {
+  $('[data-toggle="popover"]').popover()
+})
   <h4 style="text-align: center; margin-top: 50px;">Active Tables</h4>
 
    <div class="label label-default green-sideb"><%= @occupied_tables.to_i %>%</div>
