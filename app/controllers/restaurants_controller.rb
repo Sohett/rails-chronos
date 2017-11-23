@@ -1,11 +1,16 @@
 class RestaurantsController < ApplicationController
-  before_action :set_restaurant, only: [:dashboard, :kitchen, :statistics]
+  before_action :set_restaurant, only: [:dashboard, :kitchen, :turnover, :metrics]
 
   def home
     #code
   end
 
-  def statistics
+  def turnover
+    #code
+  end
+
+  def metrics
+    #code
   end
 
   def index
@@ -16,14 +21,14 @@ class RestaurantsController < ApplicationController
     @tables = @restaurant.tables
     @orders_all =  @restaurant.orders
     @orders_pending = @restaurant.orders.where(status: 'pending')
-    @orders_in_process = @restaurant.orders.where(status: 'in process').order(:time)
-    @orders_delivered = @restaurant.orders.where(status: 'delivered').order(:time)
+    @orders_in_process = @restaurant.orders.where(status: 'in process').order(:time).reverse
+    @orders_delivered = @restaurant.orders.where(status: 'delivered').order(:time).reverse
     @orders_deleted = @restaurant.orders.where(status: 'deleted')
     @orders_not_yet_paid = @restaurant.orders.where(paid: false) - @orders_deleted - @orders_pending
 
     @dangerous_orders = []
     @orders_not_yet_paid.each do |order|
-      if (Time.now - order.time) > 40.minutes
+      if (Time.now - order.time) > 60.minutes
         @dangerous_orders << order
       end
     end

@@ -45,9 +45,8 @@
                 <i class="fa fa-bar-chart fa-lg stats-icon"></i> Statistics <span class="arrow"></span>
             </li>
             <ul class="sub-menu collapse" id="new">
-                <li>Metric 1</li>
-                <li>Metric 2</li>
-                <li>Metric 3</li>
+                <li><%= link_to "Turnover", restaurant_turnover_path(@restaurant) %></li>
+                <li><%= link_to "Daily metrics", restaurant_metrics_path(@restaurant) %></li>
             </ul>
 
             <li>
