@@ -13,20 +13,26 @@ class ItemsController < ApplicationController
     @items
     @orderline = Orderline.new
     @order = current_order
-    @total_price = price_computation_simple
+    @price = price_computation_vat(@order)
+    @total_price = @price[:total]
   end
 
   def basket_summary
     @order = current_order
-    @total = price_computation_simple
-    @order.amount = @total
+    @price = price_computation_vat(@order)
+    @order.amount = @price[:total]
     @order.save!
+    @vat = @price[:vat]
+    @subtotal = @price[:subtotal]
   end
 
   def confirmation_summary
     @order = order = Order.find((params[:id]))
     @orderlines = Order.find(params[:id]).orderlines
     @time = Time.now + 20.minutes
+    @price = price_computation_vat(@order)
+    @vat = @price[:vat]
+    @subtotal = @price[:subtotal]
   end
 
   private
@@ -40,18 +46,17 @@ class ItemsController < ApplicationController
     @quantity
   end
 
-  def price_computation_vat
-    #code
-  end
-
-  def price_computation_simple
-    total_price = 0
-    @order = current_order
-    @order.orderlines.each do |orderline|
-      price = orderline.quantity * orderline.item.price
-      total_price += price
+  def price_computation_vat(the_order)
+    order = the_order
+    total = 0
+    vat = 0
+    order.orderlines.each do |orderline|
+      a = orderline.quantity * orderline.item.vat/10000.to_f * orderline.item.price
+      vat += a
+      t = orderline.quantity * orderline.item.price
+      total += t
     end
-    total_price
+    return price = {total: total, vat: vat, subtotal: total - vat}
   end
 
   def set_table
