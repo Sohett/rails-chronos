@@ -1,7 +1,12 @@
 class Restaurant < ApplicationRecord
+
+  extend FriendlyId
+  friendly_id :create_horrible_id, use: :slugged
+
   has_many :items
   has_many :tables
   has_many :orders, through: :tables
+
 
   def status_kitchen
     if self.kitchen
@@ -30,4 +35,11 @@ class Restaurant < ApplicationRecord
     end
     list
   end
+
+  private
+
+  def create_horrible_id
+    SecureRandom.uuid
+  end
+
 end
