@@ -22,8 +22,12 @@
       </div>
     </div>
     <div class="div price">
-      <h5>Total</h5>
-      <p> <%= humanized_money_with_symbol(@order.amount) %></p>
+      <h6>Subtotal</h6>
+      <p><%= humanized_money_with_symbol(@subtotal) %></p>
+      <h6>VAT</h6>
+      <p><%= humanized_money_with_symbol(@vat) %></p>
+      <h5>TOTAL</h5>
+      <p><%= humanized_money_with_symbol(@order.amount) %></p>
     </div>
 
 
