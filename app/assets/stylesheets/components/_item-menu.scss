@@ -203,19 +203,53 @@
   }
 }
 
+.price{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .price h5 {
   font-weight: bolder;
   opacity: 0.9;
-  letter-spacing: 2px;
+}
+
+.price h6 {
+  width: 30px;
+  margin-right: 35px;
   text-transform: uppercase;
 }
 
-.price p {
+.price span {
+  opacity: 0.9;
+  font-size: 13px;
+  width: 55px;
+  margin-left: 35px;
+}
+
+#sub{
+  font-size: 10px;
+  opacity: 0.9;
+}
+
+#total{
   font-weight: bolder;
   opacity: 0.9;
-  margin-top: -5px;
-  font-size: 15px;
 }
+
+
+.brico{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.grey-line-summary{
+  border-bottom: 1px solid lightgrey;
+  height: 2px;
+  width: 55%;
+}
+
 
 // Basket footer
 

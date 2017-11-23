@@ -19,14 +19,22 @@
     </div>
   </div>
 
-<div class="div price">
-  <h6>Subtotal</h6>
-  <p><%= humanized_money_with_symbol(@subtotal) %></p>
-  <h6>VAT</h6>
-  <p><%= humanized_money_with_symbol(@vat) %></p>
-  <h5>Total</h5>
-  <p><%= humanized_money_with_symbol(@order.amount) %></p>
-</div>
+<div style="margin-top: 15px; margin-bottom: -10px;" class="price" id="sub">
+      <h6 style="font-size: 14px;">Subtotal</h6>
+      <span><%= humanized_money_with_symbol(@subtotal) %></span>
+    </div>
+    <div class="price" id="sub">
+      <h6 style="font-size: 14px;">VAT</h6>
+      <span><%= humanized_money_with_symbol(@vat) %></span>
+    </div>
+    <div class="brico">
+      <div class="grey-line-summary">
+      </div>
+    </div>
+    <div class="price" id="total">
+        <h6><strong>TOTAL</strong></h6>
+        <span style="font-size: 15px;"><%= humanized_money_with_symbol(@order.amount) %></span>
+    </div>
 
 <div class="expected-time">
   <p>Thanks for your order!</p>
