@@ -416,14 +416,24 @@ puts"3 desserts created"
 # classico17.save!
 
 puts "creating orders for the database for the number of orders"
-
-Table.all.each do |table|
-  order1 = Order.new(status: "deleted", number: 0, time: 2.days.ago)
-  order2 = Order.new(status: "deleted", number: 0, time: 1.day.ago)
+x = 1
+y = 54
+Table.all.sample(8).each do |table|
+  order1 = Order.new(status: "deleted", number: 0, time: 2.days.ago, amount: 23)
+  order2 = Order.new(status: "deleted", number: 0, time: 1.day.ago, amount: 12)
+  order3 = Order.new(status: "delivered", number: 0, time: y.minutes.ago, amount: 35)
+  order4 = Order.new(status: "delivered", number: 0, time: x.minutes.ago, paid: true, amount: 8)
   order1.table = table
   order2.table = table
+  order3.table = table
+  order4.table = table
   order1.save!
   order2.save!
+  order3.save!
+  order4.save!
+  puts "created 4 orders per table"
+  x += 1
+  y += 1
 end
 
 puts"finished!"
