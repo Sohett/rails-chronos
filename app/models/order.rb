@@ -1,4 +1,11 @@
 class Order < ApplicationRecord
+
+  before_create :set_time
+
+  def set_time
+    self.time = Time.now
+  end
+
   belongs_to :table
   has_many :orderlines
   has_one :restaurant, through: :table
