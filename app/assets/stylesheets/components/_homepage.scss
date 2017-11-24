@@ -58,10 +58,28 @@
 
 
 .Ipad {
-  width: 80%;
+  width: 100%;
   margin-left:auto;
   margin-right:auto;
   display:block;
+}
+
+@media only screen and (min-width: 900px) {
+    .demo-align{
+      margin-top: 110px;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+    .demo-align{
+      margin-top: 90px;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+    .demo-align{
+      margin-top: 170px;
+  }
 }
 
 

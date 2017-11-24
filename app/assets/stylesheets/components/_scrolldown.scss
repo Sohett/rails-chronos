@@ -1,7 +1,3 @@
-
-
-
-
 .scroll-down {
   opacity: 1;
   -webkit-transition: all .5s ease-in 3s;
@@ -58,5 +54,12 @@
     -webkit-transform: translateY(-5px);
     -ms-transform: translateY(-5px);
     transform: translateY(-5px);
+  }
+}
+
+// no display on mobile
+@media only screen and (max-width: 640px) {
+    .scroll-down {
+      display: none;
   }
 }
