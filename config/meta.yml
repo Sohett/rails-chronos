@@ -2,5 +2,5 @@
 meta_product_name: "Chronos"
 meta_title: "Chronos - Digitalize your restaurant"
 meta_description: "ChronosApp helps your restaurant to take full advantage of the techonology by offering the best experience to your clients and ensure your employees can focus on providing services that really matter."
-meta_image: "facebook-metadata.jpeg"                       # should exist in `app/assets/images/`
+meta_image: "homepage.jpeg"                       # should exist in `app/assets/images/`
 # twitter_account: "@product_twitter_account"   # required for Twitter Cards
