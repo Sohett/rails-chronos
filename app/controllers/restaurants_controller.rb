@@ -26,7 +26,6 @@ class RestaurantsController < ApplicationController
     @orders_deleted = @restaurant.orders.where(status: 'deleted')
     @orders_not_yet_paid = @restaurant.orders.where(paid: false) - @orders_deleted - @orders_pending
 
-    # .select { |o| o.time }
     @dangerous_orders = []
     @orders_not_yet_paid.each do |order|
       if (Time.now - order.time) > 60.minutes
